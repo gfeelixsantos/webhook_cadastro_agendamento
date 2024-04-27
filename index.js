@@ -1,10 +1,10 @@
 const express = require('express')
 const app = express()
-var porta = process.env.PORT || 3001
+const PORT = process.env.PORT || 3001
  
 app.get('/', (req, res) => {
-    res.send('ok')
+    res.send('ok');
 })
+
+app.listen(PORT, () => console.log('Servidor rodando na porta: ', PORT));
  
- 
-console.log('Servidor rodando na porta: '+ porta)
