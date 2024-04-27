@@ -7,7 +7,9 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', (req, res) => {
-    console.log('REQUISIÇÃO', req.body);
+    
+    console.log('REQUISIÇÃO BODY', req.body);
+    console.log('REQUISIÇÃO DATA', req.data);
 })
 
 
