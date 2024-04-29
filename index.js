@@ -1,5 +1,5 @@
 const express = require('express');
-const getSubmissionForm = require('./jotform')
+const getSubmissionForm = require('./jotform/jotform')
 const app = express();
 const PORT = process.env.PORT || 3001;
  
