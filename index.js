@@ -16,11 +16,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', async (req, res) => {
-    let agendamento = await getSubmissionForm()
-    agendamento = await getCompanyCode(agendamento)
-    agendamento = await getEmployeeCode(agendamento)
-    console.log(agendamento);
-    // soapIncluirAgendamento(agendamento)
+    dev()
 })
 
 async function dev() {
@@ -39,7 +35,6 @@ async function dev() {
     }
 
 }
-dev()
 
 app.listen(PORT, () => console.log('Servidor rodando na porta: ', PORT));
  
