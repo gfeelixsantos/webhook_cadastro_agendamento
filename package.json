@@ -10,6 +10,7 @@
   "author": "felix.devx",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "jotform": "^1.0.1"
   }
 }
