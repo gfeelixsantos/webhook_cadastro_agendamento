@@ -2,6 +2,7 @@ const map = {
     nomeFuncionario: '34',
     cnpj: '5',
     data: '11',
+    horario: '70',
     tipoExame: '12',
     cargo: '35',
     setor: '36',

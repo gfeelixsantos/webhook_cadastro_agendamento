@@ -1,10 +1,13 @@
 class Agendamento {
-    constructor(nome, cpf, dataNascimento, cnpj, data, tipoExame, cargo, setor, rg, sexo, solicitacaoAtividades, observacoes){
+    codEmpresa = ''
+    codFuncionario = ''
+    constructor(nome, cpf, dataNascimento, cnpj, data, horario, tipoExame, cargo, setor, rg, sexo, solicitacaoAtividades, observacoes){
         this.nome = nome
         this.cpf = cpf
         this.dataNascimento = dataNascimento
         this.cnpj = cnpj
         this.data = data
+        this.horario = horario
         this.tipoExame = tipoExame
         this.cargo = cargo
         this.setor = setor

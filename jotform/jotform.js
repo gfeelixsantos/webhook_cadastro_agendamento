@@ -23,6 +23,7 @@ async function getSubmissionForm() {
         subs.content[0].answers[map.dataNascimento].answer,
         subs.content[0].answers[map.cnpj].answer,
         subs.content[0].answers[map.data].answer,
+        subs.content[0].answers[map.horario].answer,
         subs.content[0].answers[map.tipoExame].answer,
         subs.content[0].answers[map.cargo].answer,
         subs.content[0].answers[map.setor].answer,
