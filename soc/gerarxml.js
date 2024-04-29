@@ -7,9 +7,9 @@ function createXML(agendamento) {
     const header = new WSSecurity(user, pass, 'PasswordDigest')
 
     const agendas =  [
-        // '00239781', //AGENDA CMSO
-        // '02113649', //AGENDA CORDEIRÓPOLIS
-        '01447495'  //AGENDA TESTE
+        // '239781', //AGENDA CMSO
+        // '2113649', //AGENDA CORDEIRÓPOLIS
+        '1447495'  //AGENDA TESTE
     ]
 
     try {
