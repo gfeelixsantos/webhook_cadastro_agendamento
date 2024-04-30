@@ -43,7 +43,7 @@ app.post('/', async (req, res) => {
 async function dev() {
     let agendamento = await getSubmissionForm()
 
-    if(agendamento.tipoExame != 'ADMISSIONAL' && atendimento.tipoExame != 'MUDANÇA DE RISCO OCUPACIONAL'){
+    if(agendamento.tipoExame != 'ADMISSIONAL' && agendamento.tipoExame != 'MUDANÇA DE RISCO OCUPACIONAL'){
         agendamento = await getCompanyCode(agendamento)
         agendamento = await getEmployeeCode(agendamento)
         agendamento = await ajustaTipoExame(agendamento)
