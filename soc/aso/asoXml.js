@@ -12,7 +12,7 @@ function asoCreateXML(agendamento) {
         //'1447495'  //AGENDA TESTE
     ]
 
-    const medico = agendamento.listaExames.length > 3 ? 'Dra. Andrea Cristina Defina do Amaral' : '?'
+    const medico = agendamento.listaExames.length > 3 ? 'Dra. Andrea Cristina Defina do Amaral' : ''
     const codDra = agendamento.listaExames.length > 3 ? '1' : '0'
 
     try {
@@ -42,7 +42,7 @@ function asoCreateXML(agendamento) {
                         <homologacao></homologacao>
                         <codigoUsuario>1591737</codigoUsuario>
                     </identificacaoWsVo>
-                    <imprimeAsoComExamesNaoPertencentesaFicha></imprimeAsoComExamesNaoPertencentesaFicha>
+                    <imprimeAsoComExamesNaoPertencentesaFicha>true</imprimeAsoComExamesNaoPertencentesaFicha>
                     <inativaFunconarioExameDemissional>true</inativaFunconarioExameDemissional>
                     <listaRiscosWsVo>
                         ${addRisk(agendamento)}
