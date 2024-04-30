@@ -27,7 +27,7 @@ function asoCreateXML(agendamento) {
                 <aso>
                     <codigoEmpresa>${agendamento.codEmpresa}</codigoEmpresa>
                     <codigoFuncionario>${agendamento.codFuncionario}</codigoFuncionario>
-                    <codigoPessoaEmissorAso>${codDra}</codigoPessoaEmissorAso>
+                    <codigoPessoaEmissorAso></codigoPessoaEmissorAso>
                     <codigoSequencialFichaclinica>${agendamento.codSequencial}</codigoSequencialFichaclinica>
                     <comentarioAso></comentarioAso>
                     <conselhoClasse></conselhoClasse>
