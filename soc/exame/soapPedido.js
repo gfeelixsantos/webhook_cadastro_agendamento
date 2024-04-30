@@ -9,7 +9,7 @@ function sendSoapExamRequest(xml) {
         }
     })
     .then(response => {
-        return console.log('SOAP EXAME:', response.data);
+        return console.log('SOAP EXAME:', response.status);
     })
     .catch(error => {
         return console.error('SOAP Error EXAME:', error);

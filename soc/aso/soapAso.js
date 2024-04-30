@@ -9,7 +9,7 @@ function sendSoapAso(xml) {
         }
     })
     .then(response => {
-        return console.log('SOAP ASO:', response.data);
+        return console.log('SOAP ASO:', response.status);
     })
     .catch(error => {
         return console.error('SOAP Error ASO:', error);
