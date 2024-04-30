@@ -13,7 +13,7 @@ function asoCreateXML(agendamento) {
     ]
 
     const medico = agendamento.listaExames.length > 3 ? 'Dra. Andrea Cristina Defina do Amaral' : '?'
-    const codDra = agendamento.listaExames.length > 3 ? '1' : '?'
+    const codDra = agendamento.listaExames.length > 3 ? '1' : '0'
 
     try {
         const modeloXML = 
