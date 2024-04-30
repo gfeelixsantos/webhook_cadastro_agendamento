@@ -5,7 +5,6 @@ const getSubmissionForm = require('./jotform/jotform')
 const getCompanyCode = require('./soc/agendamento/empresa')
 const getEmployeeCode = require('./soc/agendamento/funcionario')
 const createXML = require('./soc/agendamento/gerarxml')
-const xmlAdmission = require('./soc/agendamento/admissional')
 const ajustaTipoExame = require('./soc/agendamento/ajustaTipoExame')
 const sendSoapSchedule = require('./soc/agendamento/soapAgendamento')
 
