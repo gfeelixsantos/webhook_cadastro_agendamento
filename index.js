@@ -5,6 +5,7 @@ const getSubmissionForm = require('./jotform/jotform')
 const getCompanyCode = require('./soc/agendamento/empresa')
 const getEmployeeCode = require('./soc/agendamento/funcionario')
 const createXML = require('./soc/agendamento/gerarxml')
+const xmlAdmission = require('./soc/agendamento/admissional')
 const ajustaTipoExame = require('./soc/agendamento/ajustaTipoExame')
 const sendSoapSchedule = require('./soc/agendamento/soapAgendamento')
 
@@ -71,11 +72,10 @@ async function dev() {
 
         // aso
         agendamento = await getRisks(agendamento)
-        for (let index = 0; index < 1; index++) {
-            xml = await asoCreateXML(agendamento, index)
-            await sendSoapAso(xml)
-            await timer()
-        }
+        xml = await asoCreateXML(agendamento)
+        await sendSoapAso(xml)
+        await timer()
+        
         
     }
     else {

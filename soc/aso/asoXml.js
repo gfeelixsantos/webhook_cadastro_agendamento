@@ -1,15 +1,15 @@
 const WSSecurity = require('wssecurity-soap') 
 
-function asoCreateXML(agendamento, index) {
+function asoCreateXML(agendamento) {
 
     const user = "U1591737";
     const pass = "b2af7deb4b52a1ed92be6cfb0ae50faa35b651af";
     const header = new WSSecurity(user, pass, 'PasswordDigest')
 
     const agendas =  [
-        //'239781', //AGENDA CMSO
+        '239781', //AGENDA CMSO
         // '2113649', //AGENDA CORDEIRÓPOLIS
-        '1447495'  //AGENDA TESTE
+        //'1447495'  //AGENDA TESTE
     ]
 
     const medico = agendamento.listaExames.length > 3 ? 'Dra. Andrea Cristina Defina do Amaral' : ''
