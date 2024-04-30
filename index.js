@@ -33,7 +33,11 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', async (req, res) => {
-    dev()
+    try {
+        dev()
+    } catch (error) {
+        console.error('Erro na execução index.js')
+    }
 })
 
 async function dev() {
@@ -79,7 +83,7 @@ async function dev() {
         console.log('atendimento admissional, em desenvolvimento....');
     }
 
-}dev() 
+} 
 
 async function timer() {
     return await new Promise((resolve) => setTimeout(resolve, 3500));
