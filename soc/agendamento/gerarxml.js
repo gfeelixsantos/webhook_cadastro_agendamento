@@ -7,10 +7,16 @@ function createXML(agendamento) {
     const header = new WSSecurity(user, pass, 'PasswordDigest')
 
     const agendas =  [
-        // '239781', //AGENDA CMSO
+        //'239781', //AGENDA CMSO
         // '2113649', //AGENDA CORDEIRÓPOLIS
         '1447495'  //AGENDA TESTE
     ]
+
+    const campoAtividades = agendamento.solicitacaoAtividades == undefined ? '' : agendamento.solicitacaoAtividades
+    const campoObservacoes = agendamento.observacoes == undefined ? '' : agendamento.observacoes
+    const campoDetalhes = `
+    ATIVIDADES: ${campoAtividades}
+    OBSERVACOES: ${campoObservacoes}`
 
     try {
         const modeloXML = 
@@ -41,7 +47,7 @@ function createXML(agendamento) {
                     <usaOutroCompromisso></usaOutroCompromisso>
                     <conteudoOutroCompromisso></conteudoOutroCompromisso>
                     <tipoCompromisso>${agendamento.tipoExame}</tipoCompromisso>
-                    <detalhes>SOLICITAÇÃO ATIVIDADES:${agendamento.solicitacaoAtividades} - OBSERVAÇÕES:${agendamento.observacoes}</detalhes>
+                    <detalhes>${campoDetalhes}</detalhes>
                     <codigoProfissionalAgenda></codigoProfissionalAgenda>
                     <horarioChegada></horarioChegada>
                     <horarioSaida></horarioSaida>
@@ -70,7 +76,7 @@ function createXML(agendamento) {
         </soapenv:Body>
         </soapenv:Envelope>
         `
-        console.log(modeloXML, 'XML GERADO COM SUCESSO!');
+        console.log('XML CADASTRAR AGENDAMENTO GERADO COM SUCESSO!');
         return modeloXML
         
     } catch (error) {

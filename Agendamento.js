@@ -1,6 +1,9 @@
 class Agendamento {
     codEmpresa = ''
     codFuncionario = ''
+    codTipoExame = 0
+    codSequencial = ''
+    riscos = []
     constructor(nome, cpf, dataNascimento, cnpj, data, horario, tipoExame, cargo, setor, rg, sexo, solicitacaoAtividades, observacoes){
         this.nome = nome
         this.cpf = cpf

@@ -1,7 +1,7 @@
 const axios = require('axios')
 const urlEndPoint = 'https://ws1.soc.com.br/WSSoc/AgendamentoWs'
 
-function soapIncluir(xml) {
+function sendSoapSchedule(xml) {
     // Make a POST request using Axios
     axios.post(urlEndPoint, xml, {
         headers: { 
@@ -9,12 +9,12 @@ function soapIncluir(xml) {
         }
     })
     .then(response => {
-        return console.log('SOAP Response:', response.status);
+        return console.log('SOAP cadastrar agendamento:', response);
     })
     .catch(error => {
-        return console.error('SOAP Error:', error);
+        return console.error('SOAP Error cadastrar agendamento:', error);
     });
     
 }
 
-module.exports = soapIncluir
+module.exports = sendSoapSchedule
