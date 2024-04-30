@@ -27,7 +27,7 @@ function asoCreateXML(agendamento) {
                 <aso>
                     <codigoEmpresa>${agendamento.codEmpresa}</codigoEmpresa>
                     <codigoFuncionario>${agendamento.codFuncionario}</codigoFuncionario>
-                    <codigoPessoaEmissorAso></codigoPessoaEmissorAso>
+                    <codigoPessoaEmissorAso>${codDra}</codigoPessoaEmissorAso>
                     <codigoSequencialFichaclinica>${agendamento.codSequencial}</codigoSequencialFichaclinica>
                     <comentarioAso></comentarioAso>
                     <conselhoClasse></conselhoClasse>
@@ -50,7 +50,7 @@ function asoCreateXML(agendamento) {
 
 
                     <medicoAsoEResponsavelPelaFicha>true</medicoAsoEResponsavelPelaFicha>
-                    <nomeMedicoEmissorAso>${medico}</nomeMedicoEmissorAso>
+                    <nomeMedicoEmissorAso></nomeMedicoEmissorAso>
                     
                     <parecerAso>APTO</parecerAso>
                     <parecerTrabalhoEmAltura>APTO</parecerTrabalhoEmAltura>
