@@ -49,7 +49,7 @@ function asoCreateXML(agendamento) {
                     </listaRiscosWsVo>
 
 
-                    <medicoAsoEResponsavelPelaFicha>true</medicoAsoEResponsavelPelaFicha>
+                    <medicoAsoEResponsavelPelaFicha>false</medicoAsoEResponsavelPelaFicha>
                     <nomeMedicoEmissorAso></nomeMedicoEmissorAso>
                     
                     <parecerAso>APTO</parecerAso>
