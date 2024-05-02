@@ -52,7 +52,7 @@ function createXML(agendamento) {
                     <horarioChegada></horarioChegada>
                     <horarioSaida></horarioSaida>
                     <priorizarAtendimento></priorizarAtendimento>
-                    <atendido>AGUARDANDO</atendido>
+                    <atendido>NAO</atendido>
                     <codigoMotivoCancelamento></codigoMotivoCancelamento>
                     <usaEnviarEmail></usaEnviarEmail>
                     <emailWsVo>
