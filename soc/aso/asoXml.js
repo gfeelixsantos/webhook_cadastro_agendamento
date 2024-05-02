@@ -53,8 +53,8 @@ function asoCreateXML(agendamento) {
                     <nomeMedicoEmissorAso></nomeMedicoEmissorAso>
                     
                     <parecerAso>APTO</parecerAso>
-                    <parecerTrabalhoEmAltura>APTO</parecerTrabalhoEmAltura>
-                    <parecerTrabalhoEspacoConfinado>APTO</parecerTrabalhoEspacoConfinado>
+                    <parecerTrabalhoEmAltura></parecerTrabalhoEmAltura>
+                    <parecerTrabalhoEspacoConfinado></parecerTrabalhoEspacoConfinado>
                     <telefoneResponsavelAso></telefoneResponsavelAso>
                     <textoLivreValidade></textoLivreValidade>
                     <tipoeExame>${agendamento.codTipoExame}</tipoeExame>
