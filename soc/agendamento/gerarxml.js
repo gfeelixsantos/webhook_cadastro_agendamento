@@ -80,7 +80,7 @@ function createXML(agendamento) {
         return modeloXML
         
     } catch (error) {
-        console.log('Erro ao gerar XML (fn: createXML)', error);
+        console.error('Erro ao gerar XML (fn: createXML)', error);
     }
 }
 

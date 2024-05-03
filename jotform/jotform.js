@@ -37,7 +37,7 @@ async function getSubmissionForm() {
         return funcionarioAgendado
 
     } catch (error) {
-        console.log('Erro ao buscar agendamento Jotform (fn: getSubmissionForm)', error);
+        console.error('Erro ao buscar agendamento Jotform (fn: getSubmissionForm)', error);
     }
 }
 

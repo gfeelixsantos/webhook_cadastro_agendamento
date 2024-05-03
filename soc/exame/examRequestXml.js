@@ -59,8 +59,7 @@ async function examRequestXml(agendamento) {
         return modeloXML
         
     } catch (error) {
-        console.log(agendamento);
-        console.log('Erro ao gerar XML PEDIDO DE EXAME(fn: examRequestXml)', error);
+        console.error('Erro ao gerar XML PEDIDO DE EXAME(fn: examRequestXml)', error);
     }
 }
 

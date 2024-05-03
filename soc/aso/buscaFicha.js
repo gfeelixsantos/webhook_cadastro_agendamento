@@ -15,7 +15,7 @@ async function getTokenSequential(agendamento) {
         return agendamento
 
     } catch (error) {
-        console.log('Erro ao buscar exames funcionário (fn: getEmployeeExams)', error);
+        console.error('Erro ao buscar exames funcionário (fn: getEmployeeExams)', error);
     }
 }
 

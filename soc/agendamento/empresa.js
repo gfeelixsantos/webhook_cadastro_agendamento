@@ -15,7 +15,7 @@ async function getCompanyCode(agendamento) {
         return agendamento
 
     } catch (error) {
-        console.log('Erro ao buscar código empresa (fn: getCompanyCode)', error);
+        console.error('Erro ao buscar código empresa (fn: getCompanyCode)', error);
     }
 }
 

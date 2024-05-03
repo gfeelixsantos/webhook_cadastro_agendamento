@@ -99,7 +99,7 @@ function resultsXML(agendamento, index) {
         return modeloXML
         
     } catch (error) {
-        console.log('Erro ao gerar XML ASO(fn: resultsXML)', error);
+        console.error('Erro ao gerar XML ASO(fn: resultsXML)', error);
     }
 }
 

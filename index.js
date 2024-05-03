@@ -34,7 +34,8 @@ app.get('/', (req, res) => {
 
 app.post('/', async (req, res) => {
     try {
-        dev()
+        await dev()
+        
     } catch (error) {
         console.error('Erro na execução index.js')
     }

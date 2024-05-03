@@ -18,7 +18,7 @@ async function getEmployeeCode(agendamento) {
         return agendamento
         
     } catch (error) {
-        console.log('Erro ao buscar código do funcionário (fn: getEmployeeCode)', error);
+        console.error('Erro ao buscar código do funcionário (fn: getEmployeeCode)', error);
     }
 }
 
