@@ -46,7 +46,7 @@ async function examRequestXml(agendamento) {
                     ${await examsXmlCreate(agendamento)}
                 </exames>
                 <tipoBuscaMedico>CODIGO_SOC</tipoBuscaMedico>
-                <codigoMedico>6249</codigoMedico>
+                <codigoMedico></codigoMedico>
                 <campoString01>${campoDetalhes}</campoString01>
             </PedidoExame>
         </ser:incluirPedidoExame>
