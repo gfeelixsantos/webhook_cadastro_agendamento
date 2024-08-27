@@ -1,5 +1,5 @@
 async function getEmployeeCode(agendamento) {
-    console.log(agendamento);
+    
     try {
         let cpfFormatado = agendamento.cpf.replaceAll('.', '')
         cpfFormatado = cpfFormatado.replace('-', '')

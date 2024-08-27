@@ -1,34 +1,34 @@
 function ajustaTipoExame(atendimento) {
 
-    if (atendimento.tipoExame == 'ADMISSIONAL'){ 
+    if (atendimento.exame.tipoExame == 'ADMISSIONAL'){ 
         
-        atendimento.codTipoExame = 1
+        atendimento.exame.codTipoExame = 1
     }
     
-    if (atendimento.tipoExame == 'PERIÓDICO'){ 
+    if (atendimento.exame.tipoExame == 'PERIÓDICO'){ 
         
-        atendimento.tipoExame = 'PERIODICO' 
-        atendimento.codTipoExame = 2
+        atendimento.exame.tipoExame = 'PERIODICO' 
+        atendimento.exame.codTipoExame = 2
     }
 
-    if (atendimento.tipoExame == 'RETORNO AO TRABALHO'){ 
+    if (atendimento.exame.tipoExame == 'RETORNO AO TRABALHO'){ 
         
-        atendimento.tipoExame = 'RETORNO_TRABALHO' 
-        atendimento.codTipoExame = 3
+        atendimento.exame.tipoExame = 'RETORNO_TRABALHO' 
+        atendimento.exame.codTipoExame = 3
     }
 
-    if (atendimento.tipoExame == 'MUDANÇA DE RISCO OCUPACIONAL'){ 
+    if (atendimento.exame.tipoExame == 'MUDANÇA DE RISCO OCUPACIONAL'){ 
         
-        atendimento.tipoExame = 'MUDANCA_FUNCAO' 
-        atendimento.codTipoExame = 4
+        atendimento.exame.tipoExame = 'MUDANCA_FUNCAO' 
+        atendimento.exame.codTipoExame = 4
     }
 
-    if (atendimento.tipoExame == 'DEMISSIONAL'){ 
-        atendimento.codTipoExame = 5
+    if (atendimento.exame.tipoExame == 'DEMISSIONAL'){ 
+        atendimento.exame.codTipoExame = 5
     }
 
-    if (atendimento.tipoExame == 'CLÍNICO GERAL / ASSISTENCIAL'){ 
-        atendimento.tipoExame = 'CONSULTA_ASSISTENCIAL' 
+    if (atendimento.exame.tipoExame == 'CLÍNICO GERAL / ASSISTENCIAL'){ 
+        atendimento.exame.tipoExame = 'CONSULTA_ASSISTENCIAL' 
     }
     
     return atendimento

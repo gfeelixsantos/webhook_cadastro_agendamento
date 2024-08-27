@@ -16,24 +16,24 @@ async function getSubmissionForm() {
     
         const client = new Jotform(APIKEY)
         const subs = await client.form.getSubmissions(FORM_ID, options)
-    
+
         const funcionarioAgendado =
         new Agendamento(
-            subs.content[0].answers[map.nomeFuncionario].answer,
-            subs.content[0].answers[map.cpf].answer,
+            subs.content[0].answers[map.nomeFuncionario].answer.trim(),
+            subs.content[0].answers[map.cpf].answer.trim(),
             subs.content[0].answers[map.dataNascimento].answer,
-            subs.content[0].answers[map.cnpj].answer,
+            subs.content[0].answers[map.cnpj].answer.trim(),
             subs.content[0].answers[map.data].answer,
             subs.content[0].answers[map.horario].answer,
             subs.content[0].answers[map.tipoExame].answer,
-            subs.content[0].answers[map.cargo].answer,
-            subs.content[0].answers[map.setor].answer,
-            subs.content[0].answers[map.rg].answer,
+            subs.content[0].answers[map.cargo].answer.trim(),
+            subs.content[0].answers[map.setor].answer.trim(),
+            subs.content[0].answers[map.rg].answer.trim(),
             subs.content[0].answers[map.sexo].answer,
             subs.content[0].answers[map.solicitacaoAtividades].answer,
             subs.content[0].answers[map.observacoes].answer
         )
-        console.log(funcionarioAgendado);
+
         return funcionarioAgendado
 
     } catch (error) {
