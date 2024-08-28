@@ -56,6 +56,8 @@ async function dev() {
 
         if(agendamento.exame.tipoExame == 'ADMISSIONAL'){
             await xmlFuncionarioModelo2(agendamento)
+            timer()
+            agendamento = await getEmployeeCode(agendamento)
         }
         
         // soap agendamento
