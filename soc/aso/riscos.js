@@ -1,7 +1,7 @@
 async function getRisks(agendamento) {
 
     try {
-        const url = `https://ws1.soc.com.br/WebSoc/exportadados?parametro={"empresa":'16459',"codigo":"193602","chave":"8355c87bb9157db187cb","tipoSaida":"json","empresaTrabalho":"${agendamento.codEmpresa}","funcionario":"${agendamento.codFuncionario}"}`;
+        const url = `https://ws1.soc.com.br/WebSoc/exportadados?parametro={"empresa":'16459',"codigo":"193602","chave":"8355c87bb9157db187cb","tipoSaida":"json","empresaTrabalho":"${agendamento.empresa.codEmpresa}","funcionario":"${agendamento.funcionario.codFuncionario}"}`;
         
         const response = await fetch(url);
         const responseBuff = await response.arrayBuffer();
@@ -9,7 +9,7 @@ async function getRisks(agendamento) {
         const arrRiscos = JSON.parse(riscos);
         
         if(arrRiscos.length > 0){
-            arrRiscos.forEach(risco => agendamento.exames.riscos.push(risco['CODRISCO']));
+            arrRiscos.forEach(risco => agendamento.exame.riscos.push(risco['CODRISCO']));
         }
         else {
             // Inserir ausencia de risco

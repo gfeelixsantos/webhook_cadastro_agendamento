@@ -1,7 +1,7 @@
 const WSSecurity = require('wssecurity-soap') 
 
 function resultsXML(agendamento, index) {
-
+    
     const user = "U1591737";
     const pass = "b2af7deb4b52a1ed92be6cfb0ae50faa35b651af";
     const header = new WSSecurity(user, pass, 'PasswordDigest')
@@ -29,7 +29,7 @@ function resultsXML(agendamento, index) {
                 
                     <examesIdentificacaoPorIdWsVo>
                         <codigoIdFicha>${agendamento.exame.codSequencial}</codigoIdFicha>
-                        <codigoIdResultadoExame>${agendamento.listaExames[index]['SEQUENCIALRESULTADO']}</codigoIdResultadoExame>
+                        <codigoIdResultadoExame>${agendamento.exame.listaExames[index]['SEQUENCIALRESULTADO']}</codigoIdResultadoExame>
                     </examesIdentificacaoPorIdWsVo>
                     
                     <identificacaoWsVo>

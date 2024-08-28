@@ -6,8 +6,8 @@ async function getSequencialResult(agendamento) {
         const response = await fetch(url);
         const responseBuff = await response.arrayBuffer();
         const exames = new TextDecoder('iso-8859-1').decode(responseBuff);
-        const arrExames = JSON.parse(exames);
         
+        const arrExames = JSON.parse(exames);
         agendamento.exame.listaExames = arrExames;
         
         return agendamento

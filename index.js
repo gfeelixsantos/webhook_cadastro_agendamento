@@ -49,48 +49,39 @@ app.post('/', async (req, res) => {
 async function dev() {
     let agendamento = await getSubmissionForm()
 
-    agendamento = await getCompanyCode(agendamento)
-    agendamento = await ajustaTipoExame(agendamento)
-    timer()
-    agendamento = await consultaSetorCargo(agendamento)
-    agendamento = await getEmployeeCode(agendamento)
-    
-    if (agendamento.exame.tipoExame == 'ADMISSIONAL'){
-        // Verifica se já não existe cadastro
-        xmlFuncionarioModelo2(agendamento)
-
+        agendamento = await getCompanyCode(agendamento)
+        agendamento = await getEmployeeCode(agendamento)
+        agendamento = await ajustaTipoExame(agendamento)
+        agendamento = await consultaSetorCargo(agendamento)
         
-    }   
-    
-    // soap agendamento
-    let xml = createXML(agendamento)
-    sendSoapSchedule(xml)
-    await timer()
+        // soap agendamento
+        let xml = await createXML(agendamento)
+        sendSoapSchedule(xml)
 
-    // soap pedido exame
-    agendamento = await getEmployeeExams(agendamento)
-    xml = await examRequestXml(agendamento)
-    sendSoapExamRequest(xml)
-
-    await timer()
-    
-    // soap resultado exames
-    agendamento = await getTokenSequential(agendamento)
-    agendamento = await getSequencialResult(agendamento)
-
-    for (let index = 0; index < agendamento.exame.listaExames.length; index++) {
-        xml = resultsXML(agendamento, index)
+        // soap pedido exame
+        agendamento = await getEmployeeExams(agendamento)
+        xml = await examRequestXml(agendamento)
         sendSoapExamRequest(xml)
+
         await timer()
-    }
+       
+        // soap resultado exames
+        agendamento = await getTokenSequential(agendamento)
+        agendamento = await getSequencialResult(agendamento)
 
-    // aso
-    agendamento = await getRisks(agendamento)
-    xml = asoCreateXML(agendamento)
-    sendSoapAso(xml)
-    await timer()
+        for (let index = 0; index < agendamento.exame.listaExames.length; index++) {
+            xml = await resultsXML(agendamento, index)
+            await sendSoapExamRequest(xml)
+            await timer()
+        }
 
-    console.log(agendamento)
+        // aso
+        agendamento = await getRisks(agendamento)
+        xml = await asoCreateXML(agendamento)
+        await sendSoapAso(xml)
+        await timer()
+
+    
 
 } 
 
