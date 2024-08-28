@@ -58,6 +58,8 @@ async function dev() {
         // Verifica se já não existe cadastro
         agendamento = await getEmployeeCode(agendamento)
         xmlFuncionarioModelo2(agendamento)
+
+        console.log(agendamento)
     }
     
     
