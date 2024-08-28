@@ -49,16 +49,18 @@ app.post('/', async (req, res) => {
 async function dev() {
     let agendamento = await getSubmissionForm()
 
+
         agendamento = await getCompanyCode(agendamento)
+        
+        if(agendamento.exame.tipoExame == 'ADMISSIONAL'){
+            await xmlFuncionarioModelo2(agendamento)
+            timer()
+        }
         agendamento = await getEmployeeCode(agendamento)
         agendamento = await ajustaTipoExame(agendamento)
         agendamento = await consultaSetorCargo(agendamento)
 
-        if(agendamento.exame.tipoExame == 'ADMISSIONAL'){
-            await xmlFuncionarioModelo2(agendamento)
-            timer()
-            agendamento = await getEmployeeCode(agendamento)
-        }
+
         
         // soap agendamento
         let xml = await createXML(agendamento)
