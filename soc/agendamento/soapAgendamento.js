@@ -12,7 +12,7 @@ function sendSoapSchedule(xml) {
         return console.log('SOAP AGENDAMENTO:', response.status);
     })
     .catch(error => {
-        return console.error('SOAP Error cadastrar agendamento:', error);
+        return console.error('SOAP Error cadastrar agendamento:', error.data);
     });
     
 }

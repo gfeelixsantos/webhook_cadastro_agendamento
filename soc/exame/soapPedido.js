@@ -12,7 +12,7 @@ function sendSoapExamRequest(xml) {
         return console.log('SOAP RESULTADO EXAME:', response.status);
     })
     .catch(error => {
-        return console.error('SOAP Error EXAME:', error);
+        return console.error('SOAP Error EXAME:', error.data);
     });
     
 }

@@ -12,7 +12,7 @@ function sendSoapAso(xml) {
         return console.log('SOAP RISCOS ASO:', response.status);
     })
     .catch(error => {
-        return console.error('SOAP Error ASO:', error);
+        return console.error('SOAP Error ASO:', error.data);
     });
     
 }
