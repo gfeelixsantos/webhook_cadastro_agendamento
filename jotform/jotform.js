@@ -29,14 +29,14 @@ async function getSubmissionForm() {
             subs.content[0].answers[map.data].prettyFormat,
             subs.content[0].answers[map.horario].answer,
             subs.content[0].answers[map.tipoExame].answer,
-            subs.content[0].answers[map.cargo].answer.trim(),
-            subs.content[0].answers[map.setor].answer.trim(),
-            subs.content[0].answers[map.rg].answer.trim(),
+            subs.content[0].answers[map.cargo].answer,
+            subs.content[0].answers[map.setor].answer,
+            subs.content[0].answers[map.rg].answer,
             subs.content[0].answers[map.sexo].answer,
             subs.content[0].answers[map.solicitacaoAtividades].answer,
             subs.content[0].answers[map.observacoes].answer,
             subs.content[0].answers[map.nomeSolicitante].answer,
-            subs.content[0].answers[map.emailSolicitante].answer.trim(),
+            subs.content[0].answers[map.emailSolicitante].answer,
             subs.content[0].answers[map.telefoneSolicitante].prettyFormat,
             subs.content[0].answers[map.anexos].answer
         )
