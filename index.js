@@ -53,24 +53,24 @@ async function dev() {
     agendamento = await ajustaTipoExame(agendamento)
     timer()
     agendamento = await consultaSetorCargo(agendamento)
+    agendamento = await getEmployeeCode(agendamento)
     
     if (agendamento.exame.tipoExame == 'ADMISSIONAL'){
         // Verifica se já não existe cadastro
-        agendamento = await getEmployeeCode(agendamento)
         xmlFuncionarioModelo2(agendamento)
 
         
     }   
     
     // soap agendamento
-    let xml = await createXML(agendamento)
-    await sendSoapSchedule(xml)
+    let xml = createXML(agendamento)
+    sendSoapSchedule(xml)
     await timer()
 
     // soap pedido exame
     agendamento = await getEmployeeExams(agendamento)
     xml = await examRequestXml(agendamento)
-    await sendSoapExamRequest(xml)
+    sendSoapExamRequest(xml)
 
     await timer()
     
@@ -79,15 +79,15 @@ async function dev() {
     agendamento = await getSequencialResult(agendamento)
 
     for (let index = 0; index < agendamento.exame.listaExames.length; index++) {
-        xml = await resultsXML(agendamento, index)
-        await sendSoapExamRequest(xml)
+        xml = resultsXML(agendamento, index)
+        sendSoapExamRequest(xml)
         await timer()
     }
 
     // aso
     agendamento = await getRisks(agendamento)
-    xml = await asoCreateXML(agendamento)
-    await sendSoapAso(xml)
+    xml = asoCreateXML(agendamento)
+    sendSoapAso(xml)
     await timer()
 
     console.log(agendamento)
