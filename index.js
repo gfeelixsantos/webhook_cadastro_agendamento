@@ -29,6 +29,7 @@ const consultaSetorCargo = require('./soc/agendamento/consultaSetorCargo');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+const INTERVAL_TIME = 60000
 let pedidos = []
  
 app.use(express.json())
@@ -42,8 +43,8 @@ app.post('/', async (req, res) => {
 })
 
 async function getForm() {
-    let agendamento = await getSubmissionForm()
-    pedidos.push(agendamento)
+    let funcionarioAgendado = await getSubmissionForm()
+    pedidos.push(funcionarioAgendado)
 }
 
 
@@ -51,9 +52,9 @@ async function dev() {
 
         setInterval( async() => {
             
-            if( pedidos.length > 0){
+            if (pedidos.length > 0){
                 let agendamento = pedidos[0]
-
+                
                 agendamento = await getCompanyCode(agendamento)
                 agendamento = await getEmployeeCode(agendamento)
                 
@@ -95,12 +96,12 @@ async function dev() {
                 await timer()
 
                 pedidos.shift(agendamento)
-                
+
             } else {
                 console.log('sem pedidos...');
                 
             }
-        }, 40000)
+        }, INTERVAL_TIME)
     
 
 } 
@@ -109,5 +110,7 @@ async function timer() {
     return await new Promise((resolve) => setTimeout(resolve, 5000));
 }
 dev()
+
+
 app.listen(PORT, () => console.log('Servidor rodando na porta: ', PORT));
  

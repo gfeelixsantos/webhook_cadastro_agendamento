@@ -443,7 +443,7 @@ function xmlFuncionarioModelo2(agendamento) {
         return console.log('SOAP ASO:', response.status);
     })
     .catch(error => {
-        return console.error('SOAP Error ASO:', error);
+        return console.error('SOAP Error ASO:', error.data);
     });
 }
 

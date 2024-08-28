@@ -7,9 +7,9 @@ async function examRequestXml(agendamento) {
     const header = new WSSecurity(user, pass, 'PasswordDigest')
 
     const agendas =  [
-        //'239781', //AGENDA CMSO
+        '239781', //AGENDA CMSO
         // '2113649', //AGENDA CORDEIRÓPOLIS
-        '1447495'  //AGENDA TESTE
+        //'1447495'  //AGENDA TESTE
     ]
 
     const campoAtividades = agendamento.solicitacaoAtividades == undefined ? '' : agendamento.solicitacaoAtividades

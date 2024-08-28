@@ -43,7 +43,7 @@ class Agendamento {
     
 
     constructor(nome, cpf, dataNascimento, cnpj, data, horario, tipoExame, cargo, setor, rg, sexo, solicitacaoAtividades, observacoes, solicitante, emailSolicitante, telefoneContato, anexos){
-        this.funcionario.nome = nome.toUpperCase()
+        this.funcionario.nome = nome ? nome.toUpperCase() : nome
         this.funcionario.cpf = cpf
         this.funcionario.dataNascimento = dataNascimento
         this.empresa.cnpj = cnpj
@@ -51,8 +51,8 @@ class Agendamento {
         this.horarioAgendamento = horario
 
         this.exame.tipoExame = tipoExame
-        this.funcionario.cargo = cargo.toUpperCase()
-        this.funcionario.setor = setor.toUpperCase()
+        this.funcionario.cargo = cargo ? cargo.toUpperCase() : cargo
+        this.funcionario.setor = setor ? setor.toUpperCase() : setor
         this.funcionario.rg = rg
         this.funcionario.sexo = sexo
         this.exame.solicitacaoAtividades = solicitacaoAtividades

@@ -16,6 +16,9 @@ async function getCompanyCode(agendamento) {
 
     } catch (error) {
         console.error('Erro ao buscar código empresa (fn: getCompanyCode)', error);
+
+        agendamento.erro = 'CÓDIGO DA EMPRESA NÃO LOCALIZADO'
+        return agendamento.situacao = 'ERRO'
     }
 }
 
