@@ -14,7 +14,10 @@ async function getEmployeeExams(agendamento) {
         return agendamento
 
     } catch (error) {
-        console.log('Erro ao buscar exames funcionário (fn: getEmployeeExams)', error);
+        agendamento.erro = 'SEM EXAMES PROGRAMADOS'
+        agendamento.situacao = 'ERRO'
+
+        throw new Error('Erro ao buscar código empresa (fn: getEmployeeExams)', error)
     }
 }
 

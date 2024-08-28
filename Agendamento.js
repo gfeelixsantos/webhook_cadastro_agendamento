@@ -56,7 +56,7 @@ class Agendamento {
         this.funcionario.rg = rg
         this.funcionario.sexo = sexo
         this.exame.solicitacaoAtividades = solicitacaoAtividades
-        this.observacoes = observacoes
+        this.observacoes = observacoes ? observacoes : ''
 
         this.solicitante = solicitante
         this.emailSolicitante = emailSolicitante

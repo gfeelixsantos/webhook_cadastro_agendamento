@@ -17,7 +17,10 @@ async function consultaSetorCargo(agendamento) {
         return agendamento
 
     } catch (error) {
-        console.error('Erro ao buscar código empresa (fn: consultaSetorCargo)', error);
+        agendamento.erro = 'HIERARQUIA NÃO ENCONTRADA'
+        agendamento.situacao = 'ERRO'
+
+        throw new Error('Erro ao buscar código empresa (fn: consultaSetorCargo)', error)
     }
 }
 

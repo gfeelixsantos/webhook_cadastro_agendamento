@@ -19,7 +19,10 @@ async function getRisks(agendamento) {
         return agendamento
 
     } catch (error) {
-        console.log('Erro ao buscar riscos funcionário (fn: getRisks)', error);
+        agendamento.erro = 'NÃO OBTEVE RISCOS'
+        agendamento.situacao = 'ERRO'
+
+        throw new Error('Erro ao buscar código empresa (fn: getRisks)', error)
     }
 }
 
