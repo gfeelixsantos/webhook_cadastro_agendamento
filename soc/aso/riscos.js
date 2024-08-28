@@ -8,7 +8,13 @@ async function getRisks(agendamento) {
         const riscos = new TextDecoder('iso-8859-1').decode(responseBuff);
         const arrRiscos = JSON.parse(riscos);
         
-        arrRiscos.forEach(risco => agendamento.riscos.push(risco['CODRISCO']));
+        if(arrRiscos.length > 0){
+            arrRiscos.forEach(risco => agendamento.riscos.push(risco['CODRISCO']));
+        }
+        else {
+            // Inserir ausencia de risco
+        }
+        
         
         return agendamento
 

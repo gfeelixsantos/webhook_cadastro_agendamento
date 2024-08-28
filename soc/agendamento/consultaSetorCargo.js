@@ -1,3 +1,5 @@
+const checkSetorCargo = require('./gemini')
+
 async function consultaSetorCargo(agendamento) {
 
     try {
@@ -9,21 +11,8 @@ async function consultaSetorCargo(agendamento) {
         const arrHierarquia = JSON.parse(hierarquia);
         
         const hierarquiasAtivas = arrHierarquia.filter( hie => hie['HIERARQUIA_ATIVA'] == 'Sim')
-        let cargo = hierarquiasAtivas.find( hie => hie['NOME_CARGO'] == agendamento.funcionario.cargo)
-        
-        if(cargo.length > 0){
-            cargo = cargo.filter( hie => hie['NOME_SETOR'] == agendamento.funcionario.setor )
-        }
 
-
-        agendamento.funcionario.codCargo = cargo['CODIGO_CARGO']
-        agendamento.funcionario.codSetor = cargo['CODIGO_SETOR']
-        agendamento.funcionario.codUnidade = cargo['CODIGO_UNIDADE']
-
-        agendamento.funcionario.cargo = cargo['NOME_CARGO']
-        agendamento.funcionario.setor = cargo['NOME_SETOR']
-        agendamento.funcionario.unidade = cargo['NOME_UNIDADE']
-
+        agendamento = await checkSetorCargo(agendamento, hierarquiasAtivas)
         
         return agendamento
 

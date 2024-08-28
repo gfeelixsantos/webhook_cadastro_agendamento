@@ -4,7 +4,12 @@ class Agendamento {
     horarioAgendamento = ''
     horarioChegada = ''
     observacoes = ''
-    situacao = 'EM PREPARACAO'
+    situacao = 'SOLICITADO'
+    solicitante = ''
+    emailSolicitante = ''
+    telefoneContato = ''
+    anexos = ''
+
 
     empresa = {
         cnpj: '',
@@ -14,7 +19,7 @@ class Agendamento {
 
     funcionario = {
         codCargo: '',
-        codFuncionario: '',
+        codFuncionario: undefined,
         codSetor: '',
         codUnidade: '',
         cpf: '',
@@ -36,7 +41,7 @@ class Agendamento {
     }
     
 
-    constructor(nome, cpf, dataNascimento, cnpj, data, horario, tipoExame, cargo, setor, rg, sexo, solicitacaoAtividades, observacoes){
+    constructor(nome, cpf, dataNascimento, cnpj, data, horario, tipoExame, cargo, setor, rg, sexo, solicitacaoAtividades, observacoes, solicitante, emailSolicitante, telefoneContato, anexos){
         this.funcionario.nome = nome.toUpperCase()
         this.funcionario.cpf = cpf
         this.funcionario.dataNascimento = dataNascimento
@@ -51,6 +56,12 @@ class Agendamento {
         this.funcionario.sexo = sexo
         this.exame.solicitacaoAtividades = solicitacaoAtividades
         this.observacoes = observacoes
+
+        this.solicitante = solicitante
+        this.emailSolicitante = emailSolicitante
+        this.telefoneContato = telefoneContato
+        this.anexos = anexos
+
     }
 }
 

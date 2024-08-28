@@ -1,6 +1,9 @@
 const express = require('express');
 const getSubmissionForm = require('./jotform/jotform')
 
+// funcionario modelo2
+const xmlFuncionarioModelo2 = require('./soc/funcionario/xmlModelo2')
+
 // agendamento
 const getCompanyCode = require('./soc/agendamento/empresa')
 const getEmployeeCode = require('./soc/agendamento/funcionario')
@@ -48,10 +51,15 @@ async function dev() {
 
     agendamento = await getCompanyCode(agendamento)
     agendamento = await ajustaTipoExame(agendamento)
+    timer()
     agendamento = await consultaSetorCargo(agendamento)
     
+    if (agendamento.exame.tipoExame == 'ADMISSIONAL'){
+        // Verifica se já não existe cadastro
+        agendamento = await getEmployeeCode(agendamento)
+        xmlFuncionarioModelo2(agendamento)
+    }
     
-    // agendamento = await getEmployeeCode(agendamento)
     
     
     // // soap agendamento
