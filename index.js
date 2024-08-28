@@ -61,23 +61,22 @@ async function dev() {
                     agendamento = await getEmployeeCode(agendamento)
                     
                     if(agendamento.exame.tipoExame == 'ADMISSIONAL'){
+                        agendamento = await consultaSetorCargo(agendamento)
                         await xmlFuncionarioModelo2(agendamento)
                         timer()
                     }
 
                     agendamento = await ajustaTipoExame(agendamento)
-                    agendamento = await consultaSetorCargo(agendamento)
-
-
+                    
                     
                     // soap agendamento
                     let xml = await createXML(agendamento)
-                    sendSoapSchedule(xml)
+                    await sendSoapSchedule(xml)
 
                     // soap pedido exame
                     agendamento = await getEmployeeExams(agendamento)
                     xml = await examRequestXml(agendamento)
-                    sendSoapExamRequest(xml)
+                    await sendSoapExamRequest(xml)
 
                     await timer()
                 
