@@ -19,7 +19,7 @@ function createXML(agendamento) {
     OBSERVACOES: ${campoObservacoes}`
 
     try {
-        const xml = 
+        const modeloXML = 
         `
         <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://services.soc.age.com/">
         <soapenv:Header>
