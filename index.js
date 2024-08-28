@@ -53,6 +53,10 @@ async function dev() {
         agendamento = await getEmployeeCode(agendamento)
         agendamento = await ajustaTipoExame(agendamento)
         agendamento = await consultaSetorCargo(agendamento)
+
+        if(agendamento.exame.tipoExame == 'ADMISSIONAL'){
+            await xmlFuncionarioModelo2(agendamento)
+        }
         
         // soap agendamento
         let xml = await createXML(agendamento)
