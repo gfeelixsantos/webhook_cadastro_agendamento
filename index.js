@@ -59,9 +59,9 @@ async function dev() {
         agendamento = await getEmployeeCode(agendamento)
         xmlFuncionarioModelo2(agendamento)
 
-        console.log(agendamento)
+        
     }
-    
+    console.log(agendamento)
     
     
     // // soap agendamento
