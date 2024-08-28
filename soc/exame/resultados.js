@@ -12,7 +12,7 @@ function resultsXML(agendamento, index) {
         '1447495'  //AGENDA TESTE
     ]
 
-    const referencialSequencial = agendamento.codTipoExame != 1 ? 'SEQUENCIAL' : 'REFERENCIAL'
+    const referencialSequencial = agendamento.exame.codTipoExame != 1 ? 'SEQUENCIAL' : 'REFERENCIAL'
 
 
     try {
@@ -28,7 +28,7 @@ function resultsXML(agendamento, index) {
                 <resultadoExame>
                 
                     <examesIdentificacaoPorIdWsVo>
-                        <codigoIdFicha>${agendamento.codSequencial}</codigoIdFicha>
+                        <codigoIdFicha>${agendamento.exame.codSequencial}</codigoIdFicha>
                         <codigoIdResultadoExame>${agendamento.listaExames[index]['SEQUENCIALRESULTADO']}</codigoIdResultadoExame>
                     </examesIdentificacaoPorIdWsVo>
                     
@@ -42,14 +42,14 @@ function resultsXML(agendamento, index) {
                     
                     <resultadoExamesDadosWsVo>
                         <alteraFichaClinica></alteraFichaClinica>
-                        <codigoExame>${agendamento.listaExames[index]['CODIGOEXAME']}</codigoExame>
+                        <codigoExame>${agendamento.exame.listaExames[index]['CODIGOEXAME']}</codigoExame>
                         <codigoExaminador></codigoExaminador>
                         <codigoExaminador2></codigoExaminador2>
                         <codigoPrestador></codigoPrestador>
                         <comentario></comentario>
                         <criaExame></criaExame>
                         <criaFichaClinica></criaFichaClinica>
-                        <dataResultadoExame>${agendamento.data.day}/${agendamento.data.month}/${agendamento.data.year}</dataResultadoExame>
+                        <dataResultadoExame>${agendamento.dataAgendamento}</dataResultadoExame>
                         
                         
                         <identificarExameAlteradoAutomaticamente></identificarExameAlteradoAutomaticamente>
@@ -77,14 +77,14 @@ function resultsXML(agendamento, index) {
                         <cnpjLaboratorio></cnpjLaboratorio>
                         <codigoExameLaboratorial></codigoExameLaboratorial>
                         <ordemExameEsocial></ordemExameEsocial>
-                        <dataAgendamento>${agendamento.data.day}/${agendamento.data.month}/${agendamento.data.year}</dataAgendamento>
-                        <horaAgendamento>${agendamento.horario}</horaAgendamento>
+                        <dataAgendamento>${agendamento.dataAgendamento}</dataAgendamento>
+                        <horaAgendamento>${agendamento.horarioAgendamento}</horaAgendamento>
                     </resultadoExamesDadosWsVo>
                     
                     <resultadoExamesIdentificacaoFuncionarioWsVo>
                         
-                        <codigoEmpresa>${agendamento.codEmpresa}</codigoEmpresa>
-                        <codigoFuncionario>${agendamento.codFuncionario}</codigoFuncionario>
+                        <codigoEmpresa>${agendamento.empresa.codEmpresa}</codigoEmpresa>
+                        <codigoFuncionario>${agendamento.funcionario.codFuncionario}</codigoFuncionario>
                         <dataFicha></dataFicha>
                         <tipoeExame></tipoeExame>
                     </resultadoExamesIdentificacaoFuncionarioWsVo>
@@ -95,7 +95,7 @@ function resultsXML(agendamento, index) {
         </soapenv:Body>
         </soapenv:Envelope>
         `
-        console.log('XML ALTERA RESULTADO GERADO COM SUCESSO!');
+
         return modeloXML
         
     } catch (error) {

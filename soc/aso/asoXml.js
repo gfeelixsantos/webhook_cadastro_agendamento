@@ -13,7 +13,7 @@ function asoCreateXML(agendamento) {
     ]
 
     // const medico = agendamento.listaExames.length > 3 ? 'Dra. Andrea Cristina Defina do Amaral' : ''
-    const codDra = agendamento.listaExames.length > 3 ? '1' : '0'
+    const codDra = agendamento.exame.listaExames.length > 3 ? '1' : '0'
 
     try {
         const modeloXML = 
@@ -25,14 +25,14 @@ function asoCreateXML(agendamento) {
         <soapenv:Body>
             <ser:incluiDadosAso>
                 <aso>
-                    <codigoEmpresa>${agendamento.codEmpresa}</codigoEmpresa>
-                    <codigoFuncionario>${agendamento.codFuncionario}</codigoFuncionario>
+                    <codigoEmpresa>${agendamento.empresa.codEmpresa}</codigoEmpresa>
+                    <codigoFuncionario>${agendamento.funcionario.codFuncionario}</codigoFuncionario>
                     <codigoPessoaEmissorAso></codigoPessoaEmissorAso>
-                    <codigoSequencialFichaclinica>${agendamento.codSequencial}</codigoSequencialFichaclinica>
+                    <codigoSequencialFichaclinica>${agendamento.exame.codSequencial}</codigoSequencialFichaclinica>
                     <comentarioAso></comentarioAso>
                     <conselhoClasse></conselhoClasse>
-                    <dataEmissaoAso>${agendamento.data.day}/${agendamento.data.month}/${agendamento.data.year}</dataEmissaoAso>
-                    <dataFicha>${agendamento.data.day}/${agendamento.data.month}/${agendamento.data.year}</dataFicha>
+                    <dataEmissaoAso>${agendamento.dataAgendamento}</dataEmissaoAso>
+                    <dataFicha>${agendamento.dataAgendamento}</dataFicha>
                     <especialidade></especialidade>
                     
                     <identificacaoWsVo>
@@ -57,7 +57,7 @@ function asoCreateXML(agendamento) {
                     <parecerTrabalhoEspacoConfinado>APTO</parecerTrabalhoEspacoConfinado>
                     <telefoneResponsavelAso></telefoneResponsavelAso>
                     <textoLivreValidade></textoLivreValidade>
-                    <tipoeExame>${agendamento.codTipoExame}</tipoeExame>
+                    <tipoeExame>${agendamento.exame.codTipoExame}</tipoeExame>
                     
                     <UFConselho></UFConselho>
                     
@@ -74,7 +74,7 @@ function asoCreateXML(agendamento) {
         </soapenv:Body>
         </soapenv:Envelope>
         `
-        console.log('XML ASO GERADO COM SUCESSO!');
+
         return modeloXML
         
     } catch (error) {
@@ -85,8 +85,8 @@ function asoCreateXML(agendamento) {
 function addRisk(agendamento) {
     let structure = ''
 
-    if( agendamento.riscos.length > 0 ){
-        agendamento.riscos.forEach( risco => {
+    if( agendamento.exame.riscos.length > 0 ){
+        agendamento.exame.riscos.forEach( risco => {
             structure +=
             `<listaCodigoRiscos>${risco}</listaCodigoRiscos>
             <tipoBuscaRiscos>CODIGO_SOC</tipoBuscaRiscos>

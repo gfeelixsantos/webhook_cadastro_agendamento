@@ -60,36 +60,37 @@ async function dev() {
         xmlFuncionarioModelo2(agendamento)
 
         
+    }   
+    
+    // soap agendamento
+    let xml = await createXML(agendamento)
+    await sendSoapSchedule(xml)
+    await timer()
+
+    // soap pedido exame
+    agendamento = await getEmployeeExams(agendamento)
+    xml = await examRequestXml(agendamento)
+    await sendSoapExamRequest(xml)
+
+    await timer()
+    
+    // soap resultado exames
+    agendamento = await getTokenSequential(agendamento)
+    agendamento = await getSequencialResult(agendamento)
+
+    for (let index = 0; index < agendamento.exame.listaExames.length; index++) {
+        xml = await resultsXML(agendamento, index)
+        await sendSoapExamRequest(xml)
+        await timer()
     }
+
+    // aso
+    agendamento = await getRisks(agendamento)
+    xml = await asoCreateXML(agendamento)
+    await sendSoapAso(xml)
+    await timer()
+
     console.log(agendamento)
-    
-    
-    // // soap agendamento
-    // let xml = await createXML(agendamento)
-    // sendSoapSchedule(xml)
-
-    // // soap pedido exame
-    // agendamento = await getEmployeeExams(agendamento)
-    // xml = await examRequestXml(agendamento)
-    // sendSoapExamRequest(xml)
-
-    // await timer()
-    
-    // // soap resultado exames
-    // agendamento = await getTokenSequential(agendamento)
-    // agendamento = await getSequencialResult(agendamento)
-
-    // for (let index = 0; index < agendamento.listaExames.length; index++) {
-    //     xml = await resultsXML(agendamento, index)
-    //     await sendSoapExamRequest(xml)
-    //     await timer()
-    // }
-
-    // // aso
-    // agendamento = await getRisks(agendamento)
-    // xml = await asoCreateXML(agendamento)
-    // await sendSoapAso(xml)
-    // await timer()
 
 } 
 

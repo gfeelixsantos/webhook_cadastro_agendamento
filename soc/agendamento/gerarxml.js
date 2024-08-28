@@ -35,18 +35,18 @@ function createXML(agendamento) {
                 </identificacaoWsVo>
                 <dadosAgendamentoWsVo>
                     <tipoBuscaEmpresa>CODIGO_SOC</tipoBuscaEmpresa>
-                    <codigoEmpresa>${agendamento.codEmpresa}</codigoEmpresa>
+                    <codigoEmpresa>${agendamento.empresa.codEmpresa}</codigoEmpresa>
                     <reservarCompromissoParaEmpresa></reservarCompromissoParaEmpresa>
                     <tipoBuscaFuncionario>CODIGO_SOC</tipoBuscaFuncionario>
-                    <codigoFuncionario>${agendamento.codFuncionario}</codigoFuncionario>
+                    <codigoFuncionario>${agendamento.funcionario.codFuncionario}</codigoFuncionario>
                     <codigoUsuarioAgenda>${agendas[0]}</codigoUsuarioAgenda>
-                    <data>${agendamento.data.day}/${agendamento.data.month}/${agendamento.data.year}</data>
-                    <horaInicial>${agendamento.horario}</horaInicial>
+                    <data>${agendamento.dataAgendamento}</data>
+                    <horaInicial>${agendamento.horarioAgendamento}</horaInicial>
                     <horaFinal></horaFinal>
                     <codigoCompromisso>22</codigoCompromisso>
                     <usaOutroCompromisso></usaOutroCompromisso>
                     <conteudoOutroCompromisso></conteudoOutroCompromisso>
-                    <tipoCompromisso>${agendamento.tipoExame}</tipoCompromisso>
+                    <tipoCompromisso>${agendamento.exame.tipoExame}</tipoCompromisso>
                     <detalhes>${campoDetalhes}</detalhes>
                     <codigoProfissionalAgenda></codigoProfissionalAgenda>
                     <horarioChegada></horarioChegada>
@@ -76,7 +76,7 @@ function createXML(agendamento) {
         </soapenv:Body>
         </soapenv:Envelope>
         `
-        console.log('XML CADASTRAR AGENDAMENTO GERADO COM SUCESSO!');
+        
         return modeloXML
         
     } catch (error) {

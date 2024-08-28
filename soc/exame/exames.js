@@ -4,13 +4,13 @@ async function getEmployeeExams(agendamento) {
 
     try {
         const url = `https://ws1.soc.com.br/WebSoc/exportadados?parametro=
-        {"empresa":"16459","codigo":"193598","chave":"c9184b11650a305f8a6e","tipoSaida":"json","empresaTrabalho":"${agendamento.codEmpresa}","funcionarios":"${agendamento.codFuncionario}","periodo":"12/${anoAtual}","exame":"","convocarClinico":"0","nuncaRealizados":"","periodicosNuncaRealizados":"","selecao":"1","examesPendentes":"","convocaPendentesPCMSO":""}`;
+        {"empresa":"16459","codigo":"193598","chave":"c9184b11650a305f8a6e","tipoSaida":"json","empresaTrabalho":"${agendamento.empresa.codEmpresa}","funcionarios":"${agendamento.funcionario.codFuncionario}","periodo":"12/${anoAtual}","exame":"","convocarClinico":"0","nuncaRealizados":"","periodicosNuncaRealizados":"","selecao":"1","examesPendentes":"","convocaPendentesPCMSO":""}`;
         
         const response = await fetch(url);
         const responseBuff = await response.arrayBuffer();
         const exames = new TextDecoder('iso-8859-1').decode(responseBuff);
         const arrExames = JSON.parse(exames);
-        agendamento.listaExames = arrExames
+        agendamento.exame.listaExames = arrExames
         
         return agendamento
 

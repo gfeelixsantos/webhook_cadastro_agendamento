@@ -37,11 +37,11 @@ async function examRequestXml(agendamento) {
                     <codigoUsuario>1591737</codigoUsuario>
                 </identificacao>
                 <tipoBuscaEmpresa>CODIGO_SOC</tipoBuscaEmpresa>
-                <codigoEmpresa>${agendamento.codEmpresa}</codigoEmpresa>
+                <codigoEmpresa>${agendamento.empresa.codEmpresa}</codigoEmpresa>
                 <tipoBuscaFuncionario>CODIGO_SOC</tipoBuscaFuncionario>
-                <codigoFuncionario>${agendamento.codFuncionario}</codigoFuncionario>
-                <dataFicha>${agendamento.data.day}/${agendamento.data.month}/${agendamento.data.year}</dataFicha>
-                <tipoExame>${agendamento.codTipoExame}</tipoExame>
+                <codigoFuncionario>${agendamento.funcionario.codFuncionario}</codigoFuncionario>
+                <dataFicha>${agendamento.dataAgendamento}</dataFicha>
+                <tipoExame>${agendamento.exame.codTipoExame}</tipoExame>
                 <exames>
                     ${await examsXmlCreate(agendamento)}
                 </exames>
@@ -55,7 +55,7 @@ async function examRequestXml(agendamento) {
         </soapenv:Body>
         </soapenv:Envelope>
         `
-        console.log('XML PEDIDO DE EXAMES GERADO COM SUCESSO!');
+        
         return modeloXML
         
     } catch (error) {
@@ -66,13 +66,13 @@ async function examRequestXml(agendamento) {
 async function examsXmlCreate(agendamento) {
     let structure = ''
     
-    agendamento.listaExames.forEach( async (exame) => {
+    agendamento.exame.listaExames.forEach( async (exame) => {
 
     structure +=
     `<exame>
         <codigo>${exame['CODIGOEXAME']}</codigo>
         <tipoBusca>CODIGO_SOC</tipoBusca>
-        <codigoPrestador>${setProviderCode(exame, agendamento)}</codigoPrestador>
+        <codigoPrestador>${setProviderCode(exame)}</codigoPrestador>
         <tipoBuscaPrestador>CODIGO_SOC</tipoBuscaPrestador>
     </exame>
     `
@@ -81,7 +81,7 @@ async function examsXmlCreate(agendamento) {
     return structure
 }
 
-function setProviderCode(exame, agendamento) {
+function setProviderCode(exame) {
 
     // Raio-X (Veitieka)
     if(exame['CODIGOEXAME'] == '32050070' || exame['CODIGOEXAME'] == '14111' || exame['CODIGOEXAME'] == '12200' || exame['CODIGOEXAME'] == 'ex imagem' || exame['CODIGOEXAME'] == '111' || exame['CODIGOEXAME'] == '1v1v' || exame['CODIGOEXAME'] == '254477' || exame['CODIGOEXAME'] == '-0-' || exame['CODIGOEXAME'] == '0..' || exame['CODIGOEXAME'] == '2221111' || exame['CODIGOEXAME'] == '8998') {

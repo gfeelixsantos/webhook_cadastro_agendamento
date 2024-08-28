@@ -38,6 +38,7 @@ class Agendamento {
         riscos: [],
         solicitacaoAtividades: '',
         tipoExame: '',
+        listaExames: ''
     }
     
 

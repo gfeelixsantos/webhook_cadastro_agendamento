@@ -9,7 +9,7 @@ async function getRisks(agendamento) {
         const arrRiscos = JSON.parse(riscos);
         
         if(arrRiscos.length > 0){
-            arrRiscos.forEach(risco => agendamento.riscos.push(risco['CODRISCO']));
+            arrRiscos.forEach(risco => agendamento.exames.riscos.push(risco['CODRISCO']));
         }
         else {
             // Inserir ausencia de risco
