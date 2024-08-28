@@ -32,18 +32,18 @@ const PORT = process.env.PORT || 3001;
  
 app.use(express.json())
 
-// app.get('/', (req, res) => {
-//     res.send('Serviço de webhook online!');
-// })
+app.get('/', (req, res) => {
+    res.send('Serviço de webhook online!');
+})
 
-// app.post('/', async (req, res) => {
-//     try {
-//         await dev()
+app.post('/', async (req, res) => {
+    try {
+        await dev()
         
-//     } catch (error) {
-//         console.error('Erro na execução index.js')
-//     }
-// })
+    } catch (error) {
+        console.error('Erro na execução index.js')
+    }
+})
 
 
 async function dev() {
