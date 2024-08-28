@@ -43,7 +43,7 @@ app.post('/', async (req, res) => {
 
 async function getForm() {
     let agendamento = await getSubmissionForm()
-    pedidos.unshift(agendamento)
+    pedidos.push(agendamento)
 }
 
 
@@ -52,6 +52,8 @@ async function dev() {
         setInterval( async() => {
             
             if( pedidos.length > 0){
+                let agendamento = pedidos[0]
+
                 agendamento = await getCompanyCode(agendamento)
                 agendamento = await getEmployeeCode(agendamento)
                 
@@ -92,7 +94,8 @@ async function dev() {
                 await sendSoapAso(xml)
                 await timer()
 
-                pedidos.pop(agendamento)
+                pedidos.shift(agendamento)
+                
             } else {
                 console.log('sem pedidos...');
                 
