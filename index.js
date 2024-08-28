@@ -51,12 +51,13 @@ async function dev() {
 
 
         agendamento = await getCompanyCode(agendamento)
+        agendamento = await getEmployeeCode(agendamento)
         
         if(agendamento.exame.tipoExame == 'ADMISSIONAL'){
             await xmlFuncionarioModelo2(agendamento)
             timer()
         }
-        agendamento = await getEmployeeCode(agendamento)
+
         agendamento = await ajustaTipoExame(agendamento)
         agendamento = await consultaSetorCargo(agendamento)
 
