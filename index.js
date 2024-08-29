@@ -39,74 +39,51 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', async (req, res) => {
-    getForm()
+    dev()
 })
-
-async function getForm() {
-    let funcionarioAgendado = await getSubmissionForm()
-    pedidos.push(funcionarioAgendado)
-}
 
 
 async function dev() {
 
-        setInterval( async() => {
-            
-            if (pedidos.length > 0){
-                
-                try {
-                    let agendamento = pedidos[0]
-                
-                    agendamento = await getCompanyCode(agendamento)
-                    agendamento = await getEmployeeCode(agendamento)
-                    
-                    if(agendamento.exame.tipoExame == 'ADMISSIONAL'){
-                        agendamento = await consultaSetorCargo(agendamento)
-                        await xmlFuncionarioModelo2(agendamento)
-                        timer()
-                    }
+    let agendamento = await getSubmissionForm()
+    agendamento = await getCompanyCode(agendamento)
+    agendamento = await getEmployeeCode(agendamento)
+    
+    if(agendamento.exame.tipoExame == 'ADMISSIONAL'){
+        agendamento = await consultaSetorCargo(agendamento)
+        await xmlFuncionarioModelo2(agendamento)
+        timer()
+    }
 
-                    agendamento = await ajustaTipoExame(agendamento)
-                    
-                    
-                    // soap agendamento
-                    let xml = await createXML(agendamento)
-                    await sendSoapSchedule(xml)
+    agendamento = await ajustaTipoExame(agendamento)
+    
+    
+    // soap agendamento
+    let xml = await createXML(agendamento)
+    await sendSoapSchedule(xml)
 
-                    // soap pedido exame
-                    agendamento = await getEmployeeExams(agendamento)
-                    xml = await examRequestXml(agendamento)
-                    await sendSoapExamRequest(xml)
+    // soap pedido exame
+    agendamento = await getEmployeeExams(agendamento)
+    xml = await examRequestXml(agendamento)
+    await sendSoapExamRequest(xml)
 
-                    await timer()
-                
-                    // soap resultado exames
-                    agendamento = await getTokenSequential(agendamento)
-                    agendamento = await getSequencialResult(agendamento)
+    await timer()
 
-                    for (let index = 0; index < agendamento.exame.listaExames.length; index++) {
-                        xml = await resultsXML(agendamento, index)
-                        await sendSoapExamRequest(xml)
-                        await timer()
-                    }
+    // soap resultado exames
+    agendamento = await getTokenSequential(agendamento)
+    agendamento = await getSequencialResult(agendamento)
 
-                    // aso
-                    agendamento = await getRisks(agendamento)
-                    xml = await asoCreateXML(agendamento)
-                    await sendSoapAso(xml)
-                    await timer()
+    for (let index = 0; index < agendamento.exame.listaExames.length; index++) {
+        xml = await resultsXML(agendamento, index)
+        await sendSoapExamRequest(xml)
+        await timer()
+    }
 
-                    pedidos.shift(agendamento)
-                    
-                } catch (error) {
-                    console.log(error);
-                }
-
-            } else {
-                console.log('Sem pedidos...');
-                
-            }
-        }, INTERVAL_TIME)
+    // aso
+    agendamento = await getRisks(agendamento)
+    xml = await asoCreateXML(agendamento)
+    await sendSoapAso(xml)
+    await timer()
     
 
 } 
@@ -114,7 +91,7 @@ async function dev() {
 async function timer() {
     return await new Promise((resolve) => setTimeout(resolve, 5000));
 }
-dev()
+
 
 
 app.listen(PORT, () => console.log('Servidor rodando na porta: ', PORT));
