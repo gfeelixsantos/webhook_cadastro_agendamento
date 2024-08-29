@@ -1,31 +1,32 @@
+import { Core } from '../../core/index'
 
+export async function cadastroEmpresas(agendamento) {
 
-async function cadastroEmpresas(agendamento) {
+  Core.empresasKitAtendimento(agendamento)
 
-    try {
-        const url = `https://ws1.soc.com.br/WebSoc/exportadados?parametro={"empresa":'16459',"codigo":"161676","chave":"664aeac783745a3d5679","tipoSaida":"json"}`;
+  const url = `https://ws1.soc.com.br/WebSoc/exportadados?parametro={"empresa":'16459',"codigo":"161676","chave":"664aeac783745a3d5679","tipoSaida":"json"}`;
     
-        const response = await fetch(url);
-        const responseBuff = await response.arrayBuffer();
-        const empresas = new TextDecoder('iso-8859-1').decode(responseBuff);
-        const arrEmpresas = JSON.parse(empresas);
-        
-        const cadastroEmpresa   = arrEmpresas.filter( emp => emp['ATIVO'] == '1' && emp['CNPJ'] == agendamento.cnpj)
+  const response = await fetch(url);
+  const responseBuff = await response.arrayBuffer();
+  const empresas = new TextDecoder('iso-8859-1').decode(responseBuff);
+  const arrEmpresas = JSON.parse(empresas);
+  
+  if (arrEmpresas){
+    const cadastroEmpresa   = arrEmpresas.filter( emp => emp['ATIVO'] == '1' && emp['CNPJ'] == agendamento.cnpj)
 
-        agendamento.codEmpresa  = cadastroEmpresa[0]['CODIGO']
-        agendamento.empresa     = cadastroEmpresa[0]['RAZAOSOCIAL']
-        
-        return agendamento
+    agendamento.codEmpresa  = cadastroEmpresa[0]['CODIGO']
+    agendamento.empresa     = cadastroEmpresa[0]['RAZAOSOCIAL']
+    
+    return agendamento
 
-    } catch (error) {
-
-        agendamento.situacao = 'ERRO: Código da empresa não localizada'
-
-        throw new Error('Erro ao buscar código empresa (fn: cadastroEmpresas)', error)
-    }
+  }
+  else {
+    agendamento.situacao = 'ERRO'
+    agendamento.mensagem = 'Empresa/Cliente não localizada.'
+    throw new Error('Erro ao buscar código empresa (fn: cadastroEmpresas)', error)
+  }
 }
 
-module.exports = cadastroEmpresas
 
 /*[
   {

@@ -1,7 +1,7 @@
 {
   "name": "cmso_agenda",
   "version": "1.0.0",
-  "description": "sistema teste de cadastro agendamento",
+  "description": "Sistema integração cadastro agendamento",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -14,6 +14,7 @@
     "axios": "^1.6.8",
     "express": "^4.19.2",
     "jotform": "^1.0.1",
-    "wssecurity-soap": "^1.0.1"
+    "wssecurity-soap": "^1.0.1",
+    "@core": "./core"
   }
 }
