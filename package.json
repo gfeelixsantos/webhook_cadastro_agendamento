@@ -4,7 +4,7 @@
   "description": "Sistema integração cadastro agendamento",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node new.js",
     "build": "npm install axios express jotform wssecurity-soap"
   },
   "author": "felix.devx",
@@ -12,6 +12,8 @@
   "dependencies": {
     "@google/generative-ai": "^0.17.1",
     "axios": "^1.6.8",
+    "dotenv": "^16.4.5",
+    "dynamoose": "^4.0.1",
     "express": "^4.19.2",
     "jotform": "^1.0.1",
     "wssecurity-soap": "^1.0.1"

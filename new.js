@@ -1,24 +1,25 @@
+require('dotenv').config()
 const express = require('express');
-const getSubmissionForm = require('./jotform/jotform')
+const formulariosRecebidos = require('./jotform/formulariosRecebidos')
 
 const app = express();
+app.use(express.json())
+
 const PORT = process.env.PORT || 3001;
  
-// app.use(express.json())
 
-// app.get('/', (req, res) => {
-//     res.send('Serviço de webhook online!');
-// })
 
-// app.post('/', async (req, res) => {
-    
-// })
+app.get('/', (req, res) => {
+    res.send('Serviço de webhook online!');
+})
 
-const agendamento = getSubmissionForm()
+app.post('/', async (req, res) => {
+    const agendamento = formulariosRecebidos()
+})
 
 
  
 
 
-// app.listen(PORT, () => console.log('Servidor rodando na porta: ', PORT));
+app.listen(PORT, () => console.log('Servidor rodando na porta: ', PORT));
  
