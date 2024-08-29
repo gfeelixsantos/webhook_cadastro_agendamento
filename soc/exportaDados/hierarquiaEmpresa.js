@@ -11,9 +11,8 @@ async function hierarquiaEmpresa(agendamento) {
     
     if (arrHierarquia.length > 0) {
         const hierarquiasAtivas = arrHierarquia.filter( hie => hie['HIERARQUIA_ATIVA'] == 'Sim')
-        agendamento = await buscaHierarquia(agendamento, hierarquiasAtivas)
         
-        return agendamento
+        return await buscaHierarquia(agendamento, hierarquiasAtivas)
     }
     else {
         

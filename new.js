@@ -34,7 +34,6 @@ async function start() {
     
         
     }
-    console.log(agendamento);
     
 }
 
