@@ -14,7 +14,6 @@
     "axios": "^1.6.8",
     "express": "^4.19.2",
     "jotform": "^1.0.1",
-    "wssecurity-soap": "^1.0.1",
-    "@core": "./core"
+    "wssecurity-soap": "^1.0.1"
   }
 }
