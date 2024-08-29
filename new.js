@@ -15,6 +15,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', async (req, res) => {
+    start()
     
 })
 
@@ -35,7 +36,7 @@ async function start() {
     }
     console.log(agendamento);
 }
-start()
+
 
  
 

@@ -7,8 +7,8 @@ async function cadastroFuncionarioPorEmpresa(agendamento) {
     const funcionarios = new TextDecoder('iso-8859-1').decode(responseBuff);
     const arrFuncionarios = JSON.parse(funcionarios);
     
-    if (arrFuncionarios){
-      const cadastroEmpresa   = arrFuncionarios.find( func => emp['ATIVO'] == '1' && emp['CNPJ'] == agendamento.cnpj)
+    if (arrFuncionarios.length > 0){
+      const cadastroAntigo   = arrFuncionarios.find( func => func)
   
       
       
