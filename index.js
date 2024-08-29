@@ -47,7 +47,7 @@ async function getForm() {
     pedidos.push(funcionarioAgendado)
 }
 
-
+getForm()
 async function dev() {
 
         setInterval( async() => {
@@ -99,7 +99,7 @@ async function dev() {
                     pedidos.shift(agendamento)
                     
                 } catch (error) {
-                    console.log(agendamento);
+                    console.log(error);
                 }
 
             } else {
