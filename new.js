@@ -1,6 +1,7 @@
 require('dotenv').config()
 const express = require('express');
 const formulariosRecebidos = require('./jotform/formulariosRecebidos')
+const exameAdmissional = require('./tiposExames/admissional')
 
 const app = express();
 app.use(express.json())
@@ -14,9 +15,42 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', async (req, res) => {
-    const agendamento = formulariosRecebidos()
+    let agendamento = await formulariosRecebidos()
+    
+    
+    switch (agendamento.tipoExame) {
+        case 'ADMISSIONAL':
+            agendamento = exameAdmissional(agendamento)
+            break;
+
+        case 'PERIÓDICO':
+            console.log('exame periodico')
+            break;
+    
+        
+    }
+    console.log(agendamento);
+    
 })
 
+// async function start() {
+//     let agendamento = await formulariosRecebidos()
+    
+    
+//     switch (agendamento.tipoExame) {
+//         case 'ADMISSIONAL':
+//             agendamento = exameAdmissional(agendamento)
+//             break;
+
+//         case 'PERIÓDICO':
+//             console.log('exame periodico')
+//             break;
+    
+        
+//     }
+//     console.log(agendamento);
+// }
+// start()
 
  
 

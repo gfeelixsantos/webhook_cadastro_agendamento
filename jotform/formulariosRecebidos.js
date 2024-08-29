@@ -17,12 +17,15 @@ module.exports = async function formulariosRecebidos() {
 
         // Tratamento de dados antes de salvar
         const nomeFuncionarioTrim = subs.content[0].answers[codigoCampos.nomeFuncionario].answer.trim().toUpperCase()
+        const cpfFuncionario = subs.content[0].answers[codigoCampos.cpf].answer.replaceAll('.', '')
         const empresaTrim = subs.content[0].answers[codigoCampos.razaoSocial].answer.trim().toUpperCase()
+        const solicitanteAgendamento = subs.content[0].answers[codigoCampos.nomeSolicitante].answer.trim().toUpperCase()
+        const emailAgendamento = subs.content[0].answers[codigoCampos.emailSolicitante].answer.trim().toLowerCase()
         
-        const unidadeAgendamento = subs.content[0].answers[codigoCampos.unidade].answer ? subs.content[0].answers[codigoCampos.unidade].answer : ''
-        const setorAgendamento = subs.content[0].answers[codigoCampos.setor].answer ? subs.content[0].answers[codigoCampos.setor].answer : ''
-        const cargoAgendamento = subs.content[0].answers[codigoCampos.cargo].answer ? subs.content[0].answers[codigoCampos.cargo].answer : ''
-        const rgAgendamento = subs.content[0].answers[codigoCampos.rg].answer ? subs.content[0].answers[codigoCampos.rg].answer : ''
+        const unidadeAgendamento = subs.content[0].answers[codigoCampos.unidade].answer ? subs.content[0].answers[codigoCampos.unidade].answer.trim().toUpperCase() : ''
+        const setorAgendamento = subs.content[0].answers[codigoCampos.setor].answer ? subs.content[0].answers[codigoCampos.setor].answer.trim().toUpperCase() : ''
+        const cargoAgendamento = subs.content[0].answers[codigoCampos.cargo].answer ? subs.content[0].answers[codigoCampos.cargo].answer.trim().toUpperCase() : ''
+        const rgAgendamento = subs.content[0].answers[codigoCampos.rg].answer ? subs.content[0].answers[codigoCampos.rg].answer.trim() : ''
         const sexoAgendamento = subs.content[0].answers[codigoCampos.sexo].answer ? subs.content[0].answers[codigoCampos.sexo].answer : ''
         const observacoesAgendamento = subs.content[0].answers[codigoCampos.observacoes].answer ? subs.content[0].answers[codigoCampos.observacoes].answer : ''
         const atividadesAgendamento = subs.content[0].answers[codigoCampos.solicitacaoAtividades].answer ? subs.content[0].answers[codigoCampos.solicitacaoAtividades].answer : []
@@ -42,7 +45,7 @@ module.exports = async function formulariosRecebidos() {
             "dataNascimento":   subs.content[0].answers[codigoCampos.dataNascimento].prettyFormat,
             "sexo":             sexoAgendamento,
             "rg":               rgAgendamento,
-            "cpf":              subs.content[0].answers[codigoCampos.cpf].answer,
+            "cpf":              cpfFuncionario,
             "cnpj":             subs.content[0].answers[codigoCampos.cnpj].answer,
             "unidadeEmpresa":   unidadeAgendamento,
             "setor":            setorAgendamento,
@@ -57,16 +60,16 @@ module.exports = async function formulariosRecebidos() {
             "preferencial":         '',
             "atividadesEspeciais":  atividadesAgendamento,
             "perfil":               '',
-            "nomeSolicitante":      subs.content[0].answers[codigoCampos.nomeSolicitante].answer,
-            "emailSolicitante":     subs.content[0].answers[codigoCampos.emailSolicitante].answer,
+            "nomeSolicitante":      solicitanteAgendamento,
+            "emailSolicitante":     emailAgendamento,
             "telefoneSolicitante":  telefoneAgendamento,
-            "anexos":               subs.content[0].answers[codigoCampos.anexos].answer
+            "anexos":               subs.content[0].answers[codigoCampos.anexos].answer,
+            "mensagem":             ''
         })
             .save()
-            .then( (e) => console.log(e))
             .catch( (e) => console.log(e) )
         
-        
+        return agendamento
     }
     else {
         // Tratar erro caso não consiga acessar envio do formulário....
@@ -74,4 +77,47 @@ module.exports = async function formulariosRecebidos() {
 }
 
 
-
+/*
+agendamentos {
+  id: 'CM000229',
+  chegada: '',
+  dataChegada: '',
+  dataAgendamento: '30/08/2024',
+  horarioAgendamento: '15:00',
+  situacao: 'SOLICITADO',
+  codEmpresa: '',
+  empresa: 'TESTE',
+  codFuncionario: '',
+  funcionario: 'TESTE',
+  dataNascimento: '08/09/1994',
+  sexo: 'MASCULINO',
+  rg: '',
+  cpf: '428.891.788-38',
+  cnpj: '99.999.999/9999-99',
+  unidadeEmpresa: '',
+  setor: '',
+  cargo: '',
+  dataFicha: '',
+  tipoExame: 'PERIÓDICO',
+  unidade: 'Rio Claro',
+  realizados: 0,
+  afazer: 0,
+  exames: [],
+  observacoes: '',
+  preferencial: '',
+  atividadesEspeciais: [
+    'MANIPULAÇÃO DE ALIMENTOS (VIGILÂNCIA)',
+    'OPERAR EMPILHADEIRA',
+    'TRABALHO EM ALTURA (NR 35)'
+  ],
+  perfil: '',
+  nomeSolicitante: 'teste',
+  emailSolicitante: 'esocial@cmsocupacioonal.com.br',
+  telefoneSolicitante: '',
+  anexos: [
+    'https://www.jotform.com/uploads/cmsoatendimento/230894671029664/6007590106959567311/icone-email.png'
+  ],
+  createdAt: 1724949812455,
+  updatedAt: 1724949812455
+}
+  */

@@ -45,7 +45,8 @@ Atendimento = new dynamoose.Schema({
     "nomeSolicitante":      String,
     "emailSolicitante":     String,
     "telefoneSolicitante":  String,
-    "anexos":               Array
+    "anexos":               Array,
+    "mensagem":             String,
 }, {
     saveUnknown: true,
     timestamps: true

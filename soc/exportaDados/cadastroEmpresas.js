@@ -1,8 +1,5 @@
-import { Core } from '../../core/index'
 
-export async function cadastroEmpresas(agendamento) {
-
-  Core.empresasKitAtendimento(agendamento)
+async function cadastroEmpresas(agendamento) {
 
   const url = `https://ws1.soc.com.br/WebSoc/exportadados?parametro={"empresa":'16459',"codigo":"161676","chave":"664aeac783745a3d5679","tipoSaida":"json"}`;
     
@@ -27,6 +24,7 @@ export async function cadastroEmpresas(agendamento) {
   }
 }
 
+module.exports = cadastroEmpresas
 
 /*[
   {
