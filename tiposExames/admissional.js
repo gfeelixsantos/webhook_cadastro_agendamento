@@ -1,12 +1,13 @@
 const cadastroEmpresas = require('../soc/exportaDados/cadastroEmpresas')
 const cadastroFuncionarioPorEmpresa = require('../soc/exportaDados/cadastroFuncionarioPorEmpresa')
+const hierarquiaEmpresa = require('../soc/exportaDados/hierarquiaEmpresa')
 
 async function exameAdmissional(agendamento) {
     try {
-        // Busca empresa SOC
+        // Exporta dados
         agendamento = await cadastroEmpresas(agendamento)
         agendamento = await cadastroFuncionarioPorEmpresa(agendamento)
-
+        agendamento = await hierarquiaEmpresa(agendamento)
 
 
 

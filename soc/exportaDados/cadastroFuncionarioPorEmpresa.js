@@ -13,27 +13,23 @@ async function cadastroFuncionarioPorEmpresa(agendamento) {
       const cadastroAntigo = arrFuncionarios.find( func => func['CPFFUNCIONARIO'] == agendamento.cpf)
 
       if (cadastroAntigo){
-        agendamento.codFuncionario          = cadastroAntigo['CODIGO']
-        agendamento.funcionario             = cadastroAntigo['NOME']
-        agendamento.situacaoFuncionario     = cadastroAntigo['SITUACAO']
-        
-        return agendamento.procedimento = 'ATUALIZAR'
+        // procedimento = 'ATUALIZAR'
+        agendamento.codFuncionario = cadastroAntigo['CODIGO']
+        return agendamento
 
       }
       else {
-        agendamento.codFuncionario          = cadastroAntigo[arrFuncionarios.length -1]
-
-        return agendamento.procedimento = 'INCLUIR'
+        // procedimento = 'INCLUIR'
+        agendamento.codFuncionario = arrFuncionarios.length +1
+        return agendamento
       }
 
     }
     else {
 
       // Situação em que a empresa não tem funcionário...
-      // agendamento.situacao = 'ERRO'
-      // agendamento.mensagem = ''
-      // throw new Error('Erro ao buscar código empresa (fn: cadastroEmpresas)', error)
-      
+      agendamento.codFuncionario = '1'
+      return agendamento
     }
   }
   
