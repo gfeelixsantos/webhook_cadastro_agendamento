@@ -47,7 +47,7 @@ async function getForm() {
     pedidos.push(funcionarioAgendado)
 }
 
-getForm()
+
 async function dev() {
 
         setInterval( async() => {
