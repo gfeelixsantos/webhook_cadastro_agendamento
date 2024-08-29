@@ -71,21 +71,21 @@ async function dev() {
 
     await timer()
 
-    // soap resultado exames
-    agendamento = await getTokenSequential(agendamento)
-    agendamento = await getSequencialResult(agendamento)
+    // // soap resultado exames
+    // agendamento = await getTokenSequential(agendamento)
+    // agendamento = await getSequencialResult(agendamento)
 
-    for (let index = 0; index < agendamento.exame.listaExames.length; index++) {
-        xml = await resultsXML(agendamento, index)
-        await sendSoapExamRequest(xml)
-        await timer()
-    }
+    // for (let index = 0; index < agendamento.exame.listaExames.length; index++) {
+    //     xml = await resultsXML(agendamento, index)
+    //     await sendSoapExamRequest(xml)
+    //     await timer()
+    // }
 
-    // aso
-    agendamento = await getRisks(agendamento)
-    xml = await asoCreateXML(agendamento)
-    await sendSoapAso(xml)
-    await timer()
+    // // aso
+    // agendamento = await getRisks(agendamento)
+    // xml = await asoCreateXML(agendamento)
+    // await sendSoapAso(xml)
+    // await timer()
     
 
 } 

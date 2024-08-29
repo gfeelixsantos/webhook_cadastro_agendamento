@@ -17,9 +17,9 @@ async function getEmployeeCode(agendamento) {
         if (buscaCpf){
             agendamento.funcionario.codFuncionario = buscaCpf['CODIGO']
         }
-        else if (buscaNome){
-            agendamento.funcionario.codFuncionario = buscaNome['CODIGO']
-        }
+        // else if (buscaNome){
+        //     agendamento.funcionario.codFuncionario = buscaNome['CODIGO']
+        // }
         else {
             agendamento.funcionario.codFuncionario = listaFuncionarios.length +1
         }
