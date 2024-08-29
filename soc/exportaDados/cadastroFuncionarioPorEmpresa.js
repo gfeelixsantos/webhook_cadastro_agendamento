@@ -1,24 +1,39 @@
 async function cadastroFuncionarioPorEmpresa(agendamento) {
 
-    const url = `https://ws1.soc.com.br/WebSoc/exportadados?parametro={"empresa":"16459","codigo":"192918","chave":"53f2d1bcbaacaa24fc4a","tipoSaida":"json","empresaTrabalho":"${agendamento.codEmpresa}","cpf":"${agendamento.cpf}","parametroData":"false","dataInicio":"","dataFim":""}`;
-      
+    const url = `https://ws1.soc.com.br/WebSoc/exportadados?parametro={"empresa":"16459","codigo":"192918","chave":"53f2d1bcbaacaa24fc4a","tipoSaida":"json","empresaTrabalho":"${agendamento.codEmpresa}","cpf":"","parametroData":"0","dataInicio":"","dataFim":""}`;
+        
     const response = await fetch(url);
     const responseBuff = await response.arrayBuffer();
     const funcionarios = new TextDecoder('iso-8859-1').decode(responseBuff);
     const arrFuncionarios = JSON.parse(funcionarios);
     
+    // Busca cadastro existente SOC
     if (arrFuncionarios.length > 0){
-      const cadastroAntigo   = arrFuncionarios.find( func => func)
-  
       
-      
-      return agendamento
-  
+      const cadastroAntigo = arrFuncionarios.find( func => func['CPFFUNCIONARIO'] == agendamento.cpf)
+
+      if (cadastroAntigo){
+        agendamento.codFuncionario          = cadastroAntigo['CODIGO']
+        agendamento.funcionario             = cadastroAntigo['NOME']
+        agendamento.situacaoFuncionario     = cadastroAntigo['SITUACAO']
+        
+        return agendamento.procedimento = 'ATUALIZAR'
+
+      }
+      else {
+        agendamento.codFuncionario          = cadastroAntigo[arrFuncionarios.length -1]
+
+        return agendamento.procedimento = 'INCLUIR'
+      }
+
     }
     else {
-      agendamento.situacao = 'ERRO'
-      agendamento.mensagem = 'Não foi possível incluir funcionário.'
-      throw new Error('Erro ao buscar código empresa (fn: cadastroEmpresas)', error)
+
+      // Situação em que a empresa não tem funcionário...
+      // agendamento.situacao = 'ERRO'
+      // agendamento.mensagem = ''
+      // throw new Error('Erro ao buscar código empresa (fn: cadastroEmpresas)', error)
+      
     }
   }
   

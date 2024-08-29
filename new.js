@@ -29,12 +29,12 @@ async function start() {
             break;
 
         case 'PERIÓDICO':
-            console.log('exame periodico')
+            console.log('exame periodico...')
             break;
     
         
     }
-    console.log(agendamento);
+    
 }
 
 

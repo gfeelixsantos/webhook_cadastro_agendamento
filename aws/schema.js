@@ -11,6 +11,7 @@ Atendimento = new dynamoose.Schema({
     "empresa":          String,
     "codFuncionario":   String,
     "funcionario":      String,
+    "situacaoFuncionario":String,
     "dataNascimento":   String,
     "sexo":             String,
     "rg":               String,
