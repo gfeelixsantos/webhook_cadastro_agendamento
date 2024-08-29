@@ -53,6 +53,7 @@ async function dev() {
         agendamento = await consultaSetorCargo(agendamento)
         await xmlFuncionarioModelo2(agendamento)
         timer()
+        agendamento = await getEmployeeCode(agendamento)
     }
 
     agendamento = await ajustaTipoExame(agendamento)
