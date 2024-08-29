@@ -47,7 +47,7 @@ module.exports = async function formulariosRecebidos() {
             "rg":               rgAgendamento,
             "cpf":              cpfFuncionario,
             "cnpj":             subs.content[0].answers[codigoCampos.cnpj].answer,
-            "unidadeEmpresa":   unidadeAgendamento,
+            "unidadeTrabalho":  unidadeAgendamento,
             "setor":            setorAgendamento,
             "cargo":            cargoAgendamento,
             "dataFicha":        '',

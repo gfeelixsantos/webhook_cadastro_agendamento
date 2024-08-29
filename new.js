@@ -15,6 +15,10 @@ app.get('/', (req, res) => {
 })
 
 app.post('/', async (req, res) => {
+    
+})
+
+async function start() {
     let agendamento = await formulariosRecebidos()
     
     
@@ -30,27 +34,8 @@ app.post('/', async (req, res) => {
         
     }
     console.log(agendamento);
-    
-})
-
-// async function start() {
-//     let agendamento = await formulariosRecebidos()
-    
-    
-//     switch (agendamento.tipoExame) {
-//         case 'ADMISSIONAL':
-//             agendamento = exameAdmissional(agendamento)
-//             break;
-
-//         case 'PERIÓDICO':
-//             console.log('exame periodico')
-//             break;
-    
-        
-//     }
-//     console.log(agendamento);
-// }
-// start()
+}
+start()
 
  
 

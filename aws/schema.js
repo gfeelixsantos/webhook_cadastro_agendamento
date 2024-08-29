@@ -21,7 +21,7 @@ Atendimento = new dynamoose.Schema({
     "cargo":            String,
     "dataFicha":        String,
     "tipoExame":        String,
-    "unidade":          String,
+    "unidadeTrabalho":  String,
     "realizados":       Number,
     "afazer":           Number,
     "exames":           { type: Array,

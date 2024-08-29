@@ -1,6 +1,6 @@
 async function cadastroFuncionarioPorEmpresa(agendamento) {
 
-    const url = `https://ws1.soc.com.br/WebSoc/exportadados?parametro={"empresa":"16459","codigo":"192918","chave":"53f2d1bcbaacaa24fc4a","tipoSaida":"json","empresaTrabalho":"${agendamento.codEmpresa}","cpf":"${agendamento.cpf}","parametroData":"","dataInicio":"","dataFim":""}`;
+    const url = `https://ws1.soc.com.br/WebSoc/exportadados?parametro={"empresa":"16459","codigo":"192918","chave":"53f2d1bcbaacaa24fc4a","tipoSaida":"json","empresaTrabalho":"${agendamento.codEmpresa}","cpf":"${agendamento.cpf}","parametroData":"false","dataInicio":"","dataFim":""}`;
       
     const response = await fetch(url);
     const responseBuff = await response.arrayBuffer();
