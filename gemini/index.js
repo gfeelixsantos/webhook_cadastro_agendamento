@@ -8,12 +8,13 @@ const Gemini = {
       
     const prompt = `Dada a seguinte hierarquia:
     ${JSON.stringify(hierarquia)}
-    Retorne um json com o código da unidade, nome da unidade, código do setor, nome do setor, código do cargo e nome do cargo que seja similar para o funcionário com a unidade  ${agendamento.unidadeTrabalho} setor ${agendamento.setor} e cargo ${agendamento.cargo}?`
+    Retorne um json com o código da unidade, nome da unidade, código do setor, nome do setor, código do cargo e nome do cargo que seja exato para o funcionário com a unidade  ${agendamento.unidadeTrabalho} setor ${agendamento.setor} e cargo ${agendamento.cargo} considerando hierarquias como JR, PL e SR. Caso não encontrar, considere o mais similar possível ?`
     
     const result = await model.generateContent(prompt);
     const responseText = result.response.text();
     const arrText = responseText.split('"')
-
+    agendamento.codTipoExame == 4 ? console.log(arrText) : null
+    
     if (arrText.length > 2){
       agendamento.codUnidadeTrabalho  = arrText[3]
       agendamento.unidadeTrabalho     = arrText[7]
