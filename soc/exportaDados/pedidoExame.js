@@ -9,7 +9,7 @@ async function pedidoExame(agendamento) {
     
     if(pedidoExame.length > 2){
         const jsonPedidoExame = JSON.parse(pedidoExame)
-        agendamento.idFicha = jsonPedidoExame[0]['SEQUENCIAFICHA']
+        agendamento.idFicha = jsonPedidoExame[ jsonPedidoExame.length -1 ]['SEQUENCIAFICHA']
         
     }
     else{

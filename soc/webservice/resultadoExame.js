@@ -20,61 +20,62 @@ async function resultadoExame(agendamento, resultado) {
         <ser:resultadoExamesPorCodigoSequencial>
         
             <resultadoExame>
-            
-                <examesIdentificacaoPorIdWsVo>
-                    <codigoIdFicha>${ agendamento.idFicha }</codigoIdFicha>
-                    <codigoIdResultadoExame>${ resultado.sequencialResultado }</codigoIdResultadoExame>
-                </examesIdentificacaoPorIdWsVo>
-                
-                <identificacaoWsVo>
-                    <chaveAcesso>${ process.env.WEBSERVICE_PASS }</chaveAcesso>
-                    <codigoEmpresaPrincipal>${ process.env.WEBSERVICE_CODPRINCIAL }</codigoEmpresaPrincipal>
-                    <codigoResponsavel>${ process.env.WEBSERVICE_RESPONSAVEL }</codigoResponsavel>
-                    <homologacao></homologacao>
-                    <codigoUsuario>${ process.env.WEBSERVICE_CODUSUARIO }</codigoUsuario>
-                </identificacaoWsVo>
-                
-                <resultadoExamesDadosWsVo>
-                    <alteraFichaClinica></alteraFichaClinica>
-                    <codigoExame>${ resultado.codigo }</codigoExame>
-                    <codigoExaminador></codigoExaminador>
-                    <codigoExaminador2></codigoExaminador2>
-                    <codigoPrestador></codigoPrestador>
-                    <comentario></comentario>
-                    <criaExame></criaExame>
-                    <criaFichaClinica></criaFichaClinica>
-                    <dataResultadoExame>${ agendamento.dataAgendamento }</dataResultadoExame>
+                    <examesIdentificacaoPorIdWsVo>
+                        <codigoIdFicha>${ agendamento.idFicha }</codigoIdFicha>
+                        <codigoIdResultadoExame>${ resultado.sequencialResultado }</codigoIdResultadoExame>
+                    </examesIdentificacaoPorIdWsVo>
                     
+                    <identificacaoWsVo>
+                        <chaveAcesso>${ process.env.WEBSERVICE_PASS }</chaveAcesso>
+                        <codigoEmpresaPrincipal>${ process.env.WEBSERVICE_CODPRINCIAL }</codigoEmpresaPrincipal>
+                        <codigoResponsavel>${ process.env.WEBSERVICE_RESPONSAVEL }</codigoResponsavel>
+                        <homologacao></homologacao>
+                        <codigoUsuario>${ process.env.WEBSERVICE_CODUSUARIO }</codigoUsuario>
+                    </identificacaoWsVo>
                     
-                    <identificarExameAlteradoAutomaticamente></identificarExameAlteradoAutomaticamente>
-                    <metodo></metodo>
-                    <nomeExame></nomeExame>
-                    <nomeExaminador3></nomeExaminador3>
-                    <nomeImagem></nomeImagem>
-                    <notaFiscal></notaFiscal>
-                    <resultado></resultado>
-                    <resultadoAlterado></resultadoAlterado>
-                    <resultadoAlteradoAgravamento></resultadoAlteradoAgravamento>
-                    <resultadoAlteradoEmAnalise></resultadoAlteradoEmAnalise>
-                    <resultadoAlteradoOcupacional></resultadoAlteradoOcupacional>
-                    <resultadoReferencialSequencial>${ referencialSequencial }</resultadoReferencialSequencial>
-                    <sobrepoeResultadoExistente>true</sobrepoeResultadoExistente>
-    
+                    <resultadoExamesDadosWsVo>
+                        <alteraFichaClinica>true</alteraFichaClinica>
+                        <codigoExame>${ resultado.codigo }</codigoExame>
+                        <codigoExaminador></codigoExaminador>
+                        <codigoExaminador2></codigoExaminador2>
+                        <codigoPrestador></codigoPrestador>
+                        <comentario></comentario>
+                        <criaExame></criaExame>
+                        <criaFichaClinica></criaFichaClinica>
+                        <dataResultadoExame>${ resultado.data }</dataResultadoExame>
+                        
+                        
+                        <identificarExameAlteradoAutomaticamente></identificarExameAlteradoAutomaticamente>
+                        <metodo></metodo>
+                        <nomeExame></nomeExame>
+                        <nomeExaminador3></nomeExaminador3>
+                        <nomeImagem></nomeImagem>
+                        <notaFiscal></notaFiscal>
+                        <resultado></resultado>
+                        <resultadoAlterado></resultadoAlterado>
+                        <resultadoAlteradoAgravamento></resultadoAlteradoAgravamento>
+                        <resultadoAlteradoEmAnalise></resultadoAlteradoEmAnalise>
+                        <resultadoAlteradoOcupacional></resultadoAlteradoOcupacional>
+                        
+                        <resultadoReferencialSequencial>${ referencialSequencial }</resultadoReferencialSequencial>
+                        <sobrepoeResultadoExistente>true</sobrepoeResultadoExistente>
+        
+                        
+                        <cnpjLaboratorio></cnpjLaboratorio>
+                        <codigoExameLaboratorial></codigoExameLaboratorial>
+                        <ordemExameEsocial></ordemExameEsocial>
+                        <dataAgendamento>${ agendamento.dataAgendamento }</dataAgendamento>
+                        <horaAgendamento>${ agendamento.horarioAgendamento }</horaAgendamento>
+                    </resultadoExamesDadosWsVo>
                     
-                    <cnpjLaboratorio></cnpjLaboratorio>
-                    <codigoExameLaboratorial></codigoExameLaboratorial>
-                    <ordemExameEsocial></ordemExameEsocial>
-                    <dataAgendamento>${ agendamento.dataAgendamento }</dataAgendamento>
-                    <horaAgendamento>${ agendamento.horarioAgendamento }</horaAgendamento>
-                </resultadoExamesDadosWsVo>
-                
-                <resultadoExamesIdentificacaoFuncionarioWsVo>
-                    <codigoEmpresa>${ agendamento.codEmpresa }</codigoEmpresa>
-                    <codigoFuncionario>${ agendamento.codFuncionario }</codigoFuncionario>
-                    <dataFicha>${ agendamento.dataAgendamento }</dataFicha>
-                    <tipoeExame></tipoeExame>
-                </resultadoExamesIdentificacaoFuncionarioWsVo>
-            </resultadoExame>
+                    <resultadoExamesIdentificacaoFuncionarioWsVo>
+                        
+                        <codigoEmpresa>${agendamento.codEmpresa}</codigoEmpresa>
+                        <codigoFuncionario>${agendamento.codFuncionario}</codigoFuncionario>
+                        <dataFicha>${ agendamento.dataAgendamento }</dataFicha>
+                        <tipoeExame></tipoeExame>
+                    </resultadoExamesIdentificacaoFuncionarioWsVo>
+                </resultadoExame>
         </ser:resultadoExamesPorCodigoSequencial>
 
 
