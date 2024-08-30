@@ -13,12 +13,16 @@ module.exports = async function formulariosRecebidos() {
 
     const client = new Jotform(process.env.JOTFORM_APIKEY)
     const subs = await client.form.getSubmissions(process.env.JOTFORM_FORMID, options)
-    
+
     if(subs.responseCode == 200){
 
         // Tratamento de dados antes de salvar
         const nomeFuncionarioTrim = subs.content[0].answers[codigoCampos.nomeFuncionario].answer.trim().toUpperCase()
+
         const cpfFuncionario = subs.content[0].answers[codigoCampos.cpf].answer.replaceAll('.', '')
+        const cpfFinal = cpfFuncionario.replace('-', '')
+
+
         const empresaTrim = subs.content[0].answers[codigoCampos.razaoSocial].answer.trim().toUpperCase()
         const solicitanteAgendamento = subs.content[0].answers[codigoCampos.nomeSolicitante].answer.trim().toUpperCase()
         const emailAgendamento = subs.content[0].answers[codigoCampos.emailSolicitante].answer.trim().toLowerCase()
@@ -48,7 +52,7 @@ module.exports = async function formulariosRecebidos() {
             "dataNascimento":   subs.content[0].answers[codigoCampos.dataNascimento].prettyFormat,
             "sexo":             sexoAgendamento,
             "rg":               rgAgendamento,
-            "cpf":              cpfFuncionario,
+            "cpf":              cpfFinal,
             "situacaoFuncionario": 'Ativo',
             "cnpj":             subs.content[0].answers[codigoCampos.cnpj].answer,
             "unidadeTrabalho":  unidadeAgendamento,
@@ -61,7 +65,7 @@ module.exports = async function formulariosRecebidos() {
             "dataFicha":        '',
             "codTipoExame":     codTipoExame,
             "tipoExame":        subs.content[0].answers[codigoCampos.tipoExame].answer,
-            "unidade":          process.env.UNIDADE_SISTEMA,
+            "unidade":          subs.content[0].answers[codigoCampos.unidadeCmso].answer,
             "realizados":       0,
             "afazer":           0,
             "riscos":           [],          

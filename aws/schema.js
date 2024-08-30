@@ -56,7 +56,7 @@ Atendimento = new dynamoose.Schema({
      },
     "observacoes":          String,
     "preferencial":         String,
-    "atividadesEspeciais":  Array,
+    "atividadesEspeciais":  Array, Object ,
     "perfil":               String,
     "nomeSolicitante":      String,
     "emailSolicitante":     String,

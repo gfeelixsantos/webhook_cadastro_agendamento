@@ -19,6 +19,7 @@ const codigoCampos = {
     emailSolicitante: '48', // Obrigatório
     telefoneSolicitante: '49', // pode vir undefined - prettyFormat: '(19) 987364867'
     anexos: '792', // pode vir undefined
+    unidadeCmso: '949',
 }
 
 module.exports = codigoCampos
