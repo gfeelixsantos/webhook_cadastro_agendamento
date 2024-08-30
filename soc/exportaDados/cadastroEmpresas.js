@@ -12,8 +12,10 @@ async function cadastroEmpresas(agendamento) {
   const cadastroEmpresa   = empresasAtivas.find( emp => emp['CNPJ'] == agendamento.cnpj)
   
   if (cadastroEmpresa){
-    agendamento.codEmpresa  = cadastroEmpresa[0]['CODIGO']
-    agendamento.empresa     = cadastroEmpresa[0]['RAZAOSOCIAL']
+    console.log(cadastroEmpresa);
+    
+    agendamento.codEmpresa  = cadastroEmpresa['CODIGO']
+    agendamento.empresa     = cadastroEmpresa['RAZAOSOCIAL']
     
     return agendamento
 

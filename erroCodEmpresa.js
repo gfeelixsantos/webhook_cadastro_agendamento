@@ -1,3 +1,5 @@
+const exameAdmissional = require('./tiposExames/admissional')
+
 const erroCodigoEmpresa = {
     id: 'CM000296',
     chegada: '',
@@ -79,3 +81,5 @@ const erroCodigoEmpresa = {
     createdAt: 1725024437881,
     updatedAt: 1725024437881
   }
+
+  exameAdmissional(erroCodigoEmpresa)
