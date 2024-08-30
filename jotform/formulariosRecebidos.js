@@ -1,6 +1,7 @@
 const { default: Jotform } = require('jotform')
 const Atendimento = require('../aws/schema')
 const codigoCampos = require('./codigoCampos')
+const geraCodigoTipoExame = require('../util/geraCodigoTipoExame')
 
 module.exports = async function formulariosRecebidos() {
 
@@ -31,6 +32,8 @@ module.exports = async function formulariosRecebidos() {
         const atividadesAgendamento = subs.content[0].answers[codigoCampos.solicitacaoAtividades].answer ? subs.content[0].answers[codigoCampos.solicitacaoAtividades].answer : []
         const telefoneAgendamento = subs.content[0].answers[codigoCampos.telefoneSolicitante].prettyFormat ? subs.content[0].answers[codigoCampos.telefoneSolicitante].prettyFormat : ''
 
+        const codTipoExame = geraCodigoTipoExame(subs.content[0].answers[codigoCampos.tipoExame].answer)
+
         const agendamento = await new Atendimento({
             "id":               subs.content[0].answers[codigoCampos.identificador].answer,
             "chegada":          '',
@@ -54,11 +57,14 @@ module.exports = async function formulariosRecebidos() {
             "codSetor":         '',
             "cargo":            cargoAgendamento,
             "codCargo":         '',
+            "idFicha":          '',
             "dataFicha":        '',
+            "codTipoExame":     codTipoExame,
             "tipoExame":        subs.content[0].answers[codigoCampos.tipoExame].answer,
             "unidade":          process.env.UNIDADE_SISTEMA,
             "realizados":       0,
             "afazer":           0,
+            "riscos":           [],          
             "exames":           [],
             "observacoes":          observacoesAgendamento,
             "preferencial":         '',

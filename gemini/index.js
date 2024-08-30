@@ -7,25 +7,21 @@ async function buscaHierarquia(agendamento, hierarquia) {
       
       const prompt = `Dada a seguinte hierarquia:
       ${JSON.stringify(hierarquia)}
-      Complete o texto com o código da unidade, nome da unidade, código do setor, nome do setor, código do cargo e nome do cargo que seja idêntico ou se refere para o funcionário com a unidade  ${agendamento.unidadeTrabalho} setor ${agendamento.setor} e cargo ${agendamento.cargo}?
-      Resposta:CODIGOUNIDADE:_:NOMEUNIDADE:_:CODIGOSETOR:_:SETOR:_:CODIGOCARGO:_:CARGO:_`
+      Retorne um json com o código da unidade, nome da unidade, código do setor, nome do setor, código do cargo e nome do cargo que seja idêntico ou se refere para o funcionário com a unidade  ${agendamento.unidadeTrabalho} setor ${agendamento.setor} e cargo ${agendamento.cargo}?`
       
       const result = await model.generateContent(prompt);
       const responseText = result.response.text();
-
-      const arrText = responseText.split(':')
-     
-      console.log(arrText)
-
+      const arrText = responseText.split('"')
+      
       if (arrText.length > 2){
-        agendamento.codUnidadeTrabalho  = arrText[2]
-        agendamento.unidadeTrabalho     = arrText[4]
+        agendamento.codUnidadeTrabalho  = arrText[3]
+        agendamento.unidadeTrabalho     = arrText[7]
 
-        agendamento.codSetor            = arrText[6]
-        agendamento.setor               = arrText[8]
+        agendamento.codSetor            = arrText[11]
+        agendamento.setor               = arrText[15]
 
-        agendamento.codCargo            = arrText[10]
-        agendamento.cargo               = arrText[12]
+        agendamento.codCargo            = arrText[19]
+        agendamento.cargo               = arrText[23]
 
         return agendamento
 
@@ -33,6 +29,8 @@ async function buscaHierarquia(agendamento, hierarquia) {
       else {
 
         // Não encontrou hierarquia....
+        console.log(arrText, 'Não encontrou a hierarquia....');
+        
         
       }
       

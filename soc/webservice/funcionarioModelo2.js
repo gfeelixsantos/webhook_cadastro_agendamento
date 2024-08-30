@@ -1,10 +1,10 @@
 const WSSecurity = require('wssecurity-soap') 
 const axios = require('axios')
 
-function xmlFuncionarioModelo2(agendamento) {
+async function webserviceFuncionarioModelo2(agendamento) {
 
-    const user = "U1591737";
-    const pass = "b2af7deb4b52a1ed92be6cfb0ae50faa35b651af";
+    const user = process.env.WEBSERVICE_USER
+    const pass = process.env.WEBSERVICE_PASS
     const header = new WSSecurity(user, pass, 'PasswordDigest')
     const URL = 'https://ws1.soc.com.br/WSSoc/FuncionarioModelo2Ws?wsdl'
 
@@ -27,20 +27,20 @@ function xmlFuncionarioModelo2(agendamento) {
                     <cargoWsVo>
                         <atualizaDescricaoRequisitosCargoPeloCbo></atualizaDescricaoRequisitosCargoPeloCbo>
                         <cbo></cbo>
-                        <codigo>${agendamento.funcionario.codCargo}</codigo>
+                        <codigo>${agendamento.codCargo}</codigo>
                         <codigoRh></codigoRh>
                         <descricaoDetalhada></descricaoDetalhada>
                         <descricaoLocal></descricaoLocal>
                         <educacao></educacao>
                         <experiencia></experiencia>
-                        <funcao>${agendamento.funcionario.cargo}</funcao>
+                        <funcao>${agendamento.cargo}</funcao>
                         <gfip></gfip>
                         <habilidades></habilidades>
                         <localTrabalho></localTrabalho>
                         <materialUtilizado></materialUtilizado>
                         <mobiliarioUtilizado></mobiliarioUtilizado>
-                        <nome>${agendamento.funcionario.cargo}</nome>
-                        <nomeLegal>${agendamento.funcionario.codCargo}</nomeLegal>
+                        <nome>${agendamento.cargo}</nome>
+                        <nomeLegal>${agendamento.codCargo}</nomeLegal>
                         <orientacaoAso></orientacaoAso>
                         <requisitosFuncao></requisitosFuncao>
                         <status></status>
@@ -81,20 +81,20 @@ function xmlFuncionarioModelo2(agendamento) {
                         <cipaDataFimMandato></cipaDataFimMandato>
                         <cipaDataInicioMandato></cipaDataInicioMandato>
                         <cnpjEmpresaFuncionario></cnpjEmpresaFuncionario>
-                        <codigo>${agendamento.funcionario.codFuncionario}</codigo>
-                        <codigoEmpresa>${agendamento.empresa.codEmpresa}</codigoEmpresa>
+                        <codigo>${agendamento.codFuncionario}</codigo>
+                        <codigoEmpresa>${agendamento.codEmpresa}</codigoEmpresa>
                         <codigoMunicipio></codigoMunicipio>
                         <complementoEndereco></complementoEndereco>
                         <contatoEmergencia></contatoEmergencia>
                         <cor></cor>
-                        <cpf>${ agendamento.funcionario.cpf }</cpf>
+                        <cpf>${ agendamento.cpf }</cpf>
                         <dataAdmissao>${agendamento.dataAgendamento}</dataAdmissao>
                         <dataAfastamento></dataAfastamento>
                         <dataDemissao></dataDemissao>
                         <dataDemissionalCarta></dataDemissionalCarta>
                         <dataEmissaoCtps></dataEmissaoCtps>
                         <dataFinalEstabilidade></dataFinalEstabilidade>
-                        <dataNascimento>${agendamento.funcionario.dataNascimento}</dataNascimento>
+                        <dataNascimento>${agendamento.dataNascimento}</dataNascimento>
                         <dataUltimaMovimentacao></dataUltimaMovimentacao>
                         <desabilitarRisco></desabilitarRisco>
                         <descricaoAtividade></descricaoAtividade>
@@ -109,7 +109,7 @@ function xmlFuncionarioModelo2(agendamento) {
                         <gfip></gfip>
                         <historicoPPP></historicoPPP>
                         <matricula></matricula>
-                        <naoPossuiCpf>${ agendamento.funcionario.cpf.includes('000') ? 'true' : 'false' }</naoPossuiCpf>
+                        <naoPossuiCpf>${ agendamento.cpf.includes('000') ? 'true' : 'false' }</naoPossuiCpf>
                         
                         <naoPossuiCtps></naoPossuiCtps>
                         
@@ -123,7 +123,7 @@ function xmlFuncionarioModelo2(agendamento) {
                         
                         <nomeCooperativa></nomeCooperativa>
                         
-                        <nomeFuncionario>${agendamento.funcionario.nome}</nomeFuncionario>
+                        <nomeFuncionario>${agendamento.funcionario}</nomeFuncionario>
                         
                         <nomeMae></nomeMae>
                         
@@ -131,7 +131,7 @@ function xmlFuncionarioModelo2(agendamento) {
                         
                         <numeroEndereco></numeroEndereco>
                         
-                        <observacaoAso>${agendamento.observacoes != undefined ? agendamento.observacoes : ''}</observacaoAso>
+                        <observacaoAso></observacaoAso>
                         
                         <observacaoEstabilidade></observacaoEstabilidade>
                         
@@ -145,7 +145,7 @@ function xmlFuncionarioModelo2(agendamento) {
                         
                         <ramalTelefoneEmergencia></ramalTelefoneEmergencia>
                         
-                        <razaoSocialEmpresaFuncionario>${agendamento.empresa.razaoSocial}</razaoSocialEmpresaFuncionario>
+                        <razaoSocialEmpresaFuncionario>${agendamento.empresa}</razaoSocialEmpresaFuncionario>
                         
                         <regimeRevezamento></regimeRevezamento>
                         
@@ -155,7 +155,7 @@ function xmlFuncionarioModelo2(agendamento) {
                         
                         <requisitosFuncao></requisitosFuncao>
                         
-                        <rg>${agendamento.funcionario.rg}</rg>
+                        <rg>${agendamento.rg}</rg>
                         
                         <rgDataEmissao></rgDataEmissao>
                         
@@ -165,7 +165,7 @@ function xmlFuncionarioModelo2(agendamento) {
                         
                         <serieCtps></serieCtps>
                         
-                        <sexo>${agendamento.funcionario.sexo}</sexo>
+                        <sexo>${agendamento.sexo}</sexo>
                         
                         <situacao>ATIVO</situacao>
                         
@@ -193,7 +193,7 @@ function xmlFuncionarioModelo2(agendamento) {
                         
                         <emailPessoal></emailPessoal>
                         
-                        <matriculaRh></matriculaRh>
+                        <matriculaRh>${ agendamento.id }</matriculaRh>
                         
                         <codigoCategoriaESocial>101</codigoCategoriaESocial>
                         
@@ -234,22 +234,22 @@ function xmlFuncionarioModelo2(agendamento) {
                     
                     <identificacaoWsVo>
                     
-                    <chaveAcesso>${ pass }</chaveAcesso>
+                    <chaveAcesso>${ process.env.WEBSERVICE_PASS }</chaveAcesso>
                     
-                    <codigoEmpresaPrincipal>16459</codigoEmpresaPrincipal>
+                    <codigoEmpresaPrincipal>${ process.env.WEBSERVICE_CODPRINCIAL }</codigoEmpresaPrincipal>
                     
-                    <codigoResponsavel>6217</codigoResponsavel>
+                    <codigoResponsavel>${ process.env.WEBSERVICE_RESPONSAVEL }</codigoResponsavel>
                     <homologacao>?</homologacao>
                     
-                    <codigoUsuario>1591737</codigoUsuario>
+                    <codigoUsuario>${ process.env.WEBSERVICE_CODUSUARIO }</codigoUsuario>
                     </identificacaoWsVo>
                     
                     <naoImportarFuncionarioSemHierarquia></naoImportarFuncionarioSemHierarquia>
                     
                     <setorWsVo>
-                        <codigo>${agendamento.funcionario.codSetor}</codigo>
+                        <codigo>${agendamento.codSetor}</codigo>
                         <codigoRh></codigoRh>
-                        <nome>${agendamento.funcionario.setor}</nome>
+                        <nome>${agendamento.setor}</nome>
                         <observacaoAso></observacaoAso>
                         <status>ATIVO</status>
                         <tipoBusca>CODIGO</tipoBusca>
@@ -260,85 +260,45 @@ function xmlFuncionarioModelo2(agendamento) {
                     <unidadeContratanteWsVo>
                     
                         <bairro></bairro>
-                        
                         <bairroCobranca></bairroCobranca>
-                        
                         <cep></cep>
-                        
                         <cepCobranca></cepCobranca>
-                        
                         <cidade></cidade>
-                        
                         <cidadeCobranca></cidadeCobranca>
-                        
                         <cnpj_cei></cnpj_cei>
-                        
-                        <codigo>${agendamento.funcionario.codUnidade}</codigo>
-                        
+                        <codigo>${ agendamento.codUnidadeTrabalho }</codigo>
                         <codigoArquivo></codigoArquivo>
-                        
                         <codigoCnae></codigoCnae>
-                        
                         <codigoCnpjCei></codigoCnpjCei>
-                        
                         <codigoMunicipio></codigoMunicipio>
-                        
                         <codigoMunicipioCobranca></codigoMunicipioCobranca>
-                        
                         <codigoRh></codigoRh>
-                        
                         <complemento></complemento>
-                        
                         <complementoCobranca></complementoCobranca>
-                        
                         <dataAssinaturaContrato></dataAssinaturaContrato>
-                        
                         <descricaoCnae></descricaoCnae>
-                        
                         <endereco></endereco>
-                        
                         <enderecoCobranca></enderecoCobranca>
-                        
                         <estado></estado>
-                        
                         <estadoCobranca></estadoCobranca>
-                        
                         <grauRisco></grauRisco>
-                        
                         <inscricaoEstadual></inscricaoEstadual>
-                        
                         <inscricaoMunicipal></inscricaoMunicipal>
-                        
                         <nome></nome>
-                        
                         <numero></numero>
-                        
                         <numeroCobranca></numeroCobranca>
-                        
                         <observacaoASO></observacaoASO>
-                        
                         <observacaoContrato></observacaoContrato>
-                        
                         <observacaoPPP></observacaoPPP>
-                        
                         <percentualCalculoBrigada></percentualCalculoBrigada>
-                        
                         <razaoSocial></razaoSocial>
-                        
                         <status></status>
-                        
                         <telefoneCat></telefoneCat>
-                        
                         <tipoBusca>CODIGO</tipoBusca>
-                        
                         <tipoCnae></tipoCnae>
-                        
                         <unidadeContratante></unidadeContratante>
-                        
                         <codigoCpf></codigoCpf>
-                        
                         <codigoCaepf></codigoCaepf>
-                        
                         <caracterizacaoProcessosAmbientesTrabalho></caracterizacaoProcessosAmbientesTrabalho>
                         
                         <codigoCno></codigoCno>
@@ -353,7 +313,7 @@ function xmlFuncionarioModelo2(agendamento) {
                         <cidade></cidade>
                         <cidadeCobranca></cidadeCobranca>
                         <cnpj_cei></cnpj_cei>
-                        <codigo>${agendamento.funcionario.codUnidade}</codigo>
+                        <codigo>${agendamento.codUnidadeTrabalho}</codigo>
                         <codigoArquivo></codigoArquivo>
                         <codigoCnae></codigoCnae>
                         <codigoCnpjCei></codigoCnpjCei>
@@ -371,7 +331,7 @@ function xmlFuncionarioModelo2(agendamento) {
                         <grauRisco></grauRisco>
                         <inscricaoEstadual></inscricaoEstadual>
                         <inscricaoMunicipal></inscricaoMunicipal>
-                        <nome>${agendamento.funcionario.unidade}</nome>
+                        <nome>${agendamento.unidadeTrabalho}</nome>
                         <numero></numero>
                         <numeroCobranca></numeroCobranca>
                         <observacaoASO></observacaoASO>
@@ -432,19 +392,20 @@ function xmlFuncionarioModelo2(agendamento) {
         `
 
         
-        
-    axios.post(URL, xml, {
+    const options = {
         headers: { 
             'Content-Type': 'text/xml',
         }
-    })
-    .then(response => {
+    }
 
-        return console.log('SOAP ASO:', response.status);
-    })
-    .catch(error => {
-        return console.error('SOAP Error ASO:', error.data);
-    });
+    const response = await axios.post(URL, xml, options)
+
+    if (response.status == 200){
+        console.log('SOAP FUNCIONARIO_MODELO2:', response.status)
+    }
+    else {
+        console.error('ERRO FUNCIONARIO_MODELO2:', response.data)
+    }
 }
 
-module.exports = xmlFuncionarioModelo2
+module.exports = webserviceFuncionarioModelo2

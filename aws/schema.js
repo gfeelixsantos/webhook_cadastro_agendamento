@@ -22,12 +22,23 @@ Atendimento = new dynamoose.Schema({
     "codSetor":         String,
     "cargo":            String,
     "codCargo":         String,
+    "idFicha":          String,
     "dataFicha":        String,
+    "codTipoExame":     Number,
     "tipoExame":        String,
     "unidadeTrabalho":  String,
     "codUnidadeTrabalho":String,
     "realizados":       Number,
     "afazer":           Number,
+    "riscos":           { type: Array,
+                        schema: [{
+                            type: Object,
+                            schema: {
+                                "codRisco": String,
+                                "risco": String,
+                                }
+                            }],
+                        },
     "exames":           { type: Array,
                          schema: [{
                             type: Object,
@@ -39,6 +50,7 @@ Atendimento = new dynamoose.Schema({
                                 "espera": Number,
                                 "nome": String,
                                 "codigo": String,
+                                "sequencialResultado": String
                             }
                          }]
      },

@@ -5,6 +5,7 @@ async function cadastroFuncionarioPorEmpresa(agendamento) {
     const response = await fetch(url);
     const responseBuff = await response.arrayBuffer();
     const funcionarios = new TextDecoder('iso-8859-1').decode(responseBuff);
+    
     const arrFuncionarios = JSON.parse(funcionarios);
     
     // Busca cadastro existente SOC
@@ -20,7 +21,7 @@ async function cadastroFuncionarioPorEmpresa(agendamento) {
       }
       else {
         // procedimento = 'INCLUIR'
-        agendamento.codFuncionario = arrFuncionarios.length +1
+        agendamento.codFuncionario = arrFuncionarios.length +2
         return agendamento
       }
 
