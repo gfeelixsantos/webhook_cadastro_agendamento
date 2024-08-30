@@ -48,7 +48,7 @@ async function exameAdmissional(agendamento) {
 
 
 
-        return console.log( agendamento, 'agendamento admissional finalizado!');
+        return console.log( agendamento, 'agendamento finalizado!');
         
     } catch (error) {
         console.log('Erro exame admissional (fn: exameAdmissional)', error)

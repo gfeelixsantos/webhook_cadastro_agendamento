@@ -6,11 +6,12 @@ async function cadastroEmpresas(agendamento) {
   const response = await fetch(url);
   const responseBuff = await response.arrayBuffer();
   const empresas = new TextDecoder('iso-8859-1').decode(responseBuff);
-  const arrEmpresas = JSON.parse(empresas);
-  
-  if (arrEmpresas){
-    const cadastroEmpresa   = arrEmpresas.filter( emp => emp['ATIVO'] == '1' && emp['CNPJ'] == agendamento.cnpj)
 
+  const arrEmpresas = JSON.parse(empresas);
+  const empresasAtivas    = arrEmpresas.filter( emp => emp['ATIVO'] == '1')
+  const cadastroEmpresa   = empresasAtivas.find( emp => emp['CNPJ'] == agendamento.cnpj)
+  
+  if (cadastroEmpresa){
     agendamento.codEmpresa  = cadastroEmpresa[0]['CODIGO']
     agendamento.empresa     = cadastroEmpresa[0]['RAZAOSOCIAL']
     
@@ -18,9 +19,10 @@ async function cadastroEmpresas(agendamento) {
 
   }
   else {
+    // Pode ser KIT também...
     agendamento.situacao = 'ERRO'
     agendamento.mensagem = 'Empresa/Cliente não localizada.'
-    throw new Error('Erro ao buscar código empresa (fn: cadastroEmpresas)', error)
+    throw new Error('Erro ao buscar código empresa (fn: cadastroEmpresas)')
   }
 }
 
