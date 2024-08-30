@@ -37,4 +37,30 @@ async function buscaHierarquia(agendamento, hierarquia) {
       
   }
 
-module.exports = buscaHierarquia
+async function buscaEmpresa(agendamento, hierarquia) {
+
+  const prompt = `Dada a seguinte hierarquia:
+  ${JSON.stringify(hierarquia)}
+  Retorne um json com o código da empresa, cnpj e razão social, que seja idêntico ou se refere a empresa com a razao social  ${agendamento.empresa} e cnpj ${agendamento.cnpj}?`
+
+  const result = await model.generateContent(prompt);
+  const responseText = result.response.text();
+  console.log(responseText);
+  
+
+  // if (arrText.length > 2){
+  // agendamento.codUnidadeTrabalho  = arrText[3]
+  // agendamento.unidadeTrabalho     = arrText[7]
+
+  // agendamento.codSetor            = arrText[11]
+  // agendamento.setor               = arrText[15]
+
+  // agendamento.codCargo            = arrText[19]
+  // agendamento.cargo               = arrText[23]
+
+  // return agendamento
+
+
+}
+
+module.exports = buscaHierarquia, buscaEmpresa

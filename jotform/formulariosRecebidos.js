@@ -33,11 +33,17 @@ module.exports = async function formulariosRecebidos() {
         const rgAgendamento = subs.content[0].answers[codigoCampos.rg].answer ? subs.content[0].answers[codigoCampos.rg].answer.trim() : ''
         const sexoAgendamento = subs.content[0].answers[codigoCampos.sexo].answer ? subs.content[0].answers[codigoCampos.sexo].answer : ''
         const observacoesAgendamento = subs.content[0].answers[codigoCampos.observacoes].answer ? subs.content[0].answers[codigoCampos.observacoes].answer : ''
-        const atividadesAgendamento = subs.content[0].answers[codigoCampos.solicitacaoAtividades].answer ? subs.content[0].answers[codigoCampos.solicitacaoAtividades].answer : []
+        
+        let atividadesAgendamento = []
+        const atividadesEnviadas = subs.content[0].answers[codigoCampos.solicitacaoAtividades].answer ? subs.content[0].answers[codigoCampos.solicitacaoAtividades].answer : []
+        Array.isArray(atividadesEnviadas) ? 
+          atividadesEnviadas.forEach( e => atividadesAgendamento.push(e)) : atividadesAgendamento.push(Object.values(atividadesEnviadas))
+
+        
         const telefoneAgendamento = subs.content[0].answers[codigoCampos.telefoneSolicitante].prettyFormat ? subs.content[0].answers[codigoCampos.telefoneSolicitante].prettyFormat : ''
 
         const codTipoExame = geraCodigoTipoExame(subs.content[0].answers[codigoCampos.tipoExame].answer)
-
+        
         const agendamento = await new Atendimento({
             "id":               subs.content[0].answers[codigoCampos.identificador].answer,
             "chegada":          '',

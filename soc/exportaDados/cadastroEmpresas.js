@@ -1,3 +1,4 @@
+const buscaEmpresa = require('../../gemini/index')
 
 async function cadastroEmpresas(agendamento) {
 
@@ -18,6 +19,9 @@ async function cadastroEmpresas(agendamento) {
     
     return agendamento
 
+  }
+  else if (!cadastroEmpresa){
+    buscaEmpresa(agendamento, empresasAtivas)
   }
   else {
     // Pode ser KIT também...
