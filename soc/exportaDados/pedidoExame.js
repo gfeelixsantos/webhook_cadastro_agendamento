@@ -9,8 +9,11 @@ async function pedidoExame(agendamento) {
     
     if(pedidoExame.length > 2){
         const jsonPedidoExame = JSON.parse(pedidoExame)
-        agendamento.idFicha = jsonPedidoExame[ jsonPedidoExame.length -1 ]['SEQUENCIAFICHA']
         
+        const pedidoAgendamento = jsonPedidoExame.find( pedido => pedido['DATAFICHA'] == agendamento.dataAgendamento )
+        console.log(pedidoAgendamento);
+        
+        agendamento.idFicha = pedidoAgendamento['SEQUENCIAFICHA']
     }
     else{
         // Nao abriu pedido de exame...

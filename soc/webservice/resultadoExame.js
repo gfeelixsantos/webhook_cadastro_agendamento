@@ -92,7 +92,7 @@ async function resultadoExame(agendamento, resultado) {
     const response = await axios.post(URL, xml, options)
 
     if (response.status == 200){
-        console.log(`SOAP RESULTADO_EXAME:`, response.data)
+        console.log(`SOAP RESULTADO_EXAME:`, response.status)
     }
     else {
         console.error(`ERRO RESULTADO_EXAME:`, response.data)

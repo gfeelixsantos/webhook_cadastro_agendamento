@@ -3,6 +3,8 @@ const express = require('express');
 const formulariosRecebidos = require('./jotform/formulariosRecebidos')
 const exameAdmissional = require('./tiposExames/admissional')
 
+const mock = require('./mock')
+
 const app = express();
 app.use(express.json())
 
@@ -21,7 +23,7 @@ app.post('/', async (req, res) => {
 
 async function start() {
     let agendamento = await formulariosRecebidos()
-    agendamento = exameAdmissional(agendamento)
+    agendamento = exameAdmissional(mock)
     
     // switch (agendamento.tipoExame) {
     //     case 'ADMISSIONAL':

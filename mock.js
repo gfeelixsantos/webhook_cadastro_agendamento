@@ -1,147 +1,84 @@
+
 const MOCK = {
-    id: 'CM000275',
+    id: 'CM000296',
     chegada: '',
     dataChegada: '',
-    dataAgendamento: '30/08/2024',
-    horarioAgendamento: '07:30',  
-    situacao: 'SOLICITADO',       
-    codEmpresa: '50919',
-    empresa: 'SEGTEC COMERCIO E LOCACAO DE EQUIPAMENTOS OCUPACIONAIS LTDA',
-    codFuncionario: '169',
-    funcionario: 'TESTE ADM',
-    dataNascimento: '08/09/1994',
+    dataAgendamento: '02/09/2024',
+    horarioAgendamento: '09:30',
+    situacao: 'SOLICITADO',
+    codEmpresa: '389560',
+    empresa: 'VIVA PISOS E REVESTIMENTOS LTDA - FILIAL',
+    codFuncionario: 861,
+    funcionario: 'LUCAS CARLOS MARTINS DA SILVA',
+    dataNascimento: '11/07/1994',
     sexo: 'MASCULINO',
-    rg: '4363857935',
-    cpf: '33333333333',
+    rg: '06256153484',
+    cpf: '12373608626',
     situacaoFuncionario: 'Ativo',
-    cnpj: '09.348.221/0001-20',
-    unidadeTrabalho: 'RIO CLARO',
-    codUnidadeTrabalho: '1',
-    setor: 'LIMPEZA',
-    codSetor: '008',
-    cargo: 'AUXILIAR DE LIMPEZA',
-    codCargo: '009',
-    idFicha: '278140622',
+    cnpj: '14.274.947/0002-86',
+    unidadeTrabalho: 'FILIAL',
+    codUnidadeTrabalho: '001',
+    setor: 'ACONDICIONAMENTO',
+    codSetor: '004',
+    cargo: 'OPERADOR DE PALETIZADORA',
+    codCargo: '004',
+    idFicha: '271105607',
     dataFicha: '',
     codTipoExame: 1,
     tipoExame: 'ADMISSIONAL',
-    unidade: 'Rio Claro',
+    unidade: 'RIO CLARO',
     realizados: 0,
     afazer: 0,
     riscos: [
-      {
-        codRisco: '520',
-        nomeRisco: 'Exposição a riscos gerais da atividade, conforme descrição da função.'
-      },
-      { codRisco: '249', nomeRisco: 'Prevenção - Vigilância Sanitária' },
-      { codRisco: '421', nomeRisco: 'Operar Empilhadeira' },
-      {
-        codRisco: '336',
-        nomeRisco: 'Diferença de nível maior que 2 metros / Queda em altura'
-      },
-      { codRisco: '364', nomeRisco: 'Operações em Espaço Confinado' }
+      { codRisco: '1', nomeRisco: 'Ruído' },
+      { codRisco: '409', nomeRisco: 'Postura em pé por longos períodos' },
+      { codRisco: '318', nomeRisco: 'Prensagem de dedos e/ou mãos' },
+      { codRisco: '482', nomeRisco: 'Queda de material' },
+      { codRisco: '300', nomeRisco: 'Queimaduras' }
     ],
     exames: [
       {
         status: 'aguardando',
-        data: '30/08/2024',
-        sala: '0',
-        finalizado: '0',
-        espera: 0,
-        nome: 'Avaliação Clínica Ocupacional (Anamnese e Exame físico) (Cód. eSocial - 0295)',
-        codigo: 'clinico',
-        sequencialResultado: '541254545'
-      },
-      {
-        status: 'aguardando',
-        data: '30/08/2024',
-        sala: '0',
-        finalizado: '0',
-        espera: 0,
-        nome: 'Parasitológico de fezes (Cód. eSocial - 0974)',
-        codigo: '28030141',
-        sequencialResultado: '541254546'
-      },
-      {
-        status: 'aguardando',
-        data: '30/08/2024',
-        sala: '0',
-        finalizado: '0',
-        espera: 0,
-        nome: 'Hemograma com contagem de plaquetas ou frações (eritrograma, leucograma, plaquetas) (Cód. eSocial - 0693)',
-        codigo: '28.04.048-1',
-        sequencialResultado: '541254547'
-      },
-      {
-        status: 'aguardando',
-        data: '30/08/2024',
+        data: '02/09/2024',
         sala: '0',
         finalizado: '0',
         espera: 0,
         nome: 'Audiometria tonal ocupacional (Cód. eSocial - 0281)',
         codigo: '51.01.004-6',
-        sequencialResultado: '541254548'
+        sequencialResultado: '524448555'
       },
       {
         status: 'aguardando',
-        data: '30/08/2024',
+        data: '02/09/2024',
+        sala: '0',
+        finalizado: '0',
+        espera: 0,
+        nome: 'Avaliação Clínica Ocupacional (Anamnese e Exame físico) (Cód. eSocial - 0295)',
+        codigo: 'clinico',
+        sequencialResultado: '524448556'
+      },
+      {
+        status: 'aguardando',
+        data: '02/09/2024',
         sala: '0',
         finalizado: '0',
         espera: 0,
         nome: 'Avaliação da acuidade visual (Cód. eSocial - 0296)',
         codigo: '50.01.001-8',
-        sequencialResultado: '541254549'
-      },
-      {
-        status: 'aguardando',
-        data: '30/08/2024',
-        sala: '0',
-        finalizado: '0',
-        espera: 0,
-        nome: 'Glicemia (Cód. eSocial - 0658)',
-        codigo: '28.01.097-3',
-        sequencialResultado: '541254550'
-      },
-      {
-        status: 'aguardando',
-        data: '30/08/2024',
-        sala: '0',
-        finalizado: '0',
-        espera: 0,
-        nome: 'Avaliação Psicossocial (Cód. eSocial - 0300)',
-        codigo: '225588',
-        sequencialResultado: '541254551'
-      },
-      {
-        status: 'aguardando',
-        data: '30/08/2024',
-        sala: '0',
-        finalizado: '0',
-        espera: 0,
-        nome: 'EEG de rotina (Cód. eSocial - 0536)',
-        codigo: '22010017',
-        sequencialResultado: '541254552'
+        sequencialResultado: '524448557'
       }
     ],
-    observacoes: 'observacao teste',
+    observacoes: '',
     preferencial: '',
-    atividadesEspeciais: [
-      'MANIPULAÇÃO DE ALIMENTOS (VIGILÂNCIA)',
-      'OPERAR EMPILHADEIRA',
-      'TRABALHO EM ALTURA (NR 35)',
-      'TRABALHO EM ESPAÇO CONFINADO (NR 33)'
-    ],
+    atividadesEspeciais: [],
     perfil: '',
-    nomeSolicitante: 'TESTE',
-    emailSolicitante: 'esocial@cmsocupacioonal.com.br',
-    telefoneSolicitante: '',
-    anexos: [
-      'https://www.jotform.com/uploads/cmsoatendimento/230894671029664/6007846495569500365/logo.jpg'
-    ],
+    nomeSolicitante: 'ALINE',
+    emailSolicitante: 'rh@vivaceramica.com.br',
+    telefoneSolicitante: '(19) 35459300',
+    anexos: [],
     mensagem: '',
-    createdAt: 1725015087008,
-    updatedAt: 1725015087008
-  } 
+    createdAt: 1725024437881,
+    updatedAt: 1725024437881
+  }
 
-
-  module.exports = MOCK
+ module.exports = MOCK
