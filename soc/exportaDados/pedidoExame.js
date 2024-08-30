@@ -9,9 +9,7 @@ async function pedidoExame(agendamento) {
     
     if(pedidoExame.length > 2){
         const jsonPedidoExame = JSON.parse(pedidoExame)
-        
         const pedidoAgendamento = jsonPedidoExame.find( pedido => pedido['DATAFICHA'] == agendamento.dataAgendamento )
-        console.log(pedidoAgendamento);
         
         agendamento.idFicha = pedidoAgendamento['SEQUENCIAFICHA']
     }

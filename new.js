@@ -23,7 +23,7 @@ app.post('/', async (req, res) => {
 
 async function start() {
     let agendamento = await formulariosRecebidos()
-    agendamento = exameAdmissional(mock)
+    agendamento = exameAdmissional(agendamento)
     
     // switch (agendamento.tipoExame) {
     //     case 'ADMISSIONAL':
