@@ -21,19 +21,19 @@ app.post('/', async (req, res) => {
 
 async function start() {
     let agendamento = await formulariosRecebidos()
+    agendamento = exameAdmissional(agendamento)
     
-    
-    switch (agendamento.tipoExame) {
-        case 'ADMISSIONAL':
-            agendamento = exameAdmissional(agendamento)
-            break;
+    // switch (agendamento.tipoExame) {
+    //     case 'ADMISSIONAL':
+    //         agendamento = exameAdmissional(agendamento)
+    //         break;
 
-        case 'PERIÓDICO':
-            console.log('exame periodico...')
-            break;
+    //     case 'PERIÓDICO':
+    //         console.log('exame periodico...')
+    //         break;
     
         
-    }
+    // }
     
 }
 
