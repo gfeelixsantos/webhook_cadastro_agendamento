@@ -51,20 +51,15 @@ async function webserviceIncluiAso(agendamento) {
                     <nomeMedicoEmissorAso>${ medico }</nomeMedicoEmissorAso>
                     
                     <parecerAso>APTO</parecerAso>
-                    <parecerTrabalhoEmAltura></parecerTrabalhoEmAltura>
-                    <parecerTrabalhoEspacoConfinado></parecerTrabalhoEspacoConfinado>
+                    <parecerTrabalhoEmAltura>APTO</parecerTrabalhoEmAltura>
+                    <parecerTrabalhoEspacoConfinado>APTO</parecerTrabalhoEspacoConfinado>
                     <telefoneResponsavelAso>${ agendamento.telefoneSolicitante }</telefoneResponsavelAso>
-                    <textoLivreValidade>TESTE LIVRE VALIDADE</textoLivreValidade>
+                    <textoLivreValidade></textoLivreValidade>
                     <tipoeExame>${ agendamento.codTipoExame }</tipoeExame>
                     
                     <UFConselho></UFConselho>
                     
-                    <pareceres>
-                        <parecer>
-                            <codigo></codigo>
-                            <valor></valor>
-                        </parecer>
-                    </pareceres>
+                    
                     <desconsideraAsoEsocial>false</desconsideraAsoEsocial>
                 </aso>
             </ser:incluiDadosAso>

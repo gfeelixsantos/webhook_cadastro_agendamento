@@ -88,7 +88,7 @@ async function webserviceFuncionarioModelo2(agendamento) {
                         <contatoEmergencia></contatoEmergencia>
                         <cor></cor>
                         <cpf>${ agendamento.cpf }</cpf>
-                        <dataAdmissao>${agendamento.dataAgendamento}</dataAdmissao>
+                        <dataAdmissao>${ agendamento.codTipoExame == 1 ? agendamento.dataAgendamento : '' }</dataAdmissao>
                         <dataAfastamento></dataAfastamento>
                         <dataDemissao>${ agendamento.tipoExame == 'DEMISSIONAL' ? agendamento.dataAgendamento : '' }</dataDemissao>
                         <dataDemissionalCarta></dataDemissionalCarta>
@@ -187,7 +187,7 @@ async function webserviceFuncionarioModelo2(agendamento) {
                         
                         <utilizarDescricaoRequisitoCargo></utilizarDescricaoRequisitoCargo>
                         
-                        <observacaoFuncionario></observacaoFuncionario>
+                        <observacaoFuncionario>${ agendamento.observacao }</observacaoFuncionario>
                         
                         <codigoPaisNascimento></codigoPaisNascimento>
                         
@@ -331,7 +331,7 @@ async function webserviceFuncionarioModelo2(agendamento) {
                         <grauRisco></grauRisco>
                         <inscricaoEstadual></inscricaoEstadual>
                         <inscricaoMunicipal></inscricaoMunicipal>
-                        <nome></nome>
+                        <nome>${ agendamento.unidadeTrabalho }</nome>
                         <numero></numero>
                         <numeroCobranca></numeroCobranca>
                         <observacaoASO></observacaoASO>

@@ -8,12 +8,12 @@ const Gemini = {
       
     const prompt = `Dada a seguinte hierarquia:
     ${JSON.stringify(hierarquia)}
-    Retorne um json com o código da unidade, nome da unidade, código do setor, nome do setor, código do cargo e nome do cargo que seja idêntico ou se refere para o funcionário com a unidade  ${agendamento.unidadeTrabalho} setor ${agendamento.setor} e cargo ${agendamento.cargo}?`
+    Retorne um json com o código da unidade, nome da unidade, código do setor, nome do setor, código do cargo e nome do cargo que seja similar para o funcionário com a unidade  ${agendamento.unidadeTrabalho} setor ${agendamento.setor} e cargo ${agendamento.cargo}?`
     
     const result = await model.generateContent(prompt);
     const responseText = result.response.text();
     const arrText = responseText.split('"')
-    
+
     if (arrText.length > 2){
       agendamento.codUnidadeTrabalho  = arrText[3]
       agendamento.unidadeTrabalho     = arrText[7]
@@ -39,7 +39,7 @@ const Gemini = {
   buscaEmpresa: async function (agendamento, hierarquia) {
     const prompt = `Dada a seguinte hierarquia:
     ${JSON.stringify(hierarquia)}
-    Retorne um json com o código da empresa, cnpj e razão social, que seja idêntico ou se refere a empresa com a razao social  ${agendamento.empresa} e cnpj ${agendamento.cnpj}?`
+    Retorne apenas um json com o código da empresa, cnpj e razão social, que seja idêntico ou se refere a empresa com a razao social  ${agendamento.empresa} e cnpj ${agendamento.cnpj}?`
 
     const result = await model.generateContent(prompt);
     const responseText = result.response.text();
