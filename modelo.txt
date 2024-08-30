@@ -1,9 +1,10 @@
-id: 'CM000275',
+{
+  id: 'CM000275',
   chegada: '',
   dataChegada: '',
   dataAgendamento: '30/08/2024',
-  horarioAgendamento: '07:30',
-  situacao: 'SOLICITADO',
+  horarioAgendamento: '07:30',  
+  situacao: 'SOLICITADO',       
   codEmpresa: '50919',
   empresa: 'SEGTEC COMERCIO E LOCACAO DE EQUIPAMENTOS OCUPACIONAIS LTDA',
   codFuncionario: '169',
@@ -138,5 +139,6 @@ id: 'CM000275',
     'https://www.jotform.com/uploads/cmsoatendimento/230894671029664/6007846495569500365/logo.jpg'
   ],
   mensagem: '',
-  createdAt: 1724998960204,
-  updatedAt: 1724998960204
+  createdAt: 1725015087008,
+  updatedAt: 1725015087008
+} 

@@ -37,13 +37,18 @@ async function exameAdmissional(agendamento) {
         await webserviceIncluiAso(agendamento)
         await timer()
         agendamento = await pedidoExamePeloSequencialFicha(agendamento)
-        await resultadoExame(agendamento)
+        
+        for( const resultado of agendamento.exames ){
+            await resultadoExame(agendamento, resultado)
+            await timer()
+        }
+        
         
 
 
 
 
-        console.log( agendamento, 'agendamento admissional finalizado!');
+        return console.log( agendamento, 'agendamento admissional finalizado!');
         
     } catch (error) {
         console.log('Erro exame admissional (fn: exameAdmissional)', error)
