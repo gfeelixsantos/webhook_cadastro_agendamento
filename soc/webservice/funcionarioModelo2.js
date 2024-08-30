@@ -187,7 +187,7 @@ async function webserviceFuncionarioModelo2(agendamento) {
                         
                         <utilizarDescricaoRequisitoCargo></utilizarDescricaoRequisitoCargo>
                         
-                        <observacaoFuncionario>${ agendamento.observacao }</observacaoFuncionario>
+                        <observacaoFuncionario>${ agendamento.observacao != undefined ? agendamento.observacao : ''  }</observacaoFuncionario>
                         
                         <codigoPaisNascimento></codigoPaisNascimento>
                         

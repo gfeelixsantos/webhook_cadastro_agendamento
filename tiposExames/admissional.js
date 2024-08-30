@@ -42,9 +42,7 @@ async function exameAdmissional(agendamento) {
         for( const resultado of agendamento.exames ){
             await resultadoExame(agendamento, resultado)
             await timer()
-        }
-        console.log(agendamento);
-        
+        }        
 }
 
 
