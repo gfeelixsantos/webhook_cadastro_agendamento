@@ -15,6 +15,8 @@ const timer = require('../util/timer')
 
 async function exameAdmissional(agendamento) {
     try {
+        console.log(agendamento);
+        
         // Dados iniciais
         agendamento = await cadastroEmpresas(agendamento)
         await timer()
@@ -48,7 +50,7 @@ async function exameAdmissional(agendamento) {
 
 
 
-        return console.log( agendamento, 'agendamento finalizado!');
+        return console.log( '----------------------------->> agendamento finalizado!' );
         
     } catch (error) {
         console.log('Erro exame admissional (fn: exameAdmissional)', error)
