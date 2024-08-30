@@ -1,4 +1,4 @@
-const buscaEmpresa = require('../../gemini/index')
+const Gemini = require('../../gemini/index')
 
 async function cadastroEmpresas(agendamento) {
 
@@ -20,14 +20,19 @@ async function cadastroEmpresas(agendamento) {
     return agendamento
 
   }
-  else if (!cadastroEmpresa){
-    buscaEmpresa(agendamento, empresasAtivas)
-  }
+
   else {
-    // Pode ser KIT também...
-    agendamento.situacao = 'ERRO'
-    agendamento.mensagem = 'Empresa/Cliente não localizada.'
-    throw new Error('Erro ao buscar código empresa (fn: cadastroEmpresas)')
+    agendamento = await Gemini.buscaEmpresa(agendamento, empresasAtivas)
+    
+    if(agendamento.codEmpresa != ''){
+      return agendamento
+    }
+    else {
+      // Pode ser KIT também...
+      agendamento.situacao = 'ERRO'
+      agendamento.mensagem = 'Empresa/Cliente não localizada.'
+      throw new Error('Erro ao buscar código empresa (fn: cadastroEmpresas)')
+    }
   }
 }
 

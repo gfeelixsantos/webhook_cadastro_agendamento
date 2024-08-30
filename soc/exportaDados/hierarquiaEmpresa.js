@@ -1,4 +1,4 @@
-const buscaHierarquia = require('../../gemini/index')
+const Gemini = require('../../gemini/index')
 
 async function hierarquiaEmpresa(agendamento) {
 
@@ -12,7 +12,7 @@ async function hierarquiaEmpresa(agendamento) {
     if (arrHierarquia.length > 0) {
         const hierarquiasAtivas = arrHierarquia.filter( hie => hie['HIERARQUIA_ATIVA'] == 'Sim')
         
-        return await buscaHierarquia(agendamento, hierarquiasAtivas)
+        return await Gemini.buscaHierarquia(agendamento, hierarquiasAtivas)
     }
     else {
         
