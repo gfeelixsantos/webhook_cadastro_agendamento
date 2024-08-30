@@ -14,8 +14,7 @@ const resultadoExame = require('../soc/webservice/resultadoExame')
 const timer = require('../util/timer')
 
 async function exameAdmissional(agendamento) {
-    try {
-        console.log(agendamento);
+    console.log(agendamento);
         
         // Dados iniciais
         agendamento = await cadastroEmpresas(agendamento)
@@ -44,17 +43,6 @@ async function exameAdmissional(agendamento) {
             await resultadoExame(agendamento, resultado)
             await timer()
         }
-        
-        
-
-
-
-
-        return console.log( '----------------------------->> agendamento finalizado!' );
-        
-    } catch (error) {
-        console.log('Erro exame admissional (fn: exameAdmissional)', error)
-    }
 }
 
 
