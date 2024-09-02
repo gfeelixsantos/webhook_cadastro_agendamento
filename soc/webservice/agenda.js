@@ -1,25 +1,21 @@
 const WSSecurity = require('wssecurity-soap') 
+const axios = require('axios')
 
-function createXML(agendamento) {
+async function agenda(agendamento) {
 
-    const user = "U1591737";
-    const pass = "b2af7deb4b52a1ed92be6cfb0ae50faa35b651af";
+    const user = process.env.WEBSERVICE_USER
+    const pass = process.env.WEBSERVICE_PASS
     const header = new WSSecurity(user, pass, 'PasswordDigest')
+    const URL = 'https://ws1.soc.com.br/WSSoc/AgendamentoWs?wsdl'
 
     const agendas =  [
-        '239781', //AGENDA CMSO
+        '239781',       //AGENDA CMSO
         // '2113649', //AGENDA CORDEIRÓPOLIS
         //'1447495'  //AGENDA TESTE
     ]
 
-    const campoAtividades = agendamento.solicitacaoAtividades == undefined ? '' : agendamento.solicitacaoAtividades
-    const campoObservacoes = agendamento.observacoes == undefined ? '' : agendamento.observacoes
-    const campoDetalhes = `
-    ATIVIDADES: ${campoAtividades}
-    OBSERVACOES: ${campoObservacoes}`
 
-    try {
-        const modeloXML = 
+    const xml = 
         `
         <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://services.soc.age.com/">
         <soapenv:Header>
@@ -35,10 +31,10 @@ function createXML(agendamento) {
                 </identificacaoWsVo>
                 <dadosAgendamentoWsVo>
                     <tipoBuscaEmpresa>CODIGO_SOC</tipoBuscaEmpresa>
-                    <codigoEmpresa>${agendamento.empresa.codEmpresa}</codigoEmpresa>
+                    <codigoEmpresa>${agendamento.codEmpresa}</codigoEmpresa>
                     <reservarCompromissoParaEmpresa></reservarCompromissoParaEmpresa>
                     <tipoBuscaFuncionario>CODIGO_SOC</tipoBuscaFuncionario>
-                    <codigoFuncionario>${agendamento.funcionario.codFuncionario}</codigoFuncionario>
+                    <codigoFuncionario>${agendamento.codFuncionario}</codigoFuncionario>
                     <codigoUsuarioAgenda>${agendas[0]}</codigoUsuarioAgenda>
                     <data>${agendamento.dataAgendamento}</data>
                     <horaInicial>${agendamento.horarioAgendamento}</horaInicial>
@@ -46,8 +42,8 @@ function createXML(agendamento) {
                     <codigoCompromisso>22</codigoCompromisso>
                     <usaOutroCompromisso></usaOutroCompromisso>
                     <conteudoOutroCompromisso></conteudoOutroCompromisso>
-                    <tipoCompromisso>${agendamento.exame.tipoExame}</tipoCompromisso>
-                    <detalhes>${campoDetalhes}</detalhes>
+                    <tipoCompromisso>${agendamento.tipoExame}</tipoCompromisso>
+                    <detalhes></detalhes>
                     <codigoProfissionalAgenda></codigoProfissionalAgenda>
                     <horarioChegada></horarioChegada>
                     <horarioSaida></horarioSaida>
@@ -76,12 +72,21 @@ function createXML(agendamento) {
         </soapenv:Body>
         </soapenv:Envelope>
         `
+
+        const options = {
+            headers: { 
+                'Content-Type': 'text/xml',
+            }
+        }
         
-        return modeloXML
-        
-    } catch (error) {
-        console.error('Erro ao gerar XML (fn: createXML)', error);
-    }
+        const response = await axios.post(URL, xml, options)
+
+        if (response.status == 200){
+            console.log('SOAP AGENDA:', response.status)
+        }
+        else {
+            console.error('ERRO AGENDA:', response.data)
+        }
 }
 
-module.exports = createXML
+module.exports = agenda

@@ -10,7 +10,7 @@ const pedidoExame = require('../soc/exportaDados/pedidoExame')
 const webserviceIncluiAso = require('../soc/webservice/incluiAso')
 const pedidoExamePeloSequencialFicha = require('../soc/exportaDados/pedidoExamePeloSequencialFicha')
 const resultadoExame = require('../soc/webservice/resultadoExame')
-
+const agenda = require('../soc/webservice/agenda')
 const timer = require('../util/timer')
 
 async function exameAdmissional(agendamento) {
@@ -42,7 +42,9 @@ async function exameAdmissional(agendamento) {
         for( const resultado of agendamento.exames ){
             await resultadoExame(agendamento, resultado)
             await timer()
-        }        
+        }
+        
+        await agenda(agendamento)
 }
 
 
