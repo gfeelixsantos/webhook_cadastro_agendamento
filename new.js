@@ -24,7 +24,7 @@ app.post('/', async (req, res) => {
 start()
 async function start() {
     let agendamento = await formulariosRecebidos()
-    exameAdmissional(agendamento)
+    exameAdmissional(mock)
         .then( () => console.log( '------------------------------------------------------ >> Agendamento Finalizado!'))
         .catch( e => console.log( e, 'Erro de agendamento!')) 
     
