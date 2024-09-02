@@ -123,7 +123,7 @@ async function webserviceFuncionarioModelo2(agendamento) {
                         
                         <nomeCooperativa></nomeCooperativa>
                         
-                        <nomeFuncionario>${agendamento.funcionario}</nomeFuncionario>
+                        <nomeFuncionario>${ decodeURI(agendamento.funcionario) } </nomeFuncionario>
                         
                         <nomeMae></nomeMae>
                         
@@ -401,7 +401,7 @@ async function webserviceFuncionarioModelo2(agendamento) {
     const response = await axios.post(URL, xml, options)
 
     if (response.status == 200){
-        console.log('SOAP FUNCIONARIO_MODELO2:', response.status)
+        console.log('SOAP FUNCIONARIO_MODELO2:', response.data)
     }
     else {
         console.error('ERRO FUNCIONARIO_MODELO2:', response.data)

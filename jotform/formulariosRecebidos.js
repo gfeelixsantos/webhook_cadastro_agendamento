@@ -23,7 +23,7 @@ module.exports = async function formulariosRecebidos() {
         const cpfFinal = cpfFuncionario.replace('-', '')
 
 
-        const empresaTrim = subs.content[0].answers[codigoCampos.razaoSocial].answer.trim().toUpperCase()
+        const empresaTrim = subs.content[0].answers[codigoCampos.razaoSocial].answers ? subs.content[0].answers[codigoCampos.razaoSocial].answer.trim().toUpperCase() : ''
         const solicitanteAgendamento = subs.content[0].answers[codigoCampos.nomeSolicitante].answer.trim().toUpperCase()
         const emailAgendamento = subs.content[0].answers[codigoCampos.emailSolicitante].answer.trim().toLowerCase()
         
