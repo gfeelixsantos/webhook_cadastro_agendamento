@@ -36,6 +36,51 @@ updatedAt: 1725285866428
 }
 
 
+// ERRO CODIGO DO SETOR
+// {
+//     id: 'CM000466',
+//     chegada: '',
+//     dataChegada: '',
+//     dataAgendamento: '04/09/2024',
+//     horarioAgendamento: '08:30',
+//     situacao: 'SOLICITADO',
+//     codEmpresa: '',
+//     empresa: '',
+//     codFuncionario: '',
+//     funcionario: 'THAIS TENELLI',
+//     dataNascimento: '28/12/1977',
+//     sexo: 'FEMININO',
+//     rg: '3030007539',
+//     cpf: '23122121883',
+//     situacaoFuncionario: 'Ativo',
+//     cnpj: '57.893.802/0001-95',
+//     unidadeTrabalho: '',
+//     codUnidadeTrabalho: '',
+//     setor: 'LIMPEZA',
+//     codSetor: '',
+//     cargo: 'LIMPEZA',
+//     codCargo: '',
+//     idFicha: '',
+//     dataFicha: '',
+//     codTipoExame: 1,
+//     tipoExame: 'ADMISSIONAL',
+//     unidade: 'RIO CLARO',
+//     realizados: 0,
+//     afazer: 0,
+//     riscos: [],
+//     exames: [],
+//     observacoes: '',
+//     preferencial: '',
+//     atividadesEspeciais: [],
+//     perfil: '',
+//     nomeSolicitante: 'JAQUELINE APARECIDA BUCIOLLI BUSO',
+//     emailSolicitante: 'padaria.claret@hotmail.com',
+//     telefoneSolicitante: '(19) 98943-9297',
+//     anexos: [],
+//     mensagem: '',
+//     createdAt: 1725362032180,
+//     updatedAt: 1725362032180
+//   }
 
 // {
 //   id: 'CM000405',
@@ -81,6 +126,58 @@ updatedAt: 1725285866428
 //   createdAt: 1725285925106,
 //   updatedAt: 1725285925106
 // }
+
+
+
+
+
+
+
+// NAO TEM CODIGO EMPRESA (KIT)
+// {
+//     id: 'CM000469',
+//     chegada: '',
+//     dataChegada: '',
+//     dataAgendamento: '04/09/2024',
+//     horarioAgendamento: '08:30',
+//     situacao: 'SOLICITADO',
+//     codEmpresa: '',
+//     empresa: '',
+//     codFuncionario: '',
+//     funcionario: 'DANIELA SIMONE BUENO DA SILVA PEREIRA',
+//     dataNascimento: '03/11/1976',
+//     sexo: 'FEMININO',
+//     rg: '279582894',
+//     cpf: '19694026873',
+//     situacaoFuncionario: 'Ativo',
+//     cnpj: '10.413.463/0007-24',
+//     unidadeTrabalho: 'CND - RIO CLARO (ESTÁDIO)',
+//     codUnidadeTrabalho: '',
+//     setor: 'CAIXA',
+//     codSetor: '',
+//     cargo: 'OPERADORA DE CAIXA',
+//     codCargo: '',
+//     idFicha: '',
+//     dataFicha: '',
+//     codTipoExame: 1,
+//     tipoExame: 'ADMISSIONAL',
+//     unidade: 'RIO CLARO',
+//     realizados: 0,
+//     afazer: 0,
+//     riscos: [],
+//     exames: [],
+//     observacoes: '',
+//     preferencial: '',
+//     atividadesEspeciais: [],
+//     perfil: '',
+//     nomeSolicitante: 'SAMUELL VICTOR LACERDA MAGALHAES',
+//     emailSolicitante: 'samuell.magalhaes@casaevida.com.br',
+//     telefoneSolicitante: '',
+//     anexos: [],
+//     mensagem: '',
+//     createdAt: 1725362958410,
+//     updatedAt: 1725362958410
+//   }
 
 
 // // FICHA CLINICA NAO ENCONTRADA
