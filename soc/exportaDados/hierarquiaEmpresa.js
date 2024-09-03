@@ -11,7 +11,7 @@ async function hierarquiaEmpresa(agendamento) {
     
     if (arrHierarquia.length > 0) {
         const hierarquiasAtivas = arrHierarquia.filter( hie => hie['HIERARQUIA_ATIVA'] == 'Sim')
-        
+
         return await Gemini.buscaHierarquia(agendamento, hierarquiasAtivas)
     }
     else {

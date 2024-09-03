@@ -8,14 +8,14 @@ async function cadastroEmpresas(agendamento) {
   const responseBuff = await response.arrayBuffer();
   const empresas = new TextDecoder('iso-8859-1').decode(responseBuff);
 
-  const arrEmpresas = JSON.parse(empresas);
+  const arrEmpresas       = JSON.parse(empresas);
   const empresasAtivas    = arrEmpresas.filter( emp => emp['ATIVO'] == '1')
   const cadastroEmpresa   = empresasAtivas.find( emp => emp['CNPJ'] == agendamento.cnpj)
-  
+
   if (cadastroEmpresa){
 
     agendamento.codEmpresa  = cadastroEmpresa['CODIGO']
-    agendamento.empresa     = cadastroEmpresa['RAZAOSOCIAL']
+    agendamento.empresa     = cadastroEmpresa['RAZAOSOCIALINICIAL']
     
     return agendamento
 

@@ -10,6 +10,7 @@ const pedidoExame = require('../soc/exportaDados/pedidoExame')
 const webserviceIncluiAso = require('../soc/webservice/incluiAso')
 const pedidoExamePeloSequencialFicha = require('../soc/exportaDados/pedidoExamePeloSequencialFicha')
 const resultadoExame = require('../soc/webservice/resultadoExame')
+const listagemCompromissoFuncionario = require('../soc/exportaDados/listagemCompromissoFuncionario')
 const agenda = require('../soc/webservice/agenda')
 const timer = require('../util/timer')
 
@@ -44,7 +45,12 @@ async function exameAdmissional(agendamento) {
             await timer()
         }
         
-        await agenda(agendamento)
+        const checkAgenda = await listagemCompromissoFuncionario(agendamento)
+        if (!checkAgenda ){
+            console.log('add agenda');
+            
+            await agenda(agendamento)
+        }
 }
 
 

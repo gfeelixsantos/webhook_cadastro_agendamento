@@ -2,7 +2,7 @@ const WSSecurity = require('wssecurity-soap')
 const axios = require('axios')
 
 async function webserviceFuncionarioModelo2(agendamento) {
-
+    console.log(agendamento)
     const user = process.env.WEBSERVICE_USER
     const pass = process.env.WEBSERVICE_PASS
     const header = new WSSecurity(user, pass, 'PasswordDigest')
@@ -145,7 +145,7 @@ async function webserviceFuncionarioModelo2(agendamento) {
                         
                         <ramalTelefoneEmergencia></ramalTelefoneEmergencia>
                         
-                        <razaoSocialEmpresaFuncionario>${agendamento.empresa}</razaoSocialEmpresaFuncionario>
+                        <razaoSocialEmpresaFuncionario></razaoSocialEmpresaFuncionario>
                         
                         <regimeRevezamento></regimeRevezamento>
                         
@@ -402,7 +402,13 @@ async function webserviceFuncionarioModelo2(agendamento) {
 
     if (response.status == 200){
         const responseDescricaoErro = response.data.split('descricaoErro')
-        console.log('SOAP FUNCIONARIO_MODELO2:', response.status, responseDescricaoErro[1])
+        console.log(responseDescricaoErro[1])
+
+        if (responseDescricaoErro.length > 3){
+            console.log(responseDescricaoErro[1])
+            agendamento.erros.push(responseDescricaoErro[1])
+        }
+        console.log('SOAP FUNCIONARIO_MODELO2:', response.status)
     }
     else {
         

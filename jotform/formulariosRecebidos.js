@@ -88,8 +88,10 @@ module.exports = async function formulariosRecebidos() {
         })
             .save()
             .catch( (e) => console.log(e) )
-        
-        return agendamento
+        const teste = await Atendimento.scan('id').contains("CM000477").all().exec()
+        const json =  teste.toJSON()
+        return json[0]
+        //return agendamento
     }
     else {
         // Tratar erro caso não consiga acessar envio do formulário....

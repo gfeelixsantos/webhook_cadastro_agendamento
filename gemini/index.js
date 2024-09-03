@@ -8,7 +8,7 @@ const Gemini = {
       
     const prompt = `Dada a seguinte hierarquia:
     ${JSON.stringify(hierarquia)}
-    Retorne um json com o código da unidade, nome da unidade, código do setor, nome do setor, código do cargo e nome do cargo que seja exato para o funcionário com a unidade  ${agendamento.unidadeTrabalho} setor ${agendamento.setor} e cargo ${agendamento.cargo} considerando hierarquias como JR, PL e SR. Caso não encontrar, considere o mais similar possível ?`
+    Retorne um json com o código da unidade, nome da unidade, código do setor, nome do setor, código do cargo e nome do cargo que seja exato para o funcionário com a unidade  ${agendamento.unidadeTrabalho} setor ${agendamento.setor} e cargo ${agendamento.cargo} sendo todos os itens com a situação ativa na hierarquia informada, considere também nomenclaturas como JR, PL e SR. Caso não encontrar, considere o mais similar possível ?`
     
     const result = await model.generateContent(prompt);
     const responseText = result.response.text();
@@ -40,15 +40,15 @@ const Gemini = {
   buscaEmpresa: async function (agendamento, hierarquia) {
     const prompt = `Dada a seguinte hierarquia:
     ${JSON.stringify(hierarquia)}
-    Retorne apenas um json com o código da empresa, cnpj e razão social, que seja idêntico ou se refere a empresa com a razao social  ${agendamento.empresa} e cnpj ${agendamento.cnpj}?`
+    Retorne apenas um json com o código da empresa, cnpj e razão social, que pertenã a este cnpj ${agendamento.cnpj}?`
 
     const result = await model.generateContent(prompt);
     const responseText = result.response.text();
     const arrText = responseText.split('"')
-
+    console.log(arrText)
     agendamento.codEmpresa  = arrText[3]
-    agendamento.empresa     = arrText[7]
-    agendamento.cnpj        = arrText[11]
+    agendamento.cnpj        = arrText[7]
+    agendamento.empresa     = arrText[11]
     
     return agendamento
     
