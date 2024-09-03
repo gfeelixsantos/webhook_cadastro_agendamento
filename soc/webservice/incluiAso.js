@@ -9,8 +9,7 @@ async function webserviceIncluiAso(agendamento) {
     const URL = 'https://ws1.soc.com.br/WSSoc/services/ResultadoExamesWs?wsdl'
 
 
-    // const medico = agendamento.exames.length > 3 ? 'Dra. Andrea Cristina Defina do Amaral' : ''
-    const codDraAndrea = agendamento.exame.listaExames.length > 3 ? '1' : '0'
+    const medico = agendamento.exames.length > 3 ? 'Dra. Andrea Cristina Defina do Amaral' : ''
 
     const xml = 
         `
@@ -48,7 +47,7 @@ async function webserviceIncluiAso(agendamento) {
 
 
                     <medicoAsoEResponsavelPelaFicha>true</medicoAsoEResponsavelPelaFicha>
-                    <nomeMedicoEmissorAso>${ codDraAndrea }</nomeMedicoEmissorAso>
+                    <nomeMedicoEmissorAso>${ medico }</nomeMedicoEmissorAso>
                     
                     <parecerAso>APTO</parecerAso>
                     <parecerTrabalhoEmAltura>APTO</parecerTrabalhoEmAltura>

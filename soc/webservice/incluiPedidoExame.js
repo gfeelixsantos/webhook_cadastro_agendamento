@@ -10,7 +10,7 @@ async function webservicePedidoExame(agendamento) {
 
 
     // const medico = agendamento.listaExames.length > 3 ? 'Dra. Andrea Cristina Defina do Amaral' : ''
-    // const codDra = agendamento.exame.listaExames.length > 3 ? '1' : '0'
+    const codDraAndrea = agendamento.exames.length > 3 ? '6249' : ''
 
     const xml = 
         `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://services.soc.age.com/">
@@ -37,7 +37,7 @@ async function webservicePedidoExame(agendamento) {
                     ${ adicionarExames(agendamento) }
                 </exames>
                 <tipoBuscaMedico>CODIGO_SOC</tipoBuscaMedico>
-                <codigoMedico></codigoMedico>
+                <codigoMedico>${ codDraAndrea }</codigoMedico>
             </PedidoExame>
         </ser:incluirPedidoExame>
 
