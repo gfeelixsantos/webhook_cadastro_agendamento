@@ -401,7 +401,7 @@ async function webserviceFuncionarioModelo2(agendamento) {
     const response = await axios.post(URL, xml, options)
 
     if (response.status == 200){
-        console.log('SOAP FUNCIONARIO_MODELO2:', response.data)
+        console.log('SOAP FUNCIONARIO_MODELO2:', response.status)
     }
     else {
         console.error('ERRO FUNCIONARIO_MODELO2:', response.data)
