@@ -11,7 +11,8 @@ async function cadastroFuncionarioPorEmpresa(agendamento) {
     // Busca cadastro existente SOC
     if (arrFuncionarios.length > 0){
       
-      const cadastroAntigo = arrFuncionarios.find( func => func['CPFFUNCIONARIO'] == agendamento.cpf)
+      const listaCadastrosFuncionario = arrFuncionarios.filter( func => func['CPFFUNCIONARIO'] == agendamento.cpf)
+      const cadastroAntigo = listaCadastrosFuncionario[ listaCadastrosFuncionario.length -1 ]
 
       if (cadastroAntigo){
         // procedimento = 'ATUALIZAR'

@@ -6,7 +6,7 @@ async function pedidoExame(agendamento) {
     const response = await fetch(url);
     const responseBuff = await response.arrayBuffer();
     const pedidoExame = new TextDecoder('iso-8859-1').decode(responseBuff);
-    
+
     if(pedidoExame.length > 2){
         const jsonPedidoExame = JSON.parse(pedidoExame)
         const pedidoAgendamento = jsonPedidoExame.find( pedido => pedido['DATAFICHA'] == agendamento.dataAgendamento )

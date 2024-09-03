@@ -155,7 +155,7 @@ async function webserviceFuncionarioModelo2(agendamento) {
                         
                         <requisitosFuncao></requisitosFuncao>
                         
-                        <rg>${agendamento.rg}</rg>
+                        <rg>${agendamento.rg != '' ? agendamento.rg : '00.000.000-0'}</rg>
                         
                         <rgDataEmissao></rgDataEmissao>
                         
@@ -401,9 +401,12 @@ async function webserviceFuncionarioModelo2(agendamento) {
     const response = await axios.post(URL, xml, options)
 
     if (response.status == 200){
-        console.log('SOAP FUNCIONARIO_MODELO2:', response.status)
+        const responseDescricaoErro = response.data.split('descricaoErro')
+        console.log('SOAP FUNCIONARIO_MODELO2:', response.status, responseDescricaoErro[1])
     }
     else {
+        
+        agendamento.erros.push(response.data)
         console.error('ERRO FUNCIONARIO_MODELO2:', response.data)
     }
 }

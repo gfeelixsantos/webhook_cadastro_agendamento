@@ -95,6 +95,7 @@ async function resultadoExame(agendamento, resultado) {
         console.log(`SOAP RESULTADO_EXAME:`, response.status)
     }
     else {
+        agendamento.erros.push(response.data)
         console.error(`ERRO RESULTADO_EXAME:`, response.data)
     }
 

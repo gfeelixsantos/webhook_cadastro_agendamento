@@ -54,9 +54,10 @@ async function webservicePedidoExame(agendamento) {
         const response = await axios.post(URL, xml, options)
     
         if (response.status == 200){
-            console.log('SOAP PEDIDO_EXAME:', response.status)
+            console.log('SOAP PEDIDO_EXAME:', response.data)
         }
         else {
+            agendamento.erros.push(response.data)
             console.error('ERRO PEDIDO_EXAME:', response.data)
         }
 }

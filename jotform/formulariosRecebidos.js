@@ -84,7 +84,7 @@ module.exports = async function formulariosRecebidos() {
             "emailSolicitante":     emailAgendamento,
             "telefoneSolicitante":  telefoneAgendamento,
             "anexos":               subs.content[0].answers[codigoCampos.anexos].answer,
-            "mensagem":             ''
+            "erros":                []
         })
             .save()
             .catch( (e) => console.log(e) )

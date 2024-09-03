@@ -85,6 +85,7 @@ async function agenda(agendamento) {
             console.log('SOAP AGENDA:', response.status)
         }
         else {
+            agendamento.erros.push(response.data)
             console.error('ERRO AGENDA:', response.data)
         }
 }

@@ -30,7 +30,7 @@ async function cadastroEmpresas(agendamento) {
     else {
       // Pode ser KIT também...
       agendamento.situacao = 'ERRO'
-      agendamento.mensagem = 'Empresa/Cliente não localizada.'
+      agendamento.erros.push('Empresa/Cliente não localizada.')
       throw new Error('Erro ao buscar código empresa (fn: cadastroEmpresas)')
     }
   }

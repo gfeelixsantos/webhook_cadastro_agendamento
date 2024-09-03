@@ -49,6 +49,7 @@ async function webserviceCopiaRisco(agendamento, risco) {
         console.log('SOAP COPIA_RISCO:', response.status)
     }
     else {
+        agendamento.erros.push(response.data)
         console.error('ERRO COPIA_RISCO:', response.data)
     }
 }

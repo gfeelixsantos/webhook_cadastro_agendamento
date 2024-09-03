@@ -78,6 +78,7 @@ async function webserviceIncluiAso(agendamento) {
             console.log('SOAP ASO:', response.status)
         }
         else {
+            agendamento.erros.push(response.data)
             console.error('ERRO ASO:', response.data)
         }
 }
