@@ -5,7 +5,7 @@ async function pedidoExamePeloSequencialFicha(agendamento) {
     const response = await fetch(url);
     const responseBuff = await response.arrayBuffer();
     const sequencialResultado = new TextDecoder('iso-8859-1').decode(responseBuff);
-    
+    console.log(sequencialResultado)
     const jsonSequencialResultados = JSON.parse(sequencialResultado);
     
     for (const codigo of jsonSequencialResultados){
