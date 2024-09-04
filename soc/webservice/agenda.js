@@ -82,7 +82,7 @@ async function agenda(agendamento) {
         const response = await axios.post(URL, xml, options)
 
         if (response.status == 200){
-            console.log('SOAP AGENDA:', response.status)
+            console.log('SOAP AGENDA:', response.data)
         }
         else {
             agendamento.erros.push(response.data)

@@ -46,6 +46,7 @@ async function exameAdmissional(agendamento) {
         }
         
         const checkAgenda = await listagemCompromissoFuncionario(agendamento)
+        console.log('CHEKAGENDA', checkAgenda)
         if (!checkAgenda ){
             console.log('add agenda');
             

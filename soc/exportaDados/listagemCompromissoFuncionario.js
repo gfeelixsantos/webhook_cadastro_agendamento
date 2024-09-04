@@ -7,8 +7,8 @@ async function listagemCompromissoFuncionario(agendamento) {
   const responseBuff = await response.arrayBuffer();
   const registrosAgenda = new TextDecoder('iso-8859-1').decode(responseBuff);
 
-  const arrRegistrosAgenda = JSON.parse(registrosAgenda);
-
+  const arrRegistrosAgenda = await JSON.parse(registrosAgenda);
+  console.log('COMPROMISSOS AGENDA', arrRegistrosAgenda)
   // False, considera que não esta na agenda e faz a inclusão.
   return arrRegistrosAgenda.length <= 0 ? false : true
   
