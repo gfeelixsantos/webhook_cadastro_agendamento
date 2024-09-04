@@ -24,9 +24,9 @@ app.post('/', async (req, res) => {
 start()
 async function start() {
     let agendamento = await formulariosRecebidos()
-    exameAdmissional(agendamento)
-        .then( () => console.log( '------------------------------------------------------ >> Agendamento Finalizado!'))
-        .catch( e => console.log( e, 'Erro de agendamento!')) 
+    // exameAdmissional(mock)
+    //     .then( () => console.log( '------------------------------------------------------ >> Agendamento Finalizado!'))
+    //     .catch( e => console.log(  'Erro de agendamento!')) 
     
     // switch (agendamento.tipoExame) {
     //     case 'ADMISSIONAL':
