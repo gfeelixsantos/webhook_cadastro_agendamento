@@ -12,7 +12,7 @@ async function cadastroFuncionarioPorEmpresa(agendamento) {
     // Busca cadastro existente SOC
     if (arrFuncionarios.length > 0){
       const listaCadastrosFuncionarioCpf = arrFuncionarios.filter( func => func['CPFFUNCIONARIO'] == agendamento.cpf)
-      const listaCadastrosFuncionarioNome = arrFuncionarios.filter( func => func['NOME'].toUpperCase() == agendamento.funcionario)
+      const listaCadastrosFuncionarioNome = arrFuncionarios.filter( func => agendamento.funcionario.includes(func['NOME'].toUpperCase()))
       
       const cadastroAntigo =  listaCadastrosFuncionarioCpf.length > 0 ? 
                               listaCadastrosFuncionarioCpf[ listaCadastrosFuncionarioCpf.length -1 ] :
@@ -23,7 +23,9 @@ async function cadastroFuncionarioPorEmpresa(agendamento) {
         console.log(cadastroAntigo, 'CADASTRO ANTIGO')
         // procedimento = 'ATUALIZAR'
         agendamento.codFuncionario = cadastroAntigo['CODIGO']
-        agendamento.rg == '' ? cadastroAntigo['RG'] : null
+        agendamento.dataAdmissao = cadastroAntigo['DATA_ADMISSAO']
+        agendamento.rg == '' ? agendamento.rg = cadastroAntigo['RG'] : null
+
         return agendamento
 
       }
@@ -33,6 +35,7 @@ async function cadastroFuncionarioPorEmpresa(agendamento) {
         const ultimoFuncionario = ordenaCodigosFuncionarios [ordenaCodigosFuncionarios.length -1]
         const codigoGerado = Number(ultimoFuncionario['CODIGO']) + 1
         agendamento.codFuncionario = codigoGerado.toString()
+        agendamento.dataAdmissao = agendamento.dataAgendamento
         
         return agendamento
       }

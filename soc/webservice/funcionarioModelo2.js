@@ -88,7 +88,7 @@ async function webserviceFuncionarioModelo2(agendamento) {
                         <contatoEmergencia></contatoEmergencia>
                         <cor></cor>
                         <cpf>${ agendamento.cpf }</cpf>
-                        <dataAdmissao>${ agendamento.codTipoExame == 1 ? agendamento.dataAgendamento : '' }</dataAdmissao>
+                        <dataAdmissao>${ agendamento.codTipoExame == 1 ? agendamento.dataAgendamento : agendamento.dataAdmissao }</dataAdmissao>
                         <dataAfastamento></dataAfastamento>
                         <dataDemissao>${ agendamento.tipoExame == 'DEMISSIONAL' ? agendamento.dataAgendamento : '' }</dataDemissao>
                         <dataDemissionalCarta></dataDemissionalCarta>
