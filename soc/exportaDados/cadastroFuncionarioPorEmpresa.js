@@ -11,13 +11,19 @@ async function cadastroFuncionarioPorEmpresa(agendamento) {
 
     // Busca cadastro existente SOC
     if (arrFuncionarios.length > 0){
+      const listaCadastrosFuncionarioCpf = arrFuncionarios.filter( func => func['CPFFUNCIONARIO'] == agendamento.cpf)
+      const listaCadastrosFuncionarioNome = arrFuncionarios.filter( func => func['NOME'].toUpperCase() == agendamento.funcionario)
       
-      const listaCadastrosFuncionario = arrFuncionarios.filter( func => func['CPFFUNCIONARIO'] == agendamento.cpf)
-      const cadastroAntigo = listaCadastrosFuncionario[ listaCadastrosFuncionario.length -1 ]
+      const cadastroAntigo =  listaCadastrosFuncionarioCpf.length > 0 ? 
+                              listaCadastrosFuncionarioCpf[ listaCadastrosFuncionarioCpf.length -1 ] :
+                              listaCadastrosFuncionarioNome[listaCadastrosFuncionarioNome.length -1]
+      
 
       if (cadastroAntigo){
+        console.log(cadastroAntigo, 'CADASTRO ANTIGO')
         // procedimento = 'ATUALIZAR'
         agendamento.codFuncionario = cadastroAntigo['CODIGO']
+        agendamento.rg == '' ? cadastroAntigo['RG'] : null
         return agendamento
 
       }
@@ -41,3 +47,63 @@ async function cadastroFuncionarioPorEmpresa(agendamento) {
   }
   
   module.exports = cadastroFuncionarioPorEmpresa
+
+
+  /*
+  {
+    CODIGOEMPRESA: '1434953',
+    NOMEEMPRESA: 'ASK CRIOS PRODUTOS QUIMICOS DO BRASIL LTDA.',
+    CODIGO: '41',
+    NOME: 'ANDERSON LUIS PIRES DE SOUZA',
+    CODIGOUNIDADE: '001',
+    NOMEUNIDADE: 'ASK CRIOS PRODUTOS QUIMICOS DO BRASIL LTDA',
+    CODIGOSETOR: '23',
+    NOMESETOR: 'EFLUENTES LIQUIDOS',
+    CODIGOCARGO: '26',
+    NOMECARGO: 'LÍDER DE EFLUENTES',
+    CBOCARGO: '',
+    CCUSTO: '',
+    NOMECENTROCUSTO: '',
+    MATRICULAFUNCIONARIO: '31227',
+    CPF: '11538889803',
+    RG: '17764888 SSP-SP',
+    UFRG: '',
+    ORGAOEMISSORRG: '',
+    SITUACAO: 'Ativo',
+    SEXO: '1',
+    PIS: '1702425146-6',
+    CTPS: '000630200069SP',
+    SERIECTPS: '',
+    ESTADOCIVIL: '0',
+    TIPOCONTATACAO: '1',
+    DATA_NASCIMENTO: '03/01/1969',
+    DATA_ADMISSAO: '01/02/1999',
+    DATA_DEMISSAO: '',
+    ENDERECO: '',
+    NUMERO_ENDERECO: '0',
+    BAIRRO: '',
+    CIDADE: '',
+    UF: '',
+    CEP: '',
+    TELEFONERESIDENCIAL: '',
+    TELEFONECELULAR: '',
+    EMAIL: '',
+    DEFICIENTE: '0',
+    DEFICIENCIA: '',
+    NM_MAE_FUNCIONARIO: '',
+    DATAULTALTERACAO: '06/12/2023',
+    MATRICULARH: '',
+    COR: '0',
+    ESCOLARIDADE: '0',
+    NATURALIDADE: '',
+    RAMAL: '',
+    REGIMEREVEZAMENTO: '0',
+    REGIMETRABALHO: '',
+    TELCOMERCIAL: '',
+    TURNOTRABALHO: '0',
+    RHUNIDADE: '',
+    RHSETOR: '',
+    RHCARGO: '',
+    RHCENTROCUSTOUNIDADE: ''
+  }
+    */

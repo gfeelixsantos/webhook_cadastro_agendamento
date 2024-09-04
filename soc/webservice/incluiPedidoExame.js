@@ -9,9 +9,6 @@ async function webservicePedidoExame(agendamento) {
     const URL = 'https://ws1.soc.com.br/WSSoc/services/ResultadoExamesWs?wsdl'
 
 
-    // const medico = agendamento.listaExames.length > 3 ? 'Dra. Andrea Cristina Defina do Amaral' : ''
-    const codDraAndrea = agendamento.exames.length > 3 ? '6249' : ''
-
     const xml = 
         `<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ser="http://services.soc.age.com/">
         <soapenv:Header>
@@ -37,7 +34,7 @@ async function webservicePedidoExame(agendamento) {
                     ${ adicionarExames(agendamento) }
                 </exames>
                 <tipoBuscaMedico>CODIGO_SOC</tipoBuscaMedico>
-                <codigoMedico>${ codDraAndrea }</codigoMedico>
+                <codigoMedico></codigoMedico>
             </PedidoExame>
         </ser:incluirPedidoExame>
 

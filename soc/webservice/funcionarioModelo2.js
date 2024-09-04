@@ -123,7 +123,7 @@ async function webserviceFuncionarioModelo2(agendamento) {
                         
                         <nomeCooperativa></nomeCooperativa>
                         
-                        <nomeFuncionario>${ decodeURI(agendamento.funcionario) } </nomeFuncionario>
+                        <nomeFuncionario>${ Buffer.from(agendamento.funcionario, 'utf-8')} </nomeFuncionario>
                         
                         <nomeMae></nomeMae>
                         
