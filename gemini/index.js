@@ -8,13 +8,13 @@ const Gemini = {
       
     const prompt = `Dada a seguinte hierarquia:
     ${JSON.stringify(hierarquia)}
-    Retorne um json com o código da unidade, nome da unidade, código do setor, nome do setor, código do cargo e nome do cargo que seja exato para o funcionário com a unidade  ${agendamento.unidadeTrabalho} setor ${agendamento.setor} e cargo ${agendamento.cargo} sendo todos os itens com a situação ativa na hierarquia informada, considere também nomenclaturas como JR, PL e SR. Caso não encontrar, considere o mais similar possível ?`
+    Retorne apenas um json com o código da unidade, nome da unidade, código do setor, nome do setor, código do cargo e nome do cargo que seja exato para o funcionário com a unidade  ${agendamento.unidadeTrabalho} setor ${agendamento.setor} e cargo ${agendamento.cargo} sendo todos os itens com a situação ATIVO_UNIDADE, ATIVO_SETOR e ATIVO_CARGO como "Sim" na hierarquia informada. Considere também nomenclaturas como JR, PL e SR. Caso não encontre, considere o mais similar possível... ?`
     
     const result = await model.generateContent(prompt);
     const responseText = result.response.text();
     const arrText = responseText.split('"')
     agendamento.codTipoExame == 4 ? console.log(arrText) : null
-
+    console.log(arrText)
     if (arrText.length > 2){
       agendamento.codUnidadeTrabalho  = arrText[3]
       agendamento.unidadeTrabalho     = arrText[7]
@@ -25,6 +25,10 @@ const Gemini = {
       agendamento.codCargo            = arrText[19]
       agendamento.cargo               = arrText[23]
 
+      arrText.includes('considera') ? console.log('==============================================================') : null
+
+      // agendamento.observacoes = '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYelmU1ngMoEdungNoIbBcLlKmm9FghYkibw&s" width="50" /><strong style="color:red;font-size:18px">CONSULTAR UNIDADE, SETOR E CARGO COM AGENDAMENTO !</strong>'.toString()
+      agendamento.observacoes = 'CONSULTAR UNIDADE, SETOR E CARGO COM AGENDAMENTO'
       return agendamento
 
     }

@@ -1,7 +1,6 @@
 const WSSecurity = require('wssecurity-soap') 
 const axios = require('axios')
-const Atendimento = require('../../aws/schema')
-const enviarEmail = require('../../nodemailer/index')
+const comunicaErro = require('../../util/comunicaErro')
 
 async function webserviceFuncionarioModelo2(agendamento) {
 
@@ -42,7 +41,7 @@ async function webserviceFuncionarioModelo2(agendamento) {
                         <materialUtilizado></materialUtilizado>
                         <mobiliarioUtilizado></mobiliarioUtilizado>
                         <nome>${agendamento.cargo}</nome>
-                        <nomeLegal>${agendamento.codCargo}</nomeLegal>
+                        <nomeLegal>${agendamento.cargo}</nomeLegal>
                         <orientacaoAso></orientacaoAso>
                         <requisitosFuncao></requisitosFuncao>
                         <status></status>
@@ -133,7 +132,7 @@ async function webserviceFuncionarioModelo2(agendamento) {
                         
                         <numeroEndereco></numeroEndereco>
                         
-                        <observacaoAso></observacaoAso>
+                        <observacaoAso>${ agendamento.observacoes != '' ? agendamento.observacoes : ''  }</observacaoAso>
                         
                         <observacaoEstabilidade></observacaoEstabilidade>
                         
@@ -169,7 +168,7 @@ async function webserviceFuncionarioModelo2(agendamento) {
                         
                         <sexo>${agendamento.sexo}</sexo>
                         
-                        <situacao>ATIVO</situacao>
+                        <situacao>${agendamento.situacao == 'KIT' ? 'INATIVO': 'ATIVO'}</situacao>
                         
                         <telefoneCelular></telefoneCelular>
                         
@@ -189,7 +188,7 @@ async function webserviceFuncionarioModelo2(agendamento) {
                         
                         <utilizarDescricaoRequisitoCargo></utilizarDescricaoRequisitoCargo>
                         
-                        <observacaoFuncionario>${ agendamento.observacao != undefined ? agendamento.observacao : ''  }</observacaoFuncionario>
+                        <observacaoFuncionario></observacaoFuncionario>
                         
                         <codigoPaisNascimento></codigoPaisNascimento>
                         
@@ -404,17 +403,11 @@ async function webserviceFuncionarioModelo2(agendamento) {
     const responseDescricaoErro = response.data.split('descricaoErro')[1]
     
     if (responseDescricaoErro.length > 3 || response.status != 200){
-        agendamento.status = 'ERRO'
-        agendamento.erros.push(responseDescricaoErro)
-        
-        await Atendimento.delete(agendamento.id)
-        await new Atendimento(agendamento).save()
+        comunicaErro(agendamento, 'Erro Webservice, funcionario modelo 2')
 
-        enviarEmail(agendamento)
-        
-        throw new Error('Erro Webservice, funcionario modelo 2')
     }
     else {
+        console.log(agendamento)
         console.log('SOAP FUNCIONARIO_MODELO2', response.status);
         
     }

@@ -1,4 +1,5 @@
 const apiBrasilCnpj = require('../apiBrasil/index')
+const verificaAgendamentoKit = require('../core/empresasKit')
 const cadastroEmpresas = require('../soc/exportaDados/cadastroEmpresas')
 const cadastroFuncionarioPorEmpresa = require('../soc/exportaDados/cadastroFuncionarioPorEmpresa')
 const hierarquiaEmpresa = require('../soc/exportaDados/hierarquiaEmpresa')
@@ -22,6 +23,7 @@ async function exameAdmissional(agendamento) {
         
         // Dados iniciais
         agendamento = await apiBrasilCnpj(agendamento)
+        agendamento = await verificaAgendamentoKit(agendamento)
         agendamento = await cadastroEmpresas(agendamento)
         await timer()
         agendamento = await cadastroFuncionarioPorEmpresa(agendamento)
