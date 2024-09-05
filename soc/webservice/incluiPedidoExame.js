@@ -54,6 +54,7 @@ async function webservicePedidoExame(agendamento) {
             console.log('SOAP PEDIDO_EXAME:', response.status)
         }
         else {
+            agendamento.situacao = 'ERRO'
             agendamento.erros.push(response.data)
             console.error('ERRO PEDIDO_EXAME:', response.data)
         }

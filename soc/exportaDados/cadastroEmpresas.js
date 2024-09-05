@@ -22,17 +22,10 @@ async function cadastroEmpresas(agendamento) {
   }
 
   else {
-    agendamento = await Gemini.buscaEmpresa(agendamento, empresasAtivas)
+    // Pode ser KIT também...
+    agendamento.situacao = 'ERRO'
+    agendamento.erros.push('Empresa/Cliente não localizada.')
     
-    if(agendamento.codEmpresa != ''){
-      return agendamento
-    }
-    else {
-      // Pode ser KIT também...
-      agendamento.situacao = 'ERRO'
-      agendamento.erros.push('Empresa/Cliente não localizada.')
-      throw new Error('Erro ao buscar código empresa (fn: cadastroEmpresas)')
-    }
   }
 }
 

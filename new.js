@@ -2,6 +2,8 @@ require('dotenv').config()
 const express = require('express');
 const formulariosRecebidos = require('./jotform/formulariosRecebidos')
 const exameAdmissional = require('./tiposExames/admissional')
+const enviarEmail = require('./nodemailer/index')
+
 
 const mock = require('./mock')
 
@@ -24,9 +26,17 @@ app.post('/', async (req, res) => {
 start()
 async function start() {
     let agendamento = await formulariosRecebidos()
-    exameAdmissional(agendamento)
-        .then( () => console.log( '------------------------------------------------------ >> Agendamento Finalizado!'))
-        .catch( e => console.log( e, 'Erro de agendamento!')) 
+
+
+    return exameAdmissional(agendamento)
+        .then( () => console.log( '--------------------------------------------------------------------- >> Agendamento Finalizado!'))
+        .catch( e => {
+            console.log( e, 'Erro de agendamento!')
+            
+            enviarEmail()
+                .then(() => console.log('Email enviado!'))
+                .catch((e) => console.log(e, 'Erro no envio de email'))
+        }) 
     
     // switch (agendamento.tipoExame) {
     //     case 'ADMISSIONAL':

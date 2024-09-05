@@ -9,3 +9,9 @@ id envio: 5902115832373127105
 
 API properties: https://api.jotform.com/docs/properties/index.php
 API GitHub: https://github.com/jotform/jotform-api-nodejs/tree/master
+
+API Brasil CNPJ: https://brasilapi.com.br/docs#tag/CNPJ
+
+API Whatsapp: https://docs.wwebjs.dev/index.html
+
+

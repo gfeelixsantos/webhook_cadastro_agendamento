@@ -248,6 +248,109 @@ const MOCK =
 //   }
 
 
+
+// CPF INVALIDO
+// {
+//   id: 'CM000606',
+//   chegada: '',
+//   dataChegada: '',
+//   dataAgendamento: '06/09/2024',
+//   horarioAgendamento: '10:00',
+//   situacao: 'SOLICITADO',
+//   codEmpresa: '346861',
+//   empresa: '9 INJET Injeção de Peças Plásticas Ltda',
+//   codFuncionario: '150',
+//   funcionario: 'LEILA NUNES RIBEIRO DOS SANTOS',
+//   dataNascimento: '22/01/1986',
+//   sexo: 'FEMININO',
+//   rg: '406587346',
+//   cpf: '12995838260',
+//   situacaoFuncionario: 'Ativo',
+//   cnpj: '07.591.645/0002-76',
+//   unidadeTrabalho: 'RIO CLARO',
+//   codUnidadeTrabalho: '001',
+//   setor: 'PRODUÇÃO',
+//   codSetor: '002',
+//   cargo: 'OPERADOR DE PRODUÇÃO',
+//   codCargo: '018',
+//   idFicha: '',
+//   dataFicha: '',
+//   codTipoExame: 5,
+//   tipoExame: 'DEMISSIONAL',
+//   unidade: 'RIO CLARO',
+//   realizados: 0,
+//   afazer: 0,
+//   riscos: [],
+//   exames: [],
+//   observacoes: '',
+//   preferencial: '',
+//   atividadesEspeciais: [],
+//   perfil: '',
+//   nomeSolicitante: 'KELLY CRISTINA LIMA',
+//   emailSolicitante: 'dp@9injet.com.br',
+//   telefoneSolicitante: '(19) 99403-5342',
+//   anexos: [],
+//   erros: [],
+//   createdAt: 1725474536945,
+//   updatedAt: 1725474536945,
+//   dataAdmissao: '01/01/2019'
+// }
+
+
+
+// NON-WHITSPACE
+// {
+//   id: 'CM000607',
+//   chegada: '',
+//   dataChegada: '',
+//   dataAgendamento: '06/09/2024',
+//   horarioAgendamento: '10:00',
+//   situacao: 'SOLICITADO',
+//   codEmpresa: '991254',
+//   empresa: 'SEMPREL SERVIÇOS PARA APOIO E MONITORAMENTO EIRELI - ME',
+//   codFuncionario: '315',
+//   funcionario: 'EVANEIDE PEREIRA DOS SANTOS',
+//   dataNascimento: '09/05/1986',
+//   sexo: 'FEMININO',
+//   rg: '66082890X',
+//   cpf: '08235380447',
+//   situacaoFuncionario: 'Ativo',
+//   cnpj: '28.370.198/0001-14',
+//   unidadeTrabalho: 'SEMPREL APOIO E MONITORAMENTO',
+//   codUnidadeTrabalho: '2',
+//   setor: 'LIMPEZA',
+//   codSetor: '1',
+//   cargo: 'AUXILIAR DE LIMPEZA',
+//   codCargo: '7',
+//   idFicha: '',
+//   dataFicha: '',
+//   codTipoExame: 1,
+//   tipoExame: 'ADMISSIONAL',
+//   unidade: 'RIO CLARO',
+//   realizados: 0,
+//   afazer: 0,
+//   riscos: [],
+//   exames: [],
+//   observacoes: '',
+//   preferencial: '',
+//   atividadesEspeciais: [],
+//   perfil: '',
+//   nomeSolicitante: 'RAFAELA OLIVO',
+//   emailSolicitante: 'recrutamento@gruposemprel.com.br',
+//   telefoneSolicitante: '',
+//   anexos: [],
+//   erros: [],
+//   createdAt: 1725474649701,
+//   updatedAt: 1725474649701,
+//   dataAdmissao: '06/09/2024'
+// }
+
+
+
+
+
+
+
 // DATA SEQUENCIAL DA FICHA
 // {
 //   id: 'CM000558',

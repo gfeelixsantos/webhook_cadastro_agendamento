@@ -412,6 +412,7 @@ async function webserviceFuncionarioModelo2(agendamento) {
     }
     else {
         
+        agendamento.situacao = 'ERRO'
         agendamento.erros.push(response.data)
         console.error('ERRO FUNCIONARIO_MODELO2:', response.data)
     }

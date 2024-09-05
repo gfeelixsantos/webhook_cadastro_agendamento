@@ -37,22 +37,22 @@ const Gemini = {
 
 
 
-  buscaEmpresa: async function (agendamento, hierarquia) {
-    const prompt = `Dada a seguinte hierarquia:
-    ${JSON.stringify(hierarquia)}
-    Retorne apenas um json com o código da empresa, cnpj e razão social, que pertenã a este cnpj ${agendamento.cnpj}?`
+  // buscaEmpresa: async function (agendamento, empresasAtivas) {
+  //   const prompt = `Dada as seguintes empresas ativas:
+  //   ${JSON.stringify(empresasAtivas)}
+  //   Retorne apenas um json com o código da empresa, cnpj e razão social, que seja exato para este cnpj ${agendamento.cnpj}?`
 
-    const result = await model.generateContent(prompt);
-    const responseText = result.response.text();
-    const arrText = responseText.split('"')
-    console.log(arrText)
-    agendamento.codEmpresa  = arrText[3]
-    agendamento.cnpj        = arrText[7]
-    agendamento.empresa     = arrText[11]
+  //   const result = await model.generateContent(prompt);
+  //   const responseText = result.response.text();
+  //   const arrText = responseText.split('"')
+  //   console.log(arrText)
+  //   agendamento.codEmpresa  = arrText[3]
+  //   agendamento.cnpj        = arrText[7]
+  //   agendamento.empresa     = arrText[11]
     
-    return agendamento
+  //   return agendamento
     
-  }
+  // }
 }
 
 module.exports = Gemini

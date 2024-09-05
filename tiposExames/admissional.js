@@ -1,3 +1,4 @@
+const apiBrasilCnpj = require('../apiBrasil/index')
 const cadastroEmpresas = require('../soc/exportaDados/cadastroEmpresas')
 const cadastroFuncionarioPorEmpresa = require('../soc/exportaDados/cadastroFuncionarioPorEmpresa')
 const hierarquiaEmpresa = require('../soc/exportaDados/hierarquiaEmpresa')
@@ -12,12 +13,15 @@ const pedidoExamePeloSequencialFicha = require('../soc/exportaDados/pedidoExameP
 const resultadoExame = require('../soc/webservice/resultadoExame')
 const listagemCompromissoFuncionario = require('../soc/exportaDados/listagemCompromissoFuncionario')
 const agenda = require('../soc/webservice/agenda')
+const Atendimento = require('../aws/schema')
 const timer = require('../util/timer')
 
 async function exameAdmissional(agendamento) {
+    agendamento.situacao = 'AGUARDANDO'
     console.log(agendamento);
         
         // Dados iniciais
+        agendamento = await apiBrasilCnpj(agendamento)
         agendamento = await cadastroEmpresas(agendamento)
         await timer()
         agendamento = await cadastroFuncionarioPorEmpresa(agendamento)
@@ -50,6 +54,17 @@ async function exameAdmissional(agendamento) {
         if (!checkAgenda ){
             await agenda(agendamento)
         }
+        
+        if (agendamento.erros.length > 0){
+            // Informa erro...
+            
+        }
+        else{
+            await Atendimento.delete(agendamento.id)
+            await new Atendimento(agendamento).save()
+        }
+
+
 }
 
 

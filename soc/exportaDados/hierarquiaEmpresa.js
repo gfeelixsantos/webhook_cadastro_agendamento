@@ -17,6 +17,7 @@ async function hierarquiaEmpresa(agendamento) {
     else {
         
         // Empresa sem hierarquia....
+        agendamento.situacao = 'ERRO'
         agendamento.erros.push('Empresa sem hierarquia')
         return agendamento
     }

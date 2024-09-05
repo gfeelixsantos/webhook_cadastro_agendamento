@@ -20,7 +20,6 @@ async function cadastroFuncionarioPorEmpresa(agendamento) {
       
 
       if (cadastroAntigo){
-        console.log(cadastroAntigo, 'CADASTRO ANTIGO')
         // procedimento = 'ATUALIZAR'
         agendamento.codFuncionario = cadastroAntigo['CODIGO']
         agendamento.dataAdmissao = cadastroAntigo['DATA_ADMISSAO']

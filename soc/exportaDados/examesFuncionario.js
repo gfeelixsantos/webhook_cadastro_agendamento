@@ -43,7 +43,7 @@ async function examesFuncionario(agendamento) {
             if (atividade == 'TRABALHO EM ALTURA (NR 35)' || atividade == 'TRABALHO EM ESPAÇO CONFINADO (NR 33)'){
                 agendamento = Exame.trabalhoEmAlturaOuEspacoConfinado(agendamento)
             }
-            if (atividade == 'MANIPULAÇÃO DE ALIMENTOS (VIGILÂNCIA)'){
+            if (atividade == 'MANIPULAÇÃO DE ALIMENTOS (VIGILÂNCIA)' || agendamento.cargo.includes('COZINH')){
                 agendamento = Exame.vigilanciaSanitaria(agendamento)
             }
             if (atividade == 'OPERAR EMPILHADEIRA' || agendamento.cargo.includes('MOTORISTA')){
