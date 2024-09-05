@@ -1,8 +1,10 @@
 const WSSecurity = require('wssecurity-soap') 
 const axios = require('axios')
+const Atendimento = require('../../aws/schema')
+const enviarEmail = require('../../nodemailer/index')
 
 async function webserviceFuncionarioModelo2(agendamento) {
-    console.log(agendamento)
+
     const user = process.env.WEBSERVICE_USER
     const pass = process.env.WEBSERVICE_PASS
     const header = new WSSecurity(user, pass, 'PasswordDigest')
@@ -399,23 +401,24 @@ async function webserviceFuncionarioModelo2(agendamento) {
     }
 
     const response = await axios.post(URL, xml, options)
+    const responseDescricaoErro = response.data.split('descricaoErro')[1]
+    
+    if (responseDescricaoErro.length > 3 || response.status != 200){
+        agendamento.status = 'ERRO'
+        agendamento.erros.push(responseDescricaoErro)
+        
+        await Atendimento.delete(agendamento.id)
+        await new Atendimento(agendamento).save()
 
-    if (response.status == 200){
-        const responseDescricaoErro = response.data.split('descricaoErro')
-        console.log(responseDescricaoErro[1])
-
-        if (responseDescricaoErro.length > 3){
-            console.log(responseDescricaoErro[1])
-            agendamento.erros.push(responseDescricaoErro[1])
-        }
-        console.log('SOAP FUNCIONARIO_MODELO2:', response.status)
+        enviarEmail(agendamento)
+        
+        throw new Error('Erro Webservice, funcionario modelo 2')
     }
     else {
+        console.log('SOAP FUNCIONARIO_MODELO2', response.status);
         
-        agendamento.situacao = 'ERRO'
-        agendamento.erros.push(response.data)
-        console.error('ERRO FUNCIONARIO_MODELO2:', response.data)
     }
+
 }
 
 module.exports = webserviceFuncionarioModelo2

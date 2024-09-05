@@ -11,18 +11,26 @@ const transporter = nodemailer.createTransport({
 });
 
 
-async function enviarEmail(message) {
+async function enviarEmail(agendamento) {
 
   const info = await transporter.sendMail({
     from: '"ESOCIAL" <esocial@cmsocupacional.com.br>', // sender address
     to: "felix.devx@gmail.com", // list of receivers
-    subject: "❌ ERRO AGENDAMENTO", // Subject line
+    subject: `❌ ERRO DE AGENDAMENTO ${agendamento.id}`, // Subject line
     text: "plain text", // plain text body
-    html: `
-      <h2>ERRO DE AGENDAMENTO ${new Date().toLocaleTimeString('pt-br')}</h2>
-      <section>
-        <p>${JSON.stringify(message)}</p>
-      </section>
+    attachments: [
+      {
+          filename: 'agendamento.json',
+          content: JSON.stringify(agendamento)
+      }
+  ],
+    html: 
+    `
+      <h2>${agendamento.funcionario}</h2>
+      <h3>${agendamento.empresa}</h3>
+      <h3>${agendamento.tipoExame}</h3>
+      <h3>${agendamento.dataAgendamento} - ${agendamento.horarioAgendamento}</h3>
+      <strong>${agendamento.erros}</strong>
     `, 
   });
 
