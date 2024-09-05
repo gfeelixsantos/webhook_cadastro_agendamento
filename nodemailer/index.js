@@ -21,7 +21,7 @@ async function enviarEmail(message) {
     html: `
       <h2>ERRO DE AGENDAMENTO ${new Date().toLocaleTimeString('pt-br')}</h2>
       <section>
-        <p>${message}</p>
+        <p>${JSON.stringify(message)}</p>
       </section>
     `, 
   });
