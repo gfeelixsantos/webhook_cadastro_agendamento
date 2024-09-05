@@ -30,10 +30,10 @@ async function start() {
 
     return exameAdmissional(agendamento)
         .then( () => console.log( '--------------------------------------------------------------------- >> Agendamento Finalizado!'))
-        .catch( e => {
-            console.log( e, 'Erro de agendamento!')
+        .catch( message => {
+            console.log('Erro de agendamento!')
             
-            enviarEmail()
+            enviarEmail(message)
                 .then(() => console.log('Email enviado!'))
                 .catch((e) => console.log(e, 'Erro no envio de email'))
         }) 
