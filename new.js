@@ -27,16 +27,15 @@ start()
 async function start() {
     let agendamento = await formulariosRecebidos()
 
-
-    return exameAdmissional(agendamento)
-        .then( () => console.log( '--------------------------------------------------------------------- >> Agendamento Finalizado!'))
+    exameAdmissional(agendamento)
         .catch( message => {
             console.log('Erro de agendamento!')
             
             enviarEmail(message)
                 .then(() => console.log('Email enviado!'))
                 .catch((e) => console.log(e, 'Erro no envio de email'))
-        }) 
+                
+        }).finally(() => console.log( '--------------------------------------------------------------------- >> Agendamento Finalizado!'))
     
     // switch (agendamento.tipoExame) {
     //     case 'ADMISSIONAL':

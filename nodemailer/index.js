@@ -19,9 +19,9 @@ async function enviarEmail(message) {
     subject: "❌ ERRO AGENDAMENTO", // Subject line
     text: "plain text", // plain text body
     html: `
-      <h1>ERRO DE AGENDAMENTO ${new Date().toLocaleTimeString('pt-br')}</h1>
+      <h2>ERRO DE AGENDAMENTO ${new Date().toLocaleTimeString('pt-br')}</h2>
       <section>
-        <code>${message}</code>
+        <p>${message}</p>
       </section>
     `, 
   });
