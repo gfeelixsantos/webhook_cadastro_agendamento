@@ -28,7 +28,7 @@ const Gemini = {
       arrText.includes('considera') ? console.log('==============================================================') : null
 
       // agendamento.observacoes = '<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYelmU1ngMoEdungNoIbBcLlKmm9FghYkibw&s" width="50" /><strong style="color:red;font-size:18px">CONSULTAR UNIDADE, SETOR E CARGO COM AGENDAMENTO !</strong>'.toString()
-      agendamento.observacoes = 'CONSULTAR UNIDADE, SETOR E CARGO COM AGENDAMENTO'
+      // agendamento.observacoes = 'CONSULTAR UNIDADE, SETOR E CARGO COM AGENDAMENTO'
       return agendamento
 
     }

@@ -90,7 +90,7 @@ module.exports = async function formulariosRecebidos() {
         })
             .save()
             .catch( (e) => console.log(e) )
-        // const teste = await Atendimento.scan('id').contains("CM000677").all().exec()
+        // const teste = await Atendimento.scan('id').contains("CM000683").all().exec()
         // const json =  teste.toJSON()
         // return json[0]
         return agendamento
