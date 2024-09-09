@@ -62,7 +62,7 @@ async function webservicePedidoExame(agendamento) {
     
             enviarEmail(agendamento)
             
-            throw new Error('Erro Webservice, Inclui Pedido de Exame')
+            console.error('Erro Webservice, Inclui Pedido de Exame')
         }
         else {
             console.error('SOAP PEDIDO_EXAME:', response.status)
