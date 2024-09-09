@@ -18,7 +18,7 @@ const Atendimento = require('../aws/schema')
 const timer = require('../util/timer')
 
 async function exameAdmissional(agendamento) {
-    agendamento.situacao = 'AGUARDANDO'
+    //agendamento.situacao = 'AGUARDANDO'
     console.log(agendamento);
         
         // Dados iniciais
