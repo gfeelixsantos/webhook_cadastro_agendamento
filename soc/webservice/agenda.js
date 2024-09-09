@@ -87,7 +87,7 @@ async function agenda(agendamento) {
         else {
             agendamento.situacao = 'ERRO'
             agendamento.erros.push(response.data)
-            console.error('ERRO AGENDA:', response.data)
+            throw new Error('ERRO AGENDA:', response.data)
         }
 }
 

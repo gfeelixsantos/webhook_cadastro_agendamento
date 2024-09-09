@@ -10,7 +10,7 @@ async function comunicaErro(agendamento, mensagem) {
 
     enviarEmail(agendamento)
 
-    console.log(mensagem)
+    throw new Error(mensagem, 'Erro ao cadastrar')
 }
 
 module.exports = comunicaErro
