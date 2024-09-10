@@ -39,7 +39,7 @@ async function webserviceCopiaRisco(agendamento, risco) {
         
     const options = {
         headers: { 
-            'Content-Type': 'text/xml',
+            'Content-Type': 'text/xml, charset=utf-8;',
         }
     }
 

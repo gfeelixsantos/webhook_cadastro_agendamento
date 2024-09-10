@@ -84,7 +84,7 @@ async function resultadoExame(agendamento, resultado) {
 
     const options = {
         headers: { 
-            'Content-Type': 'text/xml',
+            'Content-Type': 'text/xml, charset=utf-8;',
         }
     }
 

@@ -395,7 +395,7 @@ async function webserviceFuncionarioModelo2(agendamento) {
         
     const options = {
         headers: { 
-            'Content-Type': 'text/xml',
+            'Content-Type': 'text/xml, charset=utf-8;',
         }
     }
 
