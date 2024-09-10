@@ -52,8 +52,7 @@ async function webservicePedidoExame(agendamento) {
 
         const response = await axios.post(URL, xml, options)
         const responseMensagem = response.data.split('mensagem')[1]
-        console.log(response.status)
-        console.log(response.data)
+
         if (responseMensagem.includes('ERRO') && response.status != 200){
             agendamento.status = 'ERRO'
             agendamento.erros.push(response.data)

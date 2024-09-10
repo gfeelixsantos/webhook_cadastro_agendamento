@@ -2,7 +2,7 @@ const Gemini = require('../../gemini/index')
 const comunicaErro = require('../../util/comunicaErro')
 
 async function cadastroEmpresas(agendamento) {
-  console.log(agendamento)
+  
   const url = `https://ws1.soc.com.br/WebSoc/exportadados?parametro={"empresa":'16459',"codigo":"161676","chave":"664aeac783745a3d5679","tipoSaida":"json"}`;
     
   const response = await fetch(url);

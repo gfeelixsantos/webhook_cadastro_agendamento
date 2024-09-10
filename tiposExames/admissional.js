@@ -19,7 +19,7 @@ const timer = require('../util/timer')
 
 async function exameAdmissional(agendamento) {
     agendamento.situacao = 'AGUARDANDO'
-    console.log(agendamento);
+    console.log( '--------------------------------------------------------------------- >> Iniciando cadastro!', agendamento.id)
         
         // Dados iniciais
         agendamento = await apiBrasilCnpj(agendamento)
