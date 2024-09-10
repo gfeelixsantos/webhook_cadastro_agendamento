@@ -90,10 +90,11 @@ module.exports = async function formulariosRecebidos() {
         })
             .save()
             .catch( (e) => console.log(e) )
-        // const teste = await Atendimento.scan('id').contains("CM000942").all().exec()
+
+        // const teste = await Atendimento.scan('id').contains("CM000947").all().exec()
         // const json =  teste.toJSON()
-        // console.log(json)
         // return json[0]
+
         return agendamento
     }
     else {

@@ -16,7 +16,7 @@ async function cadastroFuncionarioPorEmpresa(agendamento) {
       
       const cadastroAntigo =  listaCadastrosFuncionarioCpf.length > 0 ? 
                               listaCadastrosFuncionarioCpf[ listaCadastrosFuncionarioCpf.length -1 ] :
-                              null
+                              undefined
                               // listaCadastrosFuncionarioNome[listaCadastrosFuncionarioNome.length -1]
       
 
