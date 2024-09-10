@@ -14,7 +14,7 @@ const Gemini = {
     const responseText = result.response.text();
     const arrText = responseText.split('"')
     agendamento.codTipoExame == 4 ? console.log(arrText) : null
-    console.log(arrText)
+
     if (arrText.length > 2){
       agendamento.codUnidadeTrabalho  = arrText[3]
       agendamento.unidadeTrabalho     = arrText[7]
@@ -34,7 +34,7 @@ const Gemini = {
     }
     else {
       // Não encontrou hierarquia....
-      console.log(arrText, 'Não encontrou a hierarquia....');
+      console.error(arrText, 'Não encontrou a hierarquia....');
     } 
   },
 

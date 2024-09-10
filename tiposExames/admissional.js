@@ -18,7 +18,7 @@ const Atendimento = require('../aws/schema')
 const timer = require('../util/timer')
 
 async function exameAdmissional(agendamento) {
-    //agendamento.situacao = 'AGUARDANDO'
+    agendamento.situacao = 'AGUARDANDO'
     console.log(agendamento);
         
         // Dados iniciais
@@ -63,6 +63,7 @@ async function exameAdmissional(agendamento) {
         }
         else{
             await Atendimento.delete(agendamento.id)
+            agendamento = agendamento.erros.length > 0 ?  agendamento.erros = [] :  null
             await new Atendimento(agendamento).save()
         }
 
