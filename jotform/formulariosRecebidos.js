@@ -18,12 +18,9 @@ module.exports = async function formulariosRecebidos() {
 
         // Tratamento de dados antes de salvar
         const nomeFuncionarioTrim = subs.content[0].answers[codigoCampos.nomeFuncionario].answer.trim().toUpperCase()
-        const nomeBuffer = Buffer.from(nomeFuncionarioTrim)
-        
 
         const cpfFuncionario = subs.content[0].answers[codigoCampos.cpf].answer.replaceAll('.', '')
         const cpfFinal = cpfFuncionario.replace('-', '')
-
 
         const empresaTrim = subs.content[0].answers[codigoCampos.razaoSocial].answers ? subs.content[0].answers[codigoCampos.razaoSocial].answer.trim().toUpperCase() : ''
         const solicitanteAgendamento = subs.content[0].answers[codigoCampos.nomeSolicitante].answer.trim().toUpperCase()
@@ -91,7 +88,7 @@ module.exports = async function formulariosRecebidos() {
             .save()
             .catch( (e) => console.log(e) )
 
-        // const teste = await Atendimento.scan('id').contains("CM000984").all().exec()
+        // const teste = await Atendimento.scan('id').contains("CM000806").all().exec()
         // const json =  teste.toJSON()
         // return json[0]
 

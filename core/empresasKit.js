@@ -3,7 +3,8 @@ const listaEmpresasKit = [
     '41.449.329/0001-11',   // PREVER SAÚDE E SEGURANÇA DO TRABALHO LTDA
     '71.322.150/0059-86',   // PREVER SAÚDE E SEGURANÇA DO TRABALHO LTDA
     '10.413.463/0001-39',   // CND 27 (DELTAMED SERVIÇOS E MEDICOS LTDA)
-    '10.413.463/0003-09'    // CND 27 (DELTAMED SERVIÇOS E MEDICOS LTDA)
+    '10.413.463/0003-09',   // CND 27 (DELTAMED SERVIÇOS E MEDICOS LTDA)
+    '10.413.463/0008-05',   // CND 27 (DELTAMED SERVIÇOS E MEDICOS LTDA)
 ]
 
 function verificaAgendamentoKit(agendamento) {
@@ -28,7 +29,10 @@ function verificaAgendamentoKit(agendamento) {
     }
 
     // Troca de CNPJ CND 27
-    if( agendamento.cnpj == '10.413.463/0001-39' || agendamento.cnpj == '10.413.463/0003-09'){
+    if( agendamento.cnpj == '10.413.463/0001-39' || 
+        agendamento.cnpj == '10.413.463/0003-09' ||
+        agendamento.cnpj == '10.413.463/0008-05'
+    ){
         agendamento.cnpj = '10.578.903/0001-08'
     }
 

@@ -1,7 +1,6 @@
 const WSSecurity = require('wssecurity-soap') 
 const axios = require('axios')
-const Atendimento = require('../../aws/schema')
-const enviarEmail = require('../../nodemailer/index')
+const comunicaErro = require('../../util/comunicaErro')
 
 async function webservicePedidoExame(agendamento) {
 
@@ -54,15 +53,7 @@ async function webservicePedidoExame(agendamento) {
         const responseMensagem = response.data.split('mensagem')[1]
 
         if (responseMensagem.includes('ERRO') && response.status != 200){
-            agendamento.status = 'ERRO'
-            agendamento.erros.push(response.data)
-            
-            await Atendimento.delete(agendamento.id)
-            await new Atendimento(agendamento).save()
-    
-            enviarEmail(agendamento)
-            
-            throw new Error('Erro Webservice, Inclui Pedido de Exame')
+            comunicaErro(agendamento, response.data)
         }
         else {
             console.error('SOAP PEDIDO_EXAME:', response.status)

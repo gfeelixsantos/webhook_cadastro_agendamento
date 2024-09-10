@@ -1,4 +1,5 @@
 const Gemini = require('../../gemini/index')
+const comunicaErro = require('../../util/comunicaErro')
 
 async function hierarquiaEmpresa(agendamento) {
 
@@ -17,8 +18,7 @@ async function hierarquiaEmpresa(agendamento) {
     else {
         
         // Empresa sem hierarquia....
-        agendamento.situacao = 'ERRO'
-        agendamento.erros.push('Empresa sem hierarquia')
+        comunicaErro(agendamento, 'Empresa sem hierarquia')
         return agendamento
     }
 }

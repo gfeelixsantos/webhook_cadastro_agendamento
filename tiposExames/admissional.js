@@ -14,11 +14,12 @@ const pedidoExamePeloSequencialFicha = require('../soc/exportaDados/pedidoExameP
 const resultadoExame = require('../soc/webservice/resultadoExame')
 const listagemCompromissoFuncionario = require('../soc/exportaDados/listagemCompromissoFuncionario')
 const agenda = require('../soc/webservice/agenda')
+const enviarEmail = require('../nodemailer/index')
 const Atendimento = require('../aws/schema')
 const timer = require('../util/timer')
 
 async function exameAdmissional(agendamento) {
-    agendamento.situacao = 'AGUARDANDO'
+    agendamento.situacao = 'EM PREPARAÇÃO'
     console.log( '--------------------------------------------------------------------- >> Iniciando cadastro!', agendamento.id)
         
         // Dados iniciais
@@ -57,16 +58,13 @@ async function exameAdmissional(agendamento) {
             await agenda(agendamento)
         }
         
+        // Envia email caso houver erros
         if (agendamento.erros.length > 0){
-            // Informa erro...
-            
-        }
-        else{
-            await Atendimento.delete(agendamento.id)
-            await new Atendimento(agendamento).save()
-        }
+            enviarEmail(agendamento)
 
-
+        }
+        await Atendimento.delete(agendamento.id)
+        await new Atendimento(agendamento).save() 
 }
 
 

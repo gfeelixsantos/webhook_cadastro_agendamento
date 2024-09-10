@@ -1,3 +1,5 @@
+const comunicaErro = require('../util/comunicaErro')
+
 async function apiBrasilCnpj(agendamento) {
 
     if (agendamento.cnpj != ''){
@@ -11,8 +13,7 @@ async function apiBrasilCnpj(agendamento) {
         const response = await fetch(url)
     
         if(response.status == 400){
-            agendamento.situacao = 'ERRO'
-            agendamento.erros.push('CNPJ Inválido!')
+            comunicaErro(agendamento, 'CNPJ Inválido!')
         }
         else {
             const responseJson = await response.json()

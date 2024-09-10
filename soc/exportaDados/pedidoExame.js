@@ -1,3 +1,4 @@
+const comunicaErro = require('../../util/comunicaErro')
 
 async function pedidoExame(agendamento) {
     
@@ -15,8 +16,7 @@ async function pedidoExame(agendamento) {
     }
     else{
         // Nao abriu pedido de exame...
-        agendamento.situacao = 'ERRO'
-        agendamento.erros.push('Erro ao obter ID Ficha de exame')
+        comunicaErro(agendamento, 'Erro ao obter ID Ficha de exame')
     }
     
     

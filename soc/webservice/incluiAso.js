@@ -1,5 +1,6 @@
 const WSSecurity = require('wssecurity-soap') 
 const axios = require('axios')
+const comunicaErro = require('../../util/comunicaErro')
 
 async function webserviceIncluiAso(agendamento) {
 
@@ -75,9 +76,8 @@ async function webserviceIncluiAso(agendamento) {
             console.log('SOAP ASO:', response.status)
         }
         else {
-            agendamento.situacao = 'ERRO'
-            agendamento.erros.push(response.data)
             console.error('ERRO ASO:', response.data)
+            comunicaErro(agendamento, response.data)
         }
 }
 
