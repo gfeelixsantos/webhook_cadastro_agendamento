@@ -51,7 +51,7 @@ async function webserviceCopiaRisco(agendamento, risco) {
     else {
         agendamento.situacao = 'ERRO'
         agendamento.erros.push(response.data)
-        throw new Error('ERRO COPIA_RISCO:', response.data)
+        console.error('ERRO COPIA_RISCO:', response.data)
     }
 }
 

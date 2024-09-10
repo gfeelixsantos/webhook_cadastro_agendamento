@@ -407,9 +407,7 @@ async function webserviceFuncionarioModelo2(agendamento) {
 
     }
     else {
-        console.log(agendamento)
         console.log('SOAP FUNCIONARIO_MODELO2', response.status);
-        
     }
 
 }

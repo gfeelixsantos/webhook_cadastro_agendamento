@@ -63,7 +63,6 @@ async function exameAdmissional(agendamento) {
         }
         else{
             await Atendimento.delete(agendamento.id)
-            agendamento = agendamento.erros.length > 0 ?  agendamento.erros = [] :  null
             await new Atendimento(agendamento).save()
         }
 
