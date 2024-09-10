@@ -11,12 +11,12 @@ async function cadastroFuncionarioPorEmpresa(agendamento) {
 
     // Busca cadastro existente SOC
     if (arrFuncionarios.length > 0){
-      const listaCadastrosFuncionarioCpf = arrFuncionarios.filter( func => func['CPFFUNCIONARIO'] == agendamento.cpf)
+      const cadastroAntigo = arrFuncionarios.filter( func => func['CPFFUNCIONARIO'] == agendamento.cpf)
       const listaCadastrosFuncionarioNome = arrFuncionarios.filter( func => agendamento.funcionario.includes(func['NOME'].toUpperCase()))
       
-      const cadastroAntigo =  listaCadastrosFuncionarioCpf.length > 0 ? 
-                              listaCadastrosFuncionarioCpf[ listaCadastrosFuncionarioCpf.length -1 ] :
-                              undefined
+      // const cadastroAntigo =  listaCadastrosFuncionarioCpf.length > 0 ? 
+      //                         listaCadastrosFuncionarioCpf[ listaCadastrosFuncionarioCpf.length -1 ] :
+                              
                               // listaCadastrosFuncionarioNome[listaCadastrosFuncionarioNome.length -1]
       
 
