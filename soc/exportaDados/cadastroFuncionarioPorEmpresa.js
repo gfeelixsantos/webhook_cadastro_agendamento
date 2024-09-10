@@ -8,18 +8,15 @@ async function cadastroFuncionarioPorEmpresa(agendamento) {
     const funcionarios = new TextDecoder('iso-8859-1').decode(responseBuff);
 
     const arrFuncionarios = await JSON.parse(funcionarios)
-
+   
     // Busca cadastro existente SOC
     if (arrFuncionarios.length > 0){
-      const cadastroAntigo = arrFuncionarios.filter( func => func['CPFFUNCIONARIO'] == agendamento.cpf)
-      const listaCadastrosFuncionarioNome = arrFuncionarios.filter( func => agendamento.funcionario.includes(func['NOME'].toUpperCase()))
-      
-      // const cadastroAntigo =  listaCadastrosFuncionarioCpf.length > 0 ? 
-      //                         listaCadastrosFuncionarioCpf[ listaCadastrosFuncionarioCpf.length -1 ] :
+      const listaCadastrosFuncionarioCpf = arrFuncionarios.filter( func => func['CPF'] == agendamento.cpf)
+      // const listaCadastrosFuncionarioNome = arrFuncionarios.filter( func => agendamento.funcionario.startWith(func['NOME'].toUpperCase()))
+     
+      const cadastroAntigo =  listaCadastrosFuncionarioCpf.length > 0 ? 
+                              listaCadastrosFuncionarioCpf[ listaCadastrosFuncionarioCpf.length -1 ] : undefined
                               
-                              // listaCadastrosFuncionarioNome[listaCadastrosFuncionarioNome.length -1]
-      
-
       if (cadastroAntigo){
         // procedimento = 'ATUALIZAR'
         agendamento.codFuncionario = cadastroAntigo['CODIGO']
