@@ -17,7 +17,7 @@ async function apiBrasilCnpj(agendamento) {
         }
         else {
             const responseJson = await response.json()
-            agendamento.empresa = responseJson.razao_social
+            agendamento.empresa = responseJson.razao_social.toUpperCase()
         }
     
         return agendamento
