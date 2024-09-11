@@ -7,6 +7,11 @@ async function comunicaErro(agendamento, mensagem) {
     await Atendimento.delete(agendamento.id)
     await new Atendimento(agendamento).save()
 
+    // Envia email caso houver erros
+    if (agendamento.erros.length > 0){
+        enviarEmail(agendamento)
+    }
+
     console.error('Erro cadastramento!')
     
 }
