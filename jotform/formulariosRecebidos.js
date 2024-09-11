@@ -17,7 +17,7 @@ module.exports = async function formulariosRecebidos() {
     if(subs.responseCode == 200){
 
         // Tratamento de dados antes de salvar
-        const nomeFuncionarioTrim = subs.content[0].answers[codigoCampos.nomeFuncionario].answer.trim().toUpperCase()
+        const nomeFuncionarioTrim = subs.content[0].answers[codigoCampos.nomeFuncionario].answer.toUpperCase()
 
         const cpfFuncionario = subs.content[0].answers[codigoCampos.cpf].answer.replaceAll('.', '')
         const cpfFinal = cpfFuncionario.replace('-', '')
@@ -88,11 +88,11 @@ module.exports = async function formulariosRecebidos() {
             .save()
             .catch( (e) => console.log(e) )
 
-        // const teste = await Atendimento.scan('id').contains("CM000806").all().exec()
-        // const json =  teste.toJSON()
-        // return json[0]
+        const teste = await Atendimento.scan('id').contains("CM001116").all().exec()
+        const json =  teste.toJSON()
+        return json[0]
 
-        return agendamento
+        // return agendamento
     }
     else {
         // Tratar erro caso não consiga acessar envio do formulário....

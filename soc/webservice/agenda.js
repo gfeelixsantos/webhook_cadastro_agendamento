@@ -1,5 +1,6 @@
 const WSSecurity = require('wssecurity-soap') 
 const axios = require('axios')
+const comunicaErro = require('../../util/comunicaErro')
 
 async function agenda(agendamento) {
 
@@ -85,9 +86,7 @@ async function agenda(agendamento) {
             console.log('SOAP AGENDA:', response.status)
         }
         else {
-            agendamento.situacao = 'ERRO'
-            agendamento.erros.push(response.data)
-            throw new Error('ERRO AGENDA:', response.data)
+            comunicaErro(agendamento, 'Erro ao registrar na agenda')
         }
 }
 

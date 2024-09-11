@@ -403,7 +403,7 @@ async function webserviceFuncionarioModelo2(agendamento) {
     const responseDescricaoErro = response.data.split('descricaoErro')[1]
     
     if (responseDescricaoErro.length > 3 || response.status != 200){
-        comunicaErro(agendamento, 'Erro Webservice, funcionario modelo 2', response.data)
+        comunicaErro(agendamento, `Erro cadastro funcionario ${response.data}` )
 
     }
     else {
