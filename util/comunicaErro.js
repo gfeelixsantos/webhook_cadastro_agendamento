@@ -1,19 +1,16 @@
 const Atendimento = require('../aws/schema')
+const enviarEmail = require('../nodemailer/index')
 
 async function comunicaErro(agendamento, mensagem) {
     agendamento.situacao = 'ERRO'
-    agendamento.erros.push(mensagem)
+    agendamento.erros = []
+    agendamento.erros.unshift(mensagem)
     
-    await Atendimento.delete(agendamento.id)
+    Atendimento.delete(agendamento.id)
     await new Atendimento(agendamento).save()
 
-    // Envia email caso houver erros
-    if (agendamento.erros.length > 0){
-        enviarEmail(agendamento)
-    }
-
-    console.error('Erro cadastramento!')
-    
+    await enviarEmail(agendamento)
+    throw new Error(agendamento);
 }
 
 module.exports = comunicaErro
