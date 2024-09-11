@@ -61,10 +61,11 @@ async function exameAdmissional(agendamento) {
         // Envia email caso houver erros
         if (agendamento.erros.length > 0){
             enviarEmail(agendamento)
-
         }
+        
         await Atendimento.delete(agendamento.id)
-        await new Atendimento(agendamento).save() 
+        await new Atendimento(agendamento).save()
+
 }
 
 

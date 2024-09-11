@@ -16,14 +16,14 @@ module.exports = async function formulariosRecebidos() {
 
     if(subs.responseCode == 200){
 
-        // Tratamento de dados antes de salvar
+        
         const identificador = subs.content[0].answers[codigoCampos.identificador].answer
 
         const checkAtendimento = await Atendimento.scan('id').contains(identificador).all().exec()
-        const checkAtendimentoJson =  checkAtendimento.toJSON()
 
-        if(!checkAtendimentoJson){
-          
+        if(checkAtendimento['count'] != 0){
+
+          // Tratamento de dados antes de salvar
           const nomeFuncionarioTrim = subs.content[0].answers[codigoCampos.nomeFuncionario].answer.trim().toUpperCase()
 
           const cpfFuncionario = subs.content[0].answers[codigoCampos.cpf].answer.replaceAll('.', '')
@@ -95,15 +95,17 @@ module.exports = async function formulariosRecebidos() {
               .save()
               .catch( (e) => console.log(e) )
 
-          // const teste = await Atendimento.scan('id').contains("CM000951").all().exec()
-          // const json =  teste.toJSON()
-          // return json[0]
-
           return agendamento
         }
 
         else {
-          console.log('Atendimento já cadastrado...')
+          
+          const checkAtendimentoJson =  checkAtendimento.toJSON()
+
+          console.log('Atendimento já cadastrado...', checkAtendimentoJson.id)
+          const teste = await Atendimento.scan('id').contains(checkAtendimentoJson.id).all().exec()
+          const json =  teste.toJSON()
+          return json[0]
         }
 
         
