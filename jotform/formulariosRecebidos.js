@@ -17,82 +17,96 @@ module.exports = async function formulariosRecebidos() {
     if(subs.responseCode == 200){
 
         // Tratamento de dados antes de salvar
-        const nomeFuncionarioTrim = subs.content[0].answers[codigoCampos.nomeFuncionario].answer.trim().toUpperCase()
+        const identificador = subs.content[0].answers[codigoCampos.identificador].answer
 
-        const cpfFuncionario = subs.content[0].answers[codigoCampos.cpf].answer.replaceAll('.', '')
-        const cpfFinal = cpfFuncionario.replace('-', '')
+        const checkAtendimento = await Atendimento.scan('id').contains(identificador).all().exec()
+        const checkAtendimentoJson =  checkAtendimento.toJSON()
 
-        const empresaTrim = subs.content[0].answers[codigoCampos.razaoSocial].answers ? subs.content[0].answers[codigoCampos.razaoSocial].answer.trim().toUpperCase() : ''
-        const solicitanteAgendamento = subs.content[0].answers[codigoCampos.nomeSolicitante].answer.trim().toUpperCase()
-        const emailAgendamento = subs.content[0].answers[codigoCampos.emailSolicitante].answer.trim().toLowerCase()
+        if(!checkAtendimentoJson){
+          
+          const nomeFuncionarioTrim = subs.content[0].answers[codigoCampos.nomeFuncionario].answer.trim().toUpperCase()
+
+          const cpfFuncionario = subs.content[0].answers[codigoCampos.cpf].answer.replaceAll('.', '')
+          const cpfFinal = cpfFuncionario.replace('-', '')
+
+          const empresaTrim = subs.content[0].answers[codigoCampos.razaoSocial].answers ? subs.content[0].answers[codigoCampos.razaoSocial].answer.trim().toUpperCase() : ''
+          const solicitanteAgendamento = subs.content[0].answers[codigoCampos.nomeSolicitante].answer.trim().toUpperCase()
+          const emailAgendamento = subs.content[0].answers[codigoCampos.emailSolicitante].answer.trim().toLowerCase()
+          
+          const unidadeAgendamento = subs.content[0].answers[codigoCampos.unidade].answer ? subs.content[0].answers[codigoCampos.unidade].answer.trim().toUpperCase() : ''
+          const setorAgendamento = subs.content[0].answers[codigoCampos.setor].answer ? subs.content[0].answers[codigoCampos.setor].answer.trim().toUpperCase() : ''
+          const cargoAgendamento = subs.content[0].answers[codigoCampos.cargo].answer ? subs.content[0].answers[codigoCampos.cargo].answer.trim().toUpperCase() : ''
+          const rgAgendamento = subs.content[0].answers[codigoCampos.rg].answer ? subs.content[0].answers[codigoCampos.rg].answer.trim() : ''
+          const sexoAgendamento = subs.content[0].answers[codigoCampos.sexo].answer ? subs.content[0].answers[codigoCampos.sexo].answer : ''
+          const observacoesAgendamento = subs.content[0].answers[codigoCampos.observacoes].answer ? subs.content[0].answers[codigoCampos.observacoes].answer : ''
+          
+          let atividadesAgendamento = []
+          const atividadesEnviadas = subs.content[0].answers[codigoCampos.solicitacaoAtividades].answer ? subs.content[0].answers[codigoCampos.solicitacaoAtividades].answer : []
+          Array.isArray(atividadesEnviadas) ? 
+            atividadesEnviadas.forEach( e => atividadesAgendamento.push(e)) : atividadesAgendamento.push(Object.values(atividadesEnviadas))
+
+          
+          const telefoneAgendamento = subs.content[0].answers[codigoCampos.telefoneSolicitante].prettyFormat ? subs.content[0].answers[codigoCampos.telefoneSolicitante].prettyFormat : ''
+
+          const codTipoExame = geraCodigoTipoExame(subs.content[0].answers[codigoCampos.tipoExame].answer)
+          
+          const agendamento = await new Atendimento({
+              "id":               identificador,
+              "chegada":          '',
+              "dataChegada":      '',
+              "dataAgendamento":  subs.content[0].answers[codigoCampos.dataAgendamento].prettyFormat,
+              "horarioAgendamento":subs.content[0].answers[codigoCampos.horarioAgendamento].answer,
+              "situacao":         'SOLICITADO',
+              "codEmpresa":       '',
+              "empresa":          empresaTrim,
+              "codFuncionario":   '',
+              "funcionario":      nomeFuncionarioTrim,
+              "dataNascimento":   subs.content[0].answers[codigoCampos.dataNascimento].prettyFormat,
+              "sexo":             sexoAgendamento,
+              "rg":               rgAgendamento,
+              "cpf":              cpfFinal,
+              "situacaoFuncionario": 'Ativo',
+              "cnpj":             subs.content[0].answers[codigoCampos.cnpj].answer,
+              "unidadeTrabalho":  unidadeAgendamento,
+              "codUnidadeTrabalho":'',
+              "setor":            setorAgendamento,
+              "codSetor":         '',
+              "cargo":            cargoAgendamento,
+              "codCargo":         '',
+              "idFicha":          '',
+              "dataFicha":        '',
+              "codTipoExame":     codTipoExame,
+              "tipoExame":        subs.content[0].answers[codigoCampos.tipoExame].answer,
+              "unidade":          subs.content[0].answers[codigoCampos.unidadeCmso].answer,
+              "realizados":       0,
+              "afazer":           0,
+              "riscos":           [],          
+              "exames":           [],
+              "observacoes":          observacoesAgendamento,
+              "preferencial":         '',
+              "atividadesEspeciais":  atividadesAgendamento,
+              "perfil":               '',
+              "nomeSolicitante":      solicitanteAgendamento,
+              "emailSolicitante":     emailAgendamento,
+              "telefoneSolicitante":  telefoneAgendamento,
+              "anexos":               subs.content[0].answers[codigoCampos.anexos].answer,
+              "erros":                []
+          })
+              .save()
+              .catch( (e) => console.log(e) )
+
+          // const teste = await Atendimento.scan('id').contains("CM000951").all().exec()
+          // const json =  teste.toJSON()
+          // return json[0]
+
+          return agendamento
+        }
+
+        else {
+          console.log('Atendimento já cadastrado...')
+        }
+
         
-        const unidadeAgendamento = subs.content[0].answers[codigoCampos.unidade].answer ? subs.content[0].answers[codigoCampos.unidade].answer.trim().toUpperCase() : ''
-        const setorAgendamento = subs.content[0].answers[codigoCampos.setor].answer ? subs.content[0].answers[codigoCampos.setor].answer.trim().toUpperCase() : ''
-        const cargoAgendamento = subs.content[0].answers[codigoCampos.cargo].answer ? subs.content[0].answers[codigoCampos.cargo].answer.trim().toUpperCase() : ''
-        const rgAgendamento = subs.content[0].answers[codigoCampos.rg].answer ? subs.content[0].answers[codigoCampos.rg].answer.trim() : ''
-        const sexoAgendamento = subs.content[0].answers[codigoCampos.sexo].answer ? subs.content[0].answers[codigoCampos.sexo].answer : ''
-        const observacoesAgendamento = subs.content[0].answers[codigoCampos.observacoes].answer ? subs.content[0].answers[codigoCampos.observacoes].answer : ''
-        
-        let atividadesAgendamento = []
-        const atividadesEnviadas = subs.content[0].answers[codigoCampos.solicitacaoAtividades].answer ? subs.content[0].answers[codigoCampos.solicitacaoAtividades].answer : []
-        Array.isArray(atividadesEnviadas) ? 
-          atividadesEnviadas.forEach( e => atividadesAgendamento.push(e)) : atividadesAgendamento.push(Object.values(atividadesEnviadas))
-
-        
-        const telefoneAgendamento = subs.content[0].answers[codigoCampos.telefoneSolicitante].prettyFormat ? subs.content[0].answers[codigoCampos.telefoneSolicitante].prettyFormat : ''
-
-        const codTipoExame = geraCodigoTipoExame(subs.content[0].answers[codigoCampos.tipoExame].answer)
-        
-        const agendamento = await new Atendimento({
-            "id":               subs.content[0].answers[codigoCampos.identificador].answer,
-            "chegada":          '',
-            "dataChegada":      '',
-            "dataAgendamento":  subs.content[0].answers[codigoCampos.dataAgendamento].prettyFormat,
-            "horarioAgendamento":subs.content[0].answers[codigoCampos.horarioAgendamento].answer,
-            "situacao":         'SOLICITADO',
-            "codEmpresa":       '',
-            "empresa":          empresaTrim,
-            "codFuncionario":   '',
-            "funcionario":      nomeFuncionarioTrim,
-            "dataNascimento":   subs.content[0].answers[codigoCampos.dataNascimento].prettyFormat,
-            "sexo":             sexoAgendamento,
-            "rg":               rgAgendamento,
-            "cpf":              cpfFinal,
-            "situacaoFuncionario": 'Ativo',
-            "cnpj":             subs.content[0].answers[codigoCampos.cnpj].answer,
-            "unidadeTrabalho":  unidadeAgendamento,
-            "codUnidadeTrabalho":'',
-            "setor":            setorAgendamento,
-            "codSetor":         '',
-            "cargo":            cargoAgendamento,
-            "codCargo":         '',
-            "idFicha":          '',
-            "dataFicha":        '',
-            "codTipoExame":     codTipoExame,
-            "tipoExame":        subs.content[0].answers[codigoCampos.tipoExame].answer,
-            "unidade":          subs.content[0].answers[codigoCampos.unidadeCmso].answer,
-            "realizados":       0,
-            "afazer":           0,
-            "riscos":           [],          
-            "exames":           [],
-            "observacoes":          observacoesAgendamento,
-            "preferencial":         '',
-            "atividadesEspeciais":  atividadesAgendamento,
-            "perfil":               '',
-            "nomeSolicitante":      solicitanteAgendamento,
-            "emailSolicitante":     emailAgendamento,
-            "telefoneSolicitante":  telefoneAgendamento,
-            "anexos":               subs.content[0].answers[codigoCampos.anexos].answer,
-            "erros":                []
-        })
-            .save()
-            .catch( (e) => console.log(e) )
-
-        // const teste = await Atendimento.scan('id').contains("CM000951").all().exec()
-        // const json =  teste.toJSON()
-        // return json[0]
-
-        return agendamento
     }
     else {
         // Tratar erro caso não consiga acessar envio do formulário....
