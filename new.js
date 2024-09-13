@@ -2,7 +2,7 @@ require('dotenv').config()
 const express = require('express');
 const formulariosRecebidos = require('./jotform/formulariosRecebidos')
 const exameAdmissional = require('./tiposExames/admissional')
-const enviarEmail = require('./nodemailer/index')
+const examePeriodico = require('./tiposExames/periodico')
 
 
 const mock = require('./mock')
@@ -27,21 +27,32 @@ start()
 async function start() {
     let agendamento = await formulariosRecebidos()
 
-    exameAdmissional(agendamento)
-        .catch( (err) => console.log(err, 'Erro de agendamento!'))
-        .finally(() => console.log( '--------------------------------------------------------------------- >> Agendamento Finalizado!'))
-    
-    // switch (agendamento.tipoExame) {
-    //     case 'ADMISSIONAL':
-    //         agendamento = exameAdmissional(agendamento)
-    //         break;
 
-    //     case 'PERIÓDICO':
-    //         console.log('exame periodico...')
-    //         break;
     
+    switch (agendamento.tipoExame) {
+        case 'ADMISSIONAL':
+            exameAdmissional(agendamento)
+                .catch( (err) => console.log(err))
+                .finally(() => console.log( '--------------------------------------------------------------------- >> Agendamento Finalizado!'))
+            break;
+
+        case 'PERIÓDICO':
+            examePeriodico(agendamento)
+                .catch( (err) => console.log(err))
+                .finally(() => console.log( '--------------------------------------------------------------------- >> Agendamento Finalizado!'))
+            break;
+        case 'DEMISSIONAL':
+            examePeriodico(agendamento)
+                .catch( (err) => console.log(err))
+                .finally(() => console.log( '--------------------------------------------------------------------- >> Agendamento Finalizado!'))
+            break;
+        case 'RETORNO AO TRABALHO':
+            examePeriodico(agendamento)
+                .catch( (err) => console.log(err))
+                .finally(() => console.log( '--------------------------------------------------------------------- >> Agendamento Finalizado!'))
+            break;
         
-    // }
+    }
     
 }
 

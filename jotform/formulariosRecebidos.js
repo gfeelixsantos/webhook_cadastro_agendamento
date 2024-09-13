@@ -88,11 +88,11 @@ module.exports = async function formulariosRecebidos() {
             .save()
             .catch( (e) => console.log(e) )
 
-        // const teste = await Atendimento.scan('id').contains("CM001183").all().exec()
-        // const json =  teste.toJSON()
-        // return json[0]
+        const teste = await Atendimento.scan('id').contains("CM001202").all().exec()
+        const json =  teste.toJSON()
+        return json[0]
 
-        return agendamento
+        // return agendamento
     }
     else {
         // Tratar erro caso não consiga acessar envio do formulário....

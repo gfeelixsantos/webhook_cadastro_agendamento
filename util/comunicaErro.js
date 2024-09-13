@@ -10,7 +10,7 @@ async function comunicaErro(agendamento, mensagem) {
     await new Atendimento(agendamento).save()
 
     await enviarEmail(agendamento)
-    throw new Error(agendamento);
+    throw new Error('Erro agendamento');
 }
 
 module.exports = comunicaErro
