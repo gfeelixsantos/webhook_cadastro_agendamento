@@ -21,34 +21,36 @@ app.post('/', async (req, res) => {
     start()
     
 })
-
+start()
 async function start() {
     let agendamento = await formulariosRecebidos()
+    // exameAdmissional(agendamento)
+    //         .catch( (err) => console.log(err))
+    //         .finally(() => console.log( '--------------------------------------------------------------------- >> Agendamento Finalizado!'))
 
-    switch (agendamento.tipoExame) {
-        case 'ADMISSIONAL':
-            exameAdmissional(agendamento)
-                .catch( (err) => console.log(err))
-                .finally(() => console.log( '--------------------------------------------------------------------- >> Agendamento Finalizado!'))
-            break;
 
-        case 'PERIÓDICO':
-            examePeriodico(agendamento)
-                .catch( (err) => console.log(err))
-                .finally(() => console.log( '--------------------------------------------------------------------- >> Agendamento Finalizado!'))
-            break;
-        case 'DEMISSIONAL':
-            examePeriodico(agendamento)
-                .catch( (err) => console.log(err))
-                .finally(() => console.log( '--------------------------------------------------------------------- >> Agendamento Finalizado!'))
-            break;
-        case 'RETORNO AO TRABALHO':
-            examePeriodico(agendamento)
-                .catch( (err) => console.log(err))
-                .finally(() => console.log( '--------------------------------------------------------------------- >> Agendamento Finalizado!'))
-            break;
+    // switch (agendamento.tipoExame) {
+    //     case 'ADMISSIONAL':
+            
+    //         break;
+
+    //     case 'PERIÓDICO':
+    //         examePeriodico(agendamento)
+    //             .catch( (err) => console.log(err))
+    //             .finally(() => console.log( '--------------------------------------------------------------------- >> Agendamento Finalizado!'))
+    //         break;
+    //     case 'DEMISSIONAL':
+    //         examePeriodico(agendamento)
+    //             .catch( (err) => console.log(err))
+    //             .finally(() => console.log( '--------------------------------------------------------------------- >> Agendamento Finalizado!'))
+    //         break;
+    //     case 'RETORNO AO TRABALHO':
+    //         examePeriodico(agendamento)
+    //             .catch( (err) => console.log(err))
+    //             .finally(() => console.log( '--------------------------------------------------------------------- >> Agendamento Finalizado!'))
+    //         break;
         
-    }
+    // }
     
 }
 
