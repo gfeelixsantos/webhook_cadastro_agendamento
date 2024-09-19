@@ -26,16 +26,16 @@ async function start() {
     let agendamento = await formulariosRecebidos()
     console.log(agendamento)
 
-    if (agendamento.tipoExame == 'ADMISSIONAL'){
-        exameAdmissional(agendamento)
-            .catch( (err) => console.log(err))
-            .finally(() => console.log( '--------------------------------------------------------------------- >> Agendamento Finalizado!'))
-    }
-    else {
-        examePeriodico(agendamento)
-            .catch( (err) => console.log(err))
-            .finally(() => console.log( '--------------------------------------------------------------------- >> Agendamento Finalizado!'))
-    } 
+    // if (agendamento.tipoExame == 'ADMISSIONAL'){
+    //     exameAdmissional(agendamento)
+    //         .catch( (err) => console.log(err))
+    //         .finally(() => console.log( '--------------------------------------------------------------------- >> Agendamento Finalizado!'))
+    // }
+    // else {
+    //     examePeriodico(agendamento)
+    //         .catch( (err) => console.log(err))
+    //         .finally(() => console.log( '--------------------------------------------------------------------- >> Agendamento Finalizado!'))
+    // } 
 
 }
 
