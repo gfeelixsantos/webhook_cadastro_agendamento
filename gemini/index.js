@@ -8,7 +8,7 @@ const Gemini = {
       
     const prompt = `Dada a seguinte hierarquia:
     ${JSON.stringify(hierarquia)}
-    Retorne apenas um json com o código da unidade, nome da unidade, código do setor, nome do setor, código do cargo e nome do cargo que seja exato para o funcionário com a unidade  ${agendamento.unidadeTrabalho} setor ${agendamento.setor} e cargo ${agendamento.cargo} sendo todos os itens com a situação ATIVO_UNIDADE, ATIVO_SETOR e ATIVO_CARGO como "Sim" na hierarquia informada. Considere também nomenclaturas como JR, PL e SR. Caso não encontre, considere o mais similar possível... ?`
+    Retorne apenas um json com o código da unidade, nome da unidade, código do setor, nome do setor, código do cargo e nome do cargo que seja exato para o funcionário com a unidade  ${agendamento.unidadeTrabalho} setor ${agendamento.setor} e cargo ${agendamento.cargo} sendo todos os itens com a situação ATIVO_UNIDADE, ATIVO_SETOR e ATIVO_CARGO como "Sim" na hierarquia informada. Considere também nomenclaturas como JR, PL e SR.`
     
     const result = await model.generateContent(prompt);
     const responseText = result.response.text();

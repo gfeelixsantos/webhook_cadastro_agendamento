@@ -132,7 +132,7 @@ async function webserviceFuncionarioModelo2(agendamento) {
                         
                         <numeroEndereco></numeroEndereco>
                         
-                        <observacaoAso>${ agendamento.observacoes != '' ? agendamento.observacoes : ''  }</observacaoAso>
+                        <observacaoAso></observacaoAso>
                         
                         <observacaoEstabilidade></observacaoEstabilidade>
                         

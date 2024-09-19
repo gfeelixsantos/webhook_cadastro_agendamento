@@ -14,7 +14,6 @@ const pedidoExamePeloSequencialFicha = require('../soc/exportaDados/pedidoExameP
 const resultadoExame = require('../soc/webservice/resultadoExame')
 const listagemCompromissoFuncionario = require('../soc/exportaDados/listagemCompromissoFuncionario')
 const agenda = require('../soc/webservice/agenda')
-
 const Atendimento = require('../aws/schema')
 const timer = require('../util/timer')
 
@@ -28,9 +27,6 @@ async function examePeriodico(agendamento) {
         agendamento = await cadastroEmpresas(agendamento)
         await timer()
         agendamento = await cadastroFuncionarioPorEmpresa(agendamento)
-        // await timer()
-        // agendamento = await hierarquiaEmpresa(agendamento)
-        // await webserviceFuncionarioModelo2(agendamento)
         
         // Riscos
         await timer()
