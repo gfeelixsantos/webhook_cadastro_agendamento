@@ -24,34 +24,19 @@ app.post('/', async (req, res) => {
 start()
 async function start() {
     let agendamento = await formulariosRecebidos()
-    // exameAdmissional(agendamento)
-    //         .catch( (err) => console.log(err))
-    //         .finally(() => console.log( '--------------------------------------------------------------------- >> Agendamento Finalizado!'))
+    console.log(agendamento)
 
+    if (agendamento.tipoExame == 'ADMISSIONAL'){
+        exameAdmissional(agendamento)
+            .catch( (err) => console.log(err))
+            .finally(() => console.log( '--------------------------------------------------------------------- >> Agendamento Finalizado!'))
+    }
+    else {
+        examePeriodico(agendamento)
+            .catch( (err) => console.log(err))
+            .finally(() => console.log( '--------------------------------------------------------------------- >> Agendamento Finalizado!'))
+    } 
 
-    // switch (agendamento.tipoExame) {
-    //     case 'ADMISSIONAL':
-            
-    //         break;
-
-    //     case 'PERIÓDICO':
-    //         examePeriodico(agendamento)
-    //             .catch( (err) => console.log(err))
-    //             .finally(() => console.log( '--------------------------------------------------------------------- >> Agendamento Finalizado!'))
-    //         break;
-    //     case 'DEMISSIONAL':
-    //         examePeriodico(agendamento)
-    //             .catch( (err) => console.log(err))
-    //             .finally(() => console.log( '--------------------------------------------------------------------- >> Agendamento Finalizado!'))
-    //         break;
-    //     case 'RETORNO AO TRABALHO':
-    //         examePeriodico(agendamento)
-    //             .catch( (err) => console.log(err))
-    //             .finally(() => console.log( '--------------------------------------------------------------------- >> Agendamento Finalizado!'))
-    //         break;
-        
-    // }
-    
 }
 
 

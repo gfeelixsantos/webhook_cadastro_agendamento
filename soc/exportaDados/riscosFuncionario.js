@@ -33,8 +33,7 @@ async function riscosFuncionario(agendamento) {
             }
         }
     }
-    
-    
+       
     return agendamento
 }
 
