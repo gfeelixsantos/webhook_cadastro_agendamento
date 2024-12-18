@@ -1,0 +1,539 @@
+{
+  '1': {
+    name: 'heading',
+    order: '1',
+    text: 'Saúde e Segurança do Trabalho',
+    type: 'control_head'
+  },
+  '9': {
+    name: 'divisor',
+    order: '7',
+    text: 'Divisor',
+    type: 'control_divider'
+  },
+  '10': {
+    name: 'insiraUma10',
+    order: '8',
+    text: 'Razão Social',
+    type: 'control_textbox',
+    answer: 'teste'
+  },
+  '11': {
+    name: 'insiraUma11',
+    order: '9',
+    text: 'CNPJ',
+    type: 'control_textbox',
+    answer: '99.999.999/9999-99'
+  },
+  '20': {
+    name: 'agendamento',
+    order: '20',
+    text: 'Selecione o dia e horário ',
+    timeFormat: '24 Hour',
+    type: 'control_appointment',
+    answer: {
+      date: '2024-12-19 11:45',
+      duration: '15',
+      timezone: 'America/Sao_Paulo (GMT-03:00)'
+    },
+    prettyFormat: 'Thursday, Dec 19, 2024 11:45-12:00'
+  },
+  '22': {
+    name: 'nomeDo',
+    order: '11',
+    text: 'Nome do Funcionário',
+    type: 'control_textbox',
+    answer: 'teste gabriel'
+  },
+  '28': {
+    name: 'divisor80',
+    order: '16',
+    text: 'Divisor',
+    type: 'control_divider'
+  },
+  '29': {
+    name: 'insiraUma29',
+    order: '18',
+    text: 'Solicitação para atividades especiais (Quando aplicável)',
+    type: 'control_checkbox',
+    answer: [ 'ESPAÇO CONFINADO - NR 33' ],
+    prettyFormat: 'ESPAÇO CONFINADO - NR 33'
+  },
+  '30': {
+    name: 'insiraUma30',
+    order: '17',
+    text: 'Tipo de Exame',
+    type: 'control_radio',
+    answer: 'DEMISSIONAL'
+  },
+  '32': {
+    name: 'uploadDe',
+    order: '29',
+    text: '',
+    type: 'control_fileupload',
+    answer: []
+  },
+  '35': {
+    name: 'insiraUma35',
+    order: '30',
+    text: 'Observações',
+    type: 'control_textbox',
+    answer: 'campo de observacao teste'
+  },
+  '38': {
+    name: 'nomeDo38',
+    order: '33',
+    text: 'Nome do Solicitante',
+    type: 'control_textbox',
+    answer: 'gabriel teste'
+  },
+  '39': {
+    name: 'email',
+    order: '34',
+    text: 'E-mail',
+    type: 'control_email',
+    answer: 'prever@gmail.com'
+  },
+  '41': {
+    name: 'telefoneDe',
+    order: '35',
+    text: 'Telefone de Contato',
+    type: 'control_textbox'
+  },
+  '42': {
+    name: 'termoDe',
+    order: '36',
+    text: 'Termo de Aceite',
+    type: 'control_checkbox',
+    answer: [
+      'Declaro estar ciente das informações contidas neste formulário sendo de uso exclusivo para emissão de documentos conforme aqui solicitado'
+    ],
+    prettyFormat: 'Declaro estar ciente das informações contidas neste formulário sendo de uso exclusivo para emissão de documentos conforme aqui solicitado'
+  },
+  '43': {
+    name: 'ltpStyletextalign',
+    order: '19',
+    text: '<p style="text-align:center;"><strong>Informações de Atendimento</strong></p>',
+    type: 'control_text'
+  },
+  '47': {
+    name: 'idDe',
+    order: '3',
+    selectedField: '528c8b464b1a424916000004',
+    text: 'ID de controle',
+    type: 'control_autoincrement',
+    answer: 'PR18071'
+  },
+  '59': {
+    cfname: 'Botão do WhatsApp',
+    name: 'insiraUma59',
+    order: '37',
+    selectedField: 'e5cea8c176512adc41b76621',
+    static: 'Yes',
+    text: 'Botão do WhatsApp',
+    type: 'control_widget'
+  },
+  '62': {
+    name: 'ltpStyletextalign62',
+    order: '32',
+    text: '<p style="text-align:center;"><strong>Informações do Solicitante</strong></p>',
+    type: 'control_text'
+  },
+  '69': {
+    cfname: '',
+    name: 'insiraUma69',
+    order: '2',
+    selectedField: '529d9a5c4b5cd3fd5a000005',
+    static: 'No',
+    text: 'Insira uma pergunta aqui',
+    type: 'control_widget'
+  },
+  '71': {
+    name: 'atendimentoPara',
+    order: '5',
+    text: 'Atendimento para',
+    type: 'control_dropdown',
+    answer: 'CLIENTES'
+  },
+  '77': {
+    name: 'ltpStyletextalign77',
+    order: '27',
+    text: '<p style="text-align: center;"><strong>Upload da Autorização de Realização de Exames - ARE</strong></p>',
+    type: 'control_text'
+  },
+  '78': {
+    name: 'ltpStyletextalign78',
+    order: '28',
+    text: '<p style="text-align:center;"><strong>Upload do KIT da Credenciada (Obrigatório)<span style="color:#ea3223;">*</span></strong></p>',
+    type: 'control_text'
+  },
+  '79': {
+    name: 'insiraA',
+    order: '4',
+    text: 'Insira a chave de acesso',
+    type: 'control_textbox',
+    answer: 'PREVERCAMPINAS'
+  },
+  '80': {
+    name: 'divisor80',
+    order: '31',
+    text: 'Divisor',
+    type: 'control_divider'
+  },
+  '82': {
+    name: 'ltpStyletextalign82',
+    order: '6',
+    text: '<p><span style="color:#ffffff;"><strong><span style="font-size:14pt;"><a style="color:#ffffff;text-decoration:none;" href="https://web.whatsapp.com/send?phone=5519997470606&text=Ol%C3%A1,%20gostaria%20de%20realizar%20um%20agendamento%20de%20exame%20em%20outra%20cidade." rel="nofollow">Prosseguir ></a></span></strong></span></p>',
+    type: 'control_text'
+  },
+  '84': {
+    name: 'enviar84',
+    order: '38',
+    text: 'Agendar Exame',
+    type: 'control_button'
+  },
+  '87': {
+    name: 'cliquePara',
+    order: '21',
+    text: 'Agenda exclusiva BRMED',
+    type: 'control_collapse'
+  },
+  '88': {
+    name: 'data',
+    order: '22',
+    sublabels: '{"day":"Dia","month":"M\\u00eas","year":"Ano","last":"Sobrenome","hour":"Hora","minutes":"Minutos","litemode":""}',
+    text: 'Data',
+    timeFormat: 'AM/PM',
+    type: 'control_datetime'
+  },
+  '89': {
+    name: 'cliquePara89',
+    order: '26',
+    text: 'Clique para editar este texto...',
+    type: 'control_collapse'
+  },
+  '90': {
+    name: 'periodo',
+    order: '23',
+    text: 'Período de comparecimento',
+    type: 'control_dropdown'
+  },
+  '91': {
+    name: 'insiraUma91',
+    order: '24',
+    text: 'Campo obrigatório',
+    type: 'control_checkbox'
+  },
+  '99': {
+    name: 'divisor99',
+    order: '25',
+    text: 'Divisor',
+    type: 'control_divider'
+  },
+  '108': {
+    name: 'dataNascimento',
+    order: '13',
+    text: 'Data de Nascimento',
+    type: 'control_textbox',
+    answer: '08/09/1994'
+  },
+  '109': {
+    name: 'nomeDo109',
+    order: '15',
+    text: 'Cargo',
+    type: 'control_textbox',
+    answer: 'cargo teste'
+  },
+  '110': {
+    name: 'nomeDo110',
+    order: '14',
+    text: 'Setor',
+    type: 'control_textbox',
+    answer: 'setor teste'
+  },
+  '111': {
+    name: 'cpf',
+    order: '12',
+    text: 'CPF',
+    type: 'control_textbox',
+    answer: '428.891.788-38'
+  },
+  '112': {
+    name: 'divisor112',
+    order: '10',
+    text: 'Divisor',
+    type: 'control_divider'
+  }
+}
+PS C:\Users\Usuario\Desktop\cmso_cadastro_agendamento> node index.js
+{
+  '1': {
+    name: 'heading',
+    order: '1',
+    text: 'Saúde e Segurança do Trabalho',
+    type: 'control_head'
+  },
+  '9': {
+    name: 'divisor',
+    order: '7',
+    text: 'Divisor',
+    type: 'control_divider'
+  },
+  '10': {
+    name: 'insiraUma10',
+    order: '8',
+    text: 'Razão Social',
+    type: 'control_textbox',
+    answer: 'teste'
+  },
+  '11': {
+    name: 'insiraUma11',
+    order: '9',
+    text: 'CNPJ',
+    type: 'control_textbox',
+    answer: '99.999.999/9999-99'
+  },
+  '20': {
+    name: 'agendamento',
+    order: '20',
+    text: 'Selecione o dia e horário ',
+    timeFormat: '24 Hour',
+    type: 'control_appointment',
+    answer: {
+      date: '2024-12-19 11:45',
+      duration: '15',
+      timezone: 'America/Sao_Paulo (GMT-03:00)'
+    },
+    prettyFormat: 'Thursday, Dec 19, 2024 11:45-12:00'
+  },
+  '22': {
+    name: 'nomeDo',
+    order: '11',
+    text: 'Nome do Funcionário',
+    type: 'control_textbox',
+    answer: 'teste gabriel'
+  },
+  '28': {
+    name: 'divisor80',
+    order: '16',
+    text: 'Divisor',
+    type: 'control_divider'
+  },
+  '29': {
+    name: 'insiraUma29',
+    order: '18',
+    text: 'Solicitação para atividades especiais (Quando aplicável)',
+    type: 'control_checkbox'
+  },
+  '30': {
+    name: 'insiraUma30',
+    order: '17',
+    text: 'Tipo de Exame',
+    type: 'control_radio',
+    answer: 'DEMISSIONAL'
+  },
+  '32': {
+    name: 'uploadDe',
+    order: '30',
+    text: '',
+    type: 'control_fileupload',
+    answer: []
+  },
+  '35': {
+    name: 'insiraUma35',
+    order: '31',
+    text: 'Observações',
+    type: 'control_textbox'
+  },
+  '38': {
+    name: 'nomeDo38',
+    order: '34',
+    text: 'Nome do Solicitante',
+    type: 'control_textbox',
+    answer: 'teste'
+  },
+  '39': {
+    name: 'email',
+    order: '35',
+    text: 'E-mail',
+    type: 'control_email',
+    answer: 'felix.devx@gmail.com'
+  },
+  '41': {
+    name: 'telefoneDe',
+    order: '36',
+    text: 'Telefone de Contato',
+    type: 'control_textbox'
+  },
+  '42': {
+    name: 'termoDe',
+    order: '37',
+    text: 'Termo de Aceite',
+    type: 'control_checkbox',
+    answer: [
+      'Declaro estar ciente das informações contidas neste formulário sendo de uso exclusivo para emissão de documentos conforme aqui solicitado'
+    ],
+    prettyFormat: 'Declaro estar ciente das informações contidas neste formulário sendo de uso exclusivo para emissão de documentos conforme aqui solicitado'
+  },
+  '43': {
+    name: 'ltpStyletextalign',
+    order: '19',
+    text: '<p style="text-align:center;"><strong>Informações de Atendimento</strong></p>',
+    type: 'control_text'
+  },
+  '47': {
+    name: 'idDe',
+    order: '3',
+    selectedField: '528c8b464b1a424916000004',
+    text: 'ID de controle',
+    type: 'control_autoincrement',
+    answer: 'PR18072'
+  },
+  '59': {
+    cfname: 'Botão do WhatsApp',
+    name: 'insiraUma59',
+    order: '38',
+    selectedField: 'e5cea8c176512adc41b76621',
+    static: 'Yes',
+    text: 'Botão do WhatsApp',
+    type: 'control_widget'
+  },
+  '62': {
+    name: 'ltpStyletextalign62',
+    order: '33',
+    text: '<p style="text-align:center;"><strong>Informações do Solicitante</strong></p>',
+    type: 'control_text'
+  },
+  '69': {
+    cfname: '',
+    name: 'insiraUma69',
+    order: '2',
+    selectedField: '529d9a5c4b5cd3fd5a000005',
+    static: 'No',
+    text: 'Insira uma pergunta aqui',
+    type: 'control_widget'
+  },
+  '71': {
+    name: 'atendimentoPara',
+    order: '5',
+    text: 'Atendimento para',
+    type: 'control_dropdown',
+    answer: 'CLIENTES'
+  },
+  '77': {
+    name: 'ltpStyletextalign77',
+    order: '28',
+    text: '<p style="text-align: center;"><strong>Upload da Autorização de Realização de Exames - ARE</strong></p>',
+    type: 'control_text'
+  },
+  '78': {
+    name: 'ltpStyletextalign78',
+    order: '29',
+    text: '<p style="text-align:center;"><strong>Upload do KIT da Credenciada (Obrigatório)<span style="color:#ea3223;">*</span></strong></p>',
+    type: 'control_text'
+  },
+  '79': {
+    name: 'insiraA',
+    order: '4',
+    text: 'Insira a chave de acesso',
+    type: 'control_textbox',
+    answer: 'PREVERCAMPINAS'
+  },
+  '80': {
+    name: 'divisor80',
+    order: '32',
+    text: 'Divisor',
+    type: 'control_divider'
+  },
+  '82': {
+    name: 'ltpStyletextalign82',
+    order: '6',
+    text: '<p><span style="color:#ffffff;"><strong><span style="font-size:14pt;"><a style="color:#ffffff;text-decoration:none;" href="https://web.whatsapp.com/send?phone=5519997470606&text=Ol%C3%A1,%20gostaria%20de%20realizar%20um%20agendamento%20de%20exame%20em%20outra%20cidade." rel="nofollow">Prosseguir ></a></span></strong></span></p>',
+    type: 'control_text'
+  },
+  '84': {
+    name: 'enviar84',
+    order: '39',
+    text: 'Agendar Exame',
+    type: 'control_button'
+  },
+  '87': {
+    name: 'cliquePara',
+    order: '22',
+    text: 'Agenda exclusiva BRMED',
+    type: 'control_collapse'
+  },
+  '88': {
+    name: 'data',
+    order: '23',
+    sublabels: '{"day":"Dia","month":"M\\u00eas","year":"Ano","last":"Sobrenome","hour":"Hora","minutes":"Minutos","litemode":""}',
+    text: 'Data',
+    timeFormat: 'AM/PM',
+    type: 'control_datetime'
+  },
+  '89': {
+    name: 'cliquePara89',
+    order: '27',
+    text: 'Clique para editar este texto...',
+    type: 'control_collapse'
+  },
+  '90': {
+    name: 'periodo',
+    order: '24',
+    text: 'Período de comparecimento',
+    type: 'control_dropdown'
+  },
+  '91': {
+    name: 'insiraUma91',
+    order: '25',
+    text: 'Campo obrigatório',
+    type: 'control_checkbox'
+  },
+  '99': {
+    name: 'divisor99',
+    order: '26',
+    text: 'Divisor',
+    type: 'control_divider'
+  },
+  '108': {
+    name: 'dataNascimento',
+    order: '13',
+    text: 'Data de Nascimento',
+    type: 'control_textbox',
+    answer: '08/09/1994'
+  },
+  '109': {
+    name: 'nomeDo109',
+    order: '15',
+    text: 'Cargo',
+    type: 'control_textbox',
+    answer: 'cargo teste'
+  },
+  '110': {
+    name: 'nomeDo110',
+    order: '14',
+    text: 'Setor',
+    type: 'control_textbox',
+    answer: 'setor teste'
+  },
+  '111': {
+    name: 'cpf',
+    order: '12',
+    text: 'CPF',
+    type: 'control_textbox',
+    answer: '428.891.788-38'
+  },
+  '112': {
+    name: 'divisor112',
+    order: '10',
+    text: 'Divisor',
+    type: 'control_divider'
+  },
+  '113': {
+    name: 'dataConvertida',
+    order: '21',
+    text: 'Insira uma pergunta aqui',
+    type: 'control_textbox',
+    answer: '19/12/2024 13:45'
+  }
+}

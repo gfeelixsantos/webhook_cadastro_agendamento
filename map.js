@@ -1,17 +1,24 @@
 const map = {
-    nomeFuncionario: '34',
-    cnpj: '5',
-    data: '11',
-    horario: '70',
-    tipoExame: '12',
-    cargo: '35',
-    setor: '36',
-    rg: '38',
-    sexo: '39',
-    cpf: '40',
-    solicitacaoAtividades: '42',
-    observacoes: '45',
-    dataNascimento: '69'
+    razaoSocial: '10',
+    cnpj: '11',
+    agendamento: '20',
+    nomeFuncionario: '22',
+    solicitacaoAtividades: '29',
+    tipoExame: '30',
+    upload:'32',
+    observacoes: '35',
+    nomeSolicitante: '38',
+    emailSolicitante: '39',
+    telefoneSolicitante: '41',
+    atendimentoPara: '71',
+    brmedDataEspecial: '88',
+    brmedPeriodoAtendimento: '90',
+    dataNascimento: '108',
+    cargo: '109',
+    setor: '110',
+    cpf: '111',
+    dataConvertida: '113'
+
 }
 
 module.exports = map
