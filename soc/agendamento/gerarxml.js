@@ -2,15 +2,18 @@ const WSSecurity = require('wssecurity-soap')
 
 function createXML(agendamento) {
 
-    const user = "U1591737";
-    const pass = "b2af7deb4b52a1ed92be6cfb0ae50faa35b651af";
+    const user = "U3058327";
+    const pass = "3a73f6f721ed7683bec5aea6b5f67952089ab180";
+    const codEmpresaPrincipal =  '941933'
+    const codResponsavel = '1370280'
+    const codUsuario = '3058327'
+
     const header = new WSSecurity(user, pass, 'PasswordDigest')
 
-    const agendas =  [
-        '239781', //AGENDA CMSO
-        // '2113649', //AGENDA CORDEIRÓPOLIS
-        //'1447495'  //AGENDA TESTE
-    ]
+    const agenda = '2934869'
+    const codCompromisso = '6'
+    const situacaoInicial = 'AGUARDANDO'
+    const codPrestador = '000001'
 
     const campoAtividades = agendamento.solicitacaoAtividades == undefined ? '' : agendamento.solicitacaoAtividades
     const campoObservacoes = agendamento.observacoes == undefined ? '' : agendamento.observacoes
@@ -29,9 +32,9 @@ function createXML(agendamento) {
             <ser:incluirAgendamento>
             <IncluirAgendamentoWsVo>
                 <identificacaoWsVo>
-                    <codigoEmpresaPrincipal>16459</codigoEmpresaPrincipal>
-                    <codigoResponsavel>6217</codigoResponsavel>
-                    <codigoUsuario>1591737</codigoUsuario>
+                    <codigoEmpresaPrincipal>${codEmpresaPrincipal}</codigoEmpresaPrincipal>
+                    <codigoResponsavel>${codResponsavel}</codigoResponsavel>
+                    <codigoUsuario>${codUsuario}</codigoUsuario>
                 </identificacaoWsVo>
                 <dadosAgendamentoWsVo>
                     <tipoBuscaEmpresa>CODIGO_SOC</tipoBuscaEmpresa>
@@ -39,11 +42,11 @@ function createXML(agendamento) {
                     <reservarCompromissoParaEmpresa></reservarCompromissoParaEmpresa>
                     <tipoBuscaFuncionario>CODIGO_SOC</tipoBuscaFuncionario>
                     <codigoFuncionario>${agendamento.codFuncionario}</codigoFuncionario>
-                    <codigoUsuarioAgenda>${agendas[0]}</codigoUsuarioAgenda>
-                    <data>${agendamento.data.day}/${agendamento.data.month}/${agendamento.data.year}</data>
+                    <codigoUsuarioAgenda>${agenda}</codigoUsuarioAgenda>
+                    <data>${agendamento.data}</data>
                     <horaInicial>${agendamento.horario}</horaInicial>
                     <horaFinal></horaFinal>
-                    <codigoCompromisso>22</codigoCompromisso>
+                    <codigoCompromisso>${codCompromisso}</codigoCompromisso>
                     <usaOutroCompromisso></usaOutroCompromisso>
                     <conteudoOutroCompromisso></conteudoOutroCompromisso>
                     <tipoCompromisso>${agendamento.tipoExame}</tipoCompromisso>
@@ -52,7 +55,7 @@ function createXML(agendamento) {
                     <horarioChegada></horarioChegada>
                     <horarioSaida></horarioSaida>
                     <priorizarAtendimento></priorizarAtendimento>
-                    <atendido>NAO</atendido>
+                    <atendido>${situacaoInicial}</atendido>
                     <codigoMotivoCancelamento></codigoMotivoCancelamento>
                     <usaEnviarEmail></usaEnviarEmail>
                     <emailWsVo>
@@ -68,7 +71,7 @@ function createXML(agendamento) {
                         <codigoMensagem></codigoMensagem>
                         <mensagem></mensagem>
                     </socmsWsVo>
-                    <codigoPrestador>000033</codigoPrestador>
+                    <codigoPrestador>${codPrestador}</codigoPrestador>
                 </dadosAgendamentoWsVo>
             </IncluirAgendamentoWsVo>
             </ser:incluirAgendamento>

@@ -1,19 +1,27 @@
 async function getEmployeeCode(agendamento) {
-    console.log(agendamento);
+    console.log(agendamento)
     try {
         let cpfFormatado = agendamento.cpf.replaceAll('.', '')
         cpfFormatado = cpfFormatado.replace('-', '')
     
-        const url = `https://ws1.soc.com.br/WebSoc/exportadados?parametro={"empresa":"${agendamento.codEmpresa}","codigo":"193586","chave":"16b663d2d0859bf14b01","tipoSaida":"json","ativo":"sim","inativo":"sim","afastado":"sim","pendente":"sim","ferias":"sim"}`;
+        const url = `https://ws1.soc.com.br/WebSoc/exportadados?parametro={"empresa":"${agendamento.codEmpresa}","codigo":"201109","chave":"31b20d92cb999d6ead81","tipoSaida":"json","empresaTrabalho":"${agendamento.codEmpresa}","cpf":"${cpfFormatado}","parametroData":"","dataInicio":"","dataFim":""}`;
     
         const response = await fetch(url);
         const responseBuff = await response.arrayBuffer();
         const funcionarios = new TextDecoder('iso-8859-1').decode(responseBuff);
         const listaFuncionarios = JSON.parse(funcionarios);
-    
-        const cadastro = listaFuncionarios.find( func => func['CPF'] == cpfFormatado);
 
-        agendamento.codFuncionario = cadastro['CODIGO'];
+        
+        const cadastro = listaFuncionarios.find( func => func['CPFFUNCIONARIO'] == cpfFormatado);
+
+        if (cadastro == undefined)
+        {
+            agendamento.codFuncionario = 'ADICIONAR';
+        }
+        else
+        {
+            agendamento.codFuncionario = cadastro['CODIGO'];
+        }
         
         return agendamento
         

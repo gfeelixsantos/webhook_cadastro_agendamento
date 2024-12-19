@@ -17,8 +17,8 @@ const map = {
     cargo: '109',
     setor: '110',
     cpf: '111',
-    dataConvertida: '113'
-
+    dataConvertida: '113',
+    cnpjCredenciada: '114'
 }
 
 module.exports = map

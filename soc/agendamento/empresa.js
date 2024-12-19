@@ -7,12 +7,12 @@ async function getCompanyCode(agendamento) {
         const responseBuff = await response.arrayBuffer();
         const empresas = new TextDecoder('iso-8859-1').decode(responseBuff);
         const arrEmpresas = JSON.parse(empresas);
-
+        
         const empresasAtivas = arrEmpresas.filter( emp => emp['ATIVO'] == '1')
         const empresaAgendada = empresasAtivas.find( emp => emp['CNPJ'] == agendamento.cnpj)
         agendamento.codEmpresa = empresaAgendada['CODIGO']
-        console.log(agendamento)
-        //return agendamento
+
+        return agendamento
 
     } catch (error) {
         console.error('Erro ao buscar código empresa (fn: getCompanyCode)', error);

@@ -41,23 +41,50 @@ const sendSoapAso = require('./soc/aso/soapAso')
 //     }
 // })
 
+const MOCK =  {
+    codEmpresa: '1804775',
+    codFuncionario: '',
+    codTipoExame: 2,
+    codSequencial: '',
+    riscos: [],
+    nome: 'TESTE GABRIEL',
+    cpf: '101.402.386-61',
+    dataNascimento: '21/10/1991',    
+    cnpj: '41.449.329/0001-11',      
+    data: '19/12/2024',
+    horario: '14:15',
+    tipoExame: 'PERIODICO',
+    cargo: 'testeCAR',
+    setor: 'testeSET',
+    solicitacaoAtividades: undefined,
+    observacoes: 'campo observacao',
+    perfil: 'CLIENTES',
+    razaoSocial: 'PREVER TESTE'
+  }
+
 
 async function dev() {
-    let agendamento = await getSubmissionForm()
-
-    agendamento = await ajustaTipoExame(agendamento)
-    agendamento = await getCompanyCode(agendamento)
-
-    if(agendamento.tipoExame != 'ADMISSIONAL' && agendamento.tipoExame != 'MUDANÇA DE RISCO OCUPACIONAL'){
+    //let agendamento = await getSubmissionForm()
+    let agendamento = MOCK
+    
+    if(agendamento.perfil == 'CLIENTES'){
         
-        // agendamento = await getEmployeeCode(agendamento)
-        // 
+        agendamento = await ajustaTipoExame(agendamento)
+        agendamento = await getCompanyCode(agendamento)
+        agendamento = await getEmployeeCode(agendamento)
         
-        // // soap agendamento
-        // let xml = await createXML(agendamento)
-        // sendSoapSchedule(xml)
+        // Se não houver código do funcionario, adiciona no cadastro.
+        if(agendamento.codFuncionario == 'ADICIONAR')
+        {
+            
+        }
 
-        // // soap pedido exame
+        // soap agendamento
+        let xml = await createXML(agendamento)
+        // await sendSoapSchedule(xml)
+        await timer()
+
+        // soap pedido exame
         // agendamento = await getEmployeeExams(agendamento)
         // xml = await examRequestXml(agendamento)
         // sendSoapExamRequest(xml)
@@ -83,8 +110,7 @@ async function dev() {
         
     }
     else {
-        // Atendimento admissional...
-        console.log('atendimento admissional, em desenvolvimento....');
+        console.log('atendimento credenciadas....');
     }
 
 } 

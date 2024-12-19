@@ -4,7 +4,7 @@ class Agendamento {
     codTipoExame = 0
     codSequencial = ''
     riscos = []
-    constructor(nome, cpf, dataNascimento, cnpj, data, horario, tipoExame, cargo, setor, solicitacaoAtividades, observacoes){
+    constructor(nome, cpf, dataNascimento, cnpj, data, horario, tipoExame, cargo, setor, solicitacaoAtividades, observacoes, perfil, razaoSocial){
         this.nome = nome
         this.cpf = cpf
         this.dataNascimento = dataNascimento
@@ -16,6 +16,8 @@ class Agendamento {
         this.setor = setor
         this.solicitacaoAtividades = solicitacaoAtividades
         this.observacoes = observacoes
+        this.perfil = perfil
+        this.razaoSocial = razaoSocial
     }
 }
 
