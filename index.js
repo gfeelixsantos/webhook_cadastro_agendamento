@@ -53,7 +53,7 @@ const MOCK =  {
     razaoSocial: 'PREVER TESTE'
   }
 
-
+dev()
 async function dev() {
     let agendamento = await getSubmissionForm()
     // let agendamento = MOCK
@@ -65,7 +65,7 @@ async function dev() {
         agendamento = await getEmployeeCode(agendamento)
         
         // Se não houver código do funcionario, adiciona no cadastro.
-        if( agendamento.procedimento)
+        if( agendamento.procedimento == 'ADICIONAR')
         {   
             agendamento = await hierarquiaEmpresa(agendamento)
             await webserviceFuncionarioModelo2(agendamento)
