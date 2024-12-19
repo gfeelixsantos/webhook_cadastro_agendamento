@@ -12,7 +12,7 @@ async function getEmployeeCode(agendamento) {
         const listaFuncionarios = JSON.parse(funcionarios);
         
         const cadastro = listaFuncionarios.find( func => func['CPFFUNCIONARIO'] == cpfFormatado);
-        console.log(cadastro)
+       
         if (cadastro == undefined)
         {
             agendamento.procedimento = 'ADICIONAR';
@@ -21,6 +21,11 @@ async function getEmployeeCode(agendamento) {
         else
         {
             agendamento.codFuncionario = cadastro['CODIGO'];
+            agendamento.nome = cadastro['NOME'];
+            agendamento.setor = cadastro['NOMESETOR'];
+            agendamento.cargo = cadastro['NOMECARGO'];
+            agendamento.cpf = cadastro['CPFFUNCIONARIO'];
+            agendamento.dataNascimento = cadastro['DATA_NASCIMENTO']
         }
         
         return agendamento

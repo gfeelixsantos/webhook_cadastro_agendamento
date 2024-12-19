@@ -65,7 +65,7 @@ async function dev() {
         agendamento = await getEmployeeCode(agendamento)
         
         // Se não houver código do funcionario, adiciona no cadastro.
-        if( agendamento.procedimento = 'ADICIONAR')
+        if( agendamento.procedimento)
         {   
             agendamento = await hierarquiaEmpresa(agendamento)
             await webserviceFuncionarioModelo2(agendamento)
