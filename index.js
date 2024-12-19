@@ -55,8 +55,8 @@ const MOCK =  {
 
 
 async function dev() {
-    //let agendamento = await getSubmissionForm()
-    let agendamento = MOCK
+    let agendamento = await getSubmissionForm()
+    // let agendamento = MOCK
     
     if(agendamento.perfil == 'CLIENTES'){
         
