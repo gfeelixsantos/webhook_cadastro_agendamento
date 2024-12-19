@@ -53,11 +53,11 @@ const MOCK =  {
     razaoSocial: 'PREVER TESTE'
   }
 
-dev()
+
 async function dev() {
     let agendamento = await getSubmissionForm()
     // let agendamento = MOCK
-    
+    console.log(agendamento)
     if(agendamento.perfil == 'CLIENTES'){
         
         agendamento = await ajustaTipoExame(agendamento)

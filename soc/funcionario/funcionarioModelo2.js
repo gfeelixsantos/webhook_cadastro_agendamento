@@ -410,7 +410,7 @@ async function webserviceFuncionarioModelo2(agendamento) {
     const response = await axios.post(URL, xml, options)
     const responseDescricaoErro = response.data.split('descricaoErro')[1]
     
-    console.log(response.data)
+    console.log(responseDescricaoErro)
 }
 
 module.exports = webserviceFuncionarioModelo2
