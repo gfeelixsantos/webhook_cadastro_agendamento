@@ -8,38 +8,29 @@ const createXML = require('./soc/agendamento/gerarxml')
 const ajustaTipoExame = require('./soc/agendamento/ajustaTipoExame')
 const sendSoapSchedule = require('./soc/agendamento/soapAgendamento')
 
-// pedido de exame
-const getEmployeeExams = require('./soc/exame/exames')
-const examRequestXml = require('./soc/exame/examRequestXml')
-const sendSoapExamRequest = require('./soc/exame/soapPedido')
+// funcionario modelo2
+const webserviceFuncionarioModelo2 = require('./soc/funcionario/funcionarioModelo2')
 
-// resultado exames
-const getTokenSequential = require('./soc/aso/buscaFicha')
-const resultsXML = require('./soc/exame/resultados')
-const getSequencialResult = require('./soc/exame/sequencialResultado')
+// hierarquia
+const hierarquiaEmpresa = require('./soc/hierarquia/hierarquiaEmpresa')
 
-// aso
-const getRisks = require('./soc/aso/riscos')
-const asoCreateXML = require('./soc/aso/asoXml')
-const sendSoapAso = require('./soc/aso/soapAso')
-
-// const app = express();
-// const PORT = process.env.PORT || 3001;
+const app = express();
+const PORT = process.env.PORT || 3001;
  
-// app.use(express.json())
+app.use(express.json())
 
-// app.get('/', (req, res) => {
-//     res.send('Serviço de webhook online!');
-// })
+app.get('/', (req, res) => {
+    res.send('Serviço de webhook online!');
+})
 
-// app.post('/', async (req, res) => {
-//     try {
-//         await dev()
+app.post('/', async (req, res) => {
+    try {
+        await dev()
         
-//     } catch (error) {
-//         console.error('Erro na execução index.js')
-//     }
-// })
+    } catch (error) {
+        console.error('Erro na execução index.js')
+    }
+})
 
 const MOCK =  {
     codEmpresa: '1804775',
@@ -47,15 +38,15 @@ const MOCK =  {
     codTipoExame: 2,
     codSequencial: '',
     riscos: [],
-    nome: 'TESTE GABRIEL',
-    cpf: '101.402.386-61',
+    nome: 'NOVO TESTE',
+    cpf: '101.402.386-62',
     dataNascimento: '21/10/1991',    
     cnpj: '41.449.329/0001-11',      
     data: '19/12/2024',
     horario: '14:15',
     tipoExame: 'PERIODICO',
-    cargo: 'testeCAR',
-    setor: 'testeSET',
+    cargo: 'ASS comercial',
+    setor: 'comercial',
     solicitacaoAtividades: undefined,
     observacoes: 'campo observacao',
     perfil: 'CLIENTES',
@@ -74,38 +65,16 @@ async function dev() {
         agendamento = await getEmployeeCode(agendamento)
         
         // Se não houver código do funcionario, adiciona no cadastro.
-        if(agendamento.codFuncionario == 'ADICIONAR')
-        {
-            
+        if( agendamento.procedimento = 'ADICIONAR')
+        {   
+            agendamento = await hierarquiaEmpresa(agendamento)
+            await webserviceFuncionarioModelo2(agendamento)
+            await timer()
         }
 
         // soap agendamento
         let xml = await createXML(agendamento)
-        // await sendSoapSchedule(xml)
-        await timer()
-
-        // soap pedido exame
-        // agendamento = await getEmployeeExams(agendamento)
-        // xml = await examRequestXml(agendamento)
-        // sendSoapExamRequest(xml)
-
-        // await timer()
-       
-        // // soap resultado exames
-        // agendamento = await getTokenSequential(agendamento)
-        // agendamento = await getSequencialResult(agendamento)
-
-        // for (let index = 0; index < agendamento.listaExames.length; index++) {
-        //     xml = await resultsXML(agendamento, index)
-        //     await sendSoapExamRequest(xml)
-        //     await timer()
-        // }
-
-        // // aso
-        // agendamento = await getRisks(agendamento)
-        // xml = await asoCreateXML(agendamento)
-        // await sendSoapAso(xml)
-        // await timer()
+        await sendSoapSchedule(xml)
         
         
     }
@@ -114,11 +83,11 @@ async function dev() {
     }
 
 } 
-dev()
+
 
 async function timer() {
-    return await new Promise((resolve) => setTimeout(resolve, 3500));
+    return await new Promise((resolve) => setTimeout(resolve, 2500));
 }
 
 
-// app.listen(PORT, () => console.log('Servidor rodando na porta: ', PORT));
+app.listen(PORT, () => console.log('Servidor rodando na porta: ', PORT));
