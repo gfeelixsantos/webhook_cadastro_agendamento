@@ -4,8 +4,7 @@
   "description": "sistema teste de cadastro agendamento",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "build": "npm install axios express jotform wssecurity-soap"
+    "start": "node index.js"
   },
   "author": "felix.devx",
   "license": "MIT",

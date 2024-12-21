@@ -6,13 +6,9 @@ const getCompanyCode = require('./soc/agendamento/empresa')
 const getEmployeeCode = require('./soc/agendamento/funcionario')
 const createXML = require('./soc/agendamento/gerarxml')
 const ajustaTipoExame = require('./soc/agendamento/ajustaTipoExame')
-const sendSoapSchedule = require('./soc/agendamento/soapAgendamento')
+const sendSoapSchedule = require('./soc/agendamento/soapAgendamento');
+const Gemini = require('./gemini/gemini');
 
-// funcionario modelo2
-const webserviceFuncionarioModelo2 = require('./soc/funcionario/funcionarioModelo2')
-
-// hierarquia
-const hierarquiaEmpresa = require('./soc/hierarquia/hierarquiaEmpresa')
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -23,71 +19,53 @@ app.get('/', (req, res) => {
     res.send('Serviço de webhook online!');
 })
 
+
+
+
 app.post('/', async (req, res) => {
-    try {
-        await dev()
-        
-    } catch (error) {
-        console.error('Erro na execução index.js')
-    }
+    cadastrarAgendamento()
 })
 
+
+
 const MOCK =  {
-    codEmpresa: '1804775',
+    codEmpresa: '',
     codFuncionario: '',
-    codTipoExame: 2,
+    codTipoExame: '',
     codSequencial: '',
-    riscos: [],
-    nome: 'NOVO TESTE',
-    cpf: '101.402.386-62',
-    dataNascimento: '21/10/1991',    
-    cnpj: '41.449.329/0001-11',      
-    data: '19/12/2024',
-    horario: '14:15',
+    nome: 'Luiza de Carvalho Motta Vaz',
+    cpf: '',
+    dataNascimento: '',    
+    cnpj: '07.362.794/0001-82',      
+    data: '23/12/2024',
+    horario: '10:30',
     tipoExame: 'PERIODICO',
-    cargo: 'ASS comercial',
-    setor: 'comercial',
+    cargo: '',
+    setor: '',
     solicitacaoAtividades: undefined,
-    observacoes: 'campo observacao',
-    perfil: 'CLIENTES',
-    razaoSocial: 'PREVER TESTE'
+    observacoes: '',
+    perfil: 'CREDENCIADAS',
+    razaoSocial: 'GRUPO MAST'
   }
 
 
-async function dev() {
-    let agendamento = await getSubmissionForm()
-    // let agendamento = MOCK
-    console.log(agendamento)
-    if(agendamento.perfil == 'CLIENTES'){
-        
-        agendamento = await ajustaTipoExame(agendamento)
-        agendamento = await getCompanyCode(agendamento)
-        agendamento = await getEmployeeCode(agendamento)
-        
-        // Se não houver código do funcionario, adiciona no cadastro.
-        if( agendamento.procedimento == 'ADICIONAR')
-        {   
-            agendamento = await hierarquiaEmpresa(agendamento)
-            await webserviceFuncionarioModelo2(agendamento)
-            await timer()
-        }
 
-        // soap agendamento
-        let xml = await createXML(agendamento)
-        await sendSoapSchedule(xml)
-        
-        
+cadastrarAgendamento()
+async function cadastrarAgendamento() {
+    //let agendamento = MOCK
+    let agendamento = await getSubmissionForm()
+    
+    agendamento = await ajustaTipoExame(agendamento)
+    agendamento = await getCompanyCode(agendamento)
+    
+    if(agendamento.perfil == 'CLIENTES'){
+        agendamento = await getEmployeeCode(agendamento)
     }
-    else {
-        console.log('atendimento credenciadas....');
-    }
+
+    // soap agendamento
+    createXML(agendamento)
 
 } 
-
-
-async function timer() {
-    return await new Promise((resolve) => setTimeout(resolve, 2500));
-}
 
 
 app.listen(PORT, () => console.log('Servidor rodando na porta: ', PORT));

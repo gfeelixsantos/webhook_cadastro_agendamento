@@ -42,7 +42,8 @@ async function getSubmissionForm() {
             subs.content[0].answers[map.solicitacaoAtividades].answer,
             subs.content[0].answers[map.observacoes].answer,
             subs.content[0].answers[map.atendimentoPara].answer,
-            subs.content[0].answers[map.razaoSocial].answer
+            subs.content[0].answers[map.razaoSocial].answer,
+            subs.content[0].answers[map.upload].answer
         )
 
         return funcionarioAgendado

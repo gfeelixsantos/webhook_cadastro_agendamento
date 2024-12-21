@@ -39,6 +39,12 @@ const Gemini = {
     } 
   },
 
+
+
+
+
+
+
   sexoAgendamento: async function (agendamento) {
     const prompt = `De acordo com o nome do funcionário: ${agendamento.nome}, responda uma das seguintes opções: Masculino ou Feminino ?`
     
@@ -48,26 +54,35 @@ const Gemini = {
     agendamento.sexo = responseText.trim()
 
     return agendamento
+  },
+
+
+
+
+
+
+
+  analiseKitAtendimento: async function (agendamento) {
+
+    const url = agendamento.upload[0]
+
+    const pdfResp = await fetch(url).then((response) => response.arrayBuffer());
+
+    const result = await model.generateContent([
+        {
+            inlineData: {
+                data: Buffer.from(pdfResp).toString("base64"),
+                mimeType: "application/pdf",
+            },
+        },
+        'Summarize this document',
+    ]);
+    console.log(result.response.text());
   }
 
 
 
-  // buscaEmpresa: async function (agendamento, empresasAtivas) {
-  //   const prompt = `Dada as seguintes empresas ativas:
-  //   ${JSON.stringify(empresasAtivas)}
-  //   Retorne apenas um json com o código da empresa, cnpj e razão social, que seja exato para este cnpj ${agendamento.cnpj}?`
-
-  //   const result = await model.generateContent(prompt);
-  //   const responseText = result.response.text();
-  //   const arrText = responseText.split('"')
-  //   console.log(arrText)
-  //   agendamento.codEmpresa  = arrText[3]
-  //   agendamento.cnpj        = arrText[7]
-  //   agendamento.empresa     = arrText[11]
-    
-  //   return agendamento
-    
-  // }
+  
 }
 
 module.exports = Gemini

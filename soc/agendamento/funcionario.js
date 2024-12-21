@@ -1,3 +1,10 @@
+// funcionario modelo2
+const webserviceFuncionarioModelo2 = require('../funcionario/funcionarioModelo2')
+
+// hierarquia
+const hierarquiaEmpresa = require('../hierarquia/hierarquiaEmpresa')
+
+
 async function getEmployeeCode(agendamento) {
     console.log(agendamento)
     try {
@@ -13,16 +20,21 @@ async function getEmployeeCode(agendamento) {
         
         const cadastro = listaFuncionarios.find( func => func['CPFFUNCIONARIO'] == cpfFormatado);
        
-        if (cadastro == undefined)
+        if (!cadastro)
         {
-            agendamento.procedimento = 'ADICIONAR';
             agendamento.codFuncionario = listaFuncionarios.length +1
+            agendamento = await hierarquiaEmpresa(agendamento)
+            await webserviceFuncionarioModelo2(agendamento)
+            await timer()
         }
         else
         {
             agendamento.codFuncionario = cadastro['CODIGO'];
             agendamento.nome = cadastro['NOME'];
+            agendamento.codSetor = cadastro['CODIGOSETOR'];
             agendamento.setor = cadastro['NOMESETOR'];
+
+            agendamento.codCargo = cadastro['CODIGOCARGO'];
             agendamento.cargo = cadastro['NOMECARGO'];
             agendamento.cpf = cadastro['CPFFUNCIONARIO'];
             agendamento.dataNascimento = cadastro['DATA_NASCIMENTO']
