@@ -19,7 +19,7 @@ async function getCompanyCode(agendamento) {
     }
     else
     {
-        throw new Error('Empresa cliente não localizada...', agendamento.cnpj)
+        throw new Error(`Empresa cliente não localizada. CNPJ: ${agendamento.cnpj}`)
     }
 }
 

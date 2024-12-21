@@ -1,11 +1,8 @@
-app teste de agendamneto utilizando webhook
+# App de cadastramento a partir de agendamento (webhook) #
 
+A partir de um agendamento realizado na plataforma Jotform e realizado cadastro de informações para clientes que utilzam SOC para maior integridade entre as informações.
 
-agendamento teste
-cnpj: 99.999.999/9999-99
-ip envio: 2804:14d:5283:40d1:3841:d306:9acd:4732
-id envio: 5902115832373127105
+## APIs ##
 
-
-API properties: https://api.jotform.com/docs/properties/index.php
+API Jotform: https://api.jotform.com/docs/properties/index.php
 API GitHub: https://github.com/jotform/jotform-api-nodejs/tree/master
