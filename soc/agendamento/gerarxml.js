@@ -2,7 +2,7 @@ const WSSecurity = require('wssecurity-soap')
 const axios = require('axios')
 const urlEndPoint = 'https://ws1.soc.com.br/WSSoc/AgendamentoWs'
 
-function createXML(agendamento) {
+function soapAgendamento(agendamento) {
 
     const agenda = '2934869'
     const codCompromisso = agendamento.perfil == 'CLIENTES' ? '6' : '5'
@@ -98,4 +98,4 @@ function createXML(agendamento) {
    
 }
 
-module.exports = createXML
+module.exports = soapAgendamento
