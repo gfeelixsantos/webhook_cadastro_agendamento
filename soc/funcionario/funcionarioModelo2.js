@@ -400,17 +400,17 @@ async function webserviceFuncionarioModelo2(agendamento) {
         </soapenv:Envelope>
         `
 
-        
-    const options = {
+    axios.post(URL, xml, {
         headers: { 
-            'Content-Type': 'text/xml, charset=utf-8;',
+            'Content-Type': 'text/xml',
         }
-    }
-
-    const response = await axios.post(URL, xml, options)
-    const responseDescricaoErro = response.data.split('descricaoErro')[1]
-    
-    console.log(responseDescricaoErro)
+    })
+    .then(response => {
+        return console.log('SOAP cadastrar agendamento:', response.data);
+    })
+    .catch(error => {
+        return console.error('SOAP Error cadastrar agendamento:', error);
+    });
 }
 
 module.exports = webserviceFuncionarioModelo2

@@ -48,7 +48,7 @@ const MOCK =  {
 
 
 
-cadastrarAgendamento()
+
 async function cadastrarAgendamento() {
     try {
         // let agendamento = MOCK
@@ -56,13 +56,13 @@ async function cadastrarAgendamento() {
         
         agendamento = await ajustaTipoExame(agendamento)
         agendamento = await getCompanyCode(agendamento)
-        
+        console.info(agendamento)
         if(agendamento.perfil == 'CLIENTES')
         {
             agendamento = await getEmployeeCode(agendamento)
         }
 
-        soapAgendamento(agendamento)
+        await soapAgendamento(agendamento)
 
 
     } catch (error) {
