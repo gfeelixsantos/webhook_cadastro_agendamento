@@ -25,7 +25,6 @@ async function getEmployeeCode(agendamento) {
             agendamento.codFuncionario = listaFuncionarios.length +1
             agendamento = await hierarquiaEmpresa(agendamento)
             await webserviceFuncionarioModelo2(agendamento)
-            await timer()
         }
         else
         {
@@ -43,7 +42,7 @@ async function getEmployeeCode(agendamento) {
         return agendamento
         
     } catch (error) {
-        console.error('Erro ao buscar código do funcionário (fn: getEmployeeCode)', error);
+        throw new Error('Erro ao buscar código do funcionário (fn: getEmployeeCode)', error)
     }
 }
 

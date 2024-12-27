@@ -56,7 +56,7 @@ async function cadastrarAgendamento() {
         
         agendamento = await ajustaTipoExame(agendamento)
         agendamento = await getCompanyCode(agendamento)
-        console.info(agendamento)
+        
         if(agendamento.perfil == 'CLIENTES')
         {
             agendamento = await getEmployeeCode(agendamento)

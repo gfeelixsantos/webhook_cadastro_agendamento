@@ -92,7 +92,7 @@ function soapAgendamento(agendamento) {
         return console.log('SOAP cadastrar agendamento:', response.data);
     })
     .catch(error => {
-        return console.error('SOAP Error cadastrar agendamento:', error);
+        return new Error('SOAP Error cadastrar agendamento:', error)
     });
         
    
