@@ -22,7 +22,7 @@ async function examePeriodico(agendamento) {
     console.log( '--------------------------------------------------------------------- >> Iniciando cadastro!', agendamento.id)
         
         // Dados iniciais
-        agendamento = await apiBrasilCnpj(agendamento)
+        // agendamento = await apiBrasilCnpj(agendamento)
         agendamento = await verificaAgendamentoKit(agendamento)
         agendamento = await cadastroEmpresas(agendamento)
         await timer()
