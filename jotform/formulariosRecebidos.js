@@ -85,8 +85,8 @@ module.exports = async function formulariosRecebidos() {
             "anexos":               subs.content[0].answers[codigoCampos.anexos].answer,
             "erros":                []
         })
-            .save()
-            .catch( (e) => console.log(e) )
+            // .save()
+            // .catch( (e) => console.log(e) )
 
         // const teste = await Atendimento.scan('id').contains("CM002003").all().exec()
         // const json =  teste.toJSON()

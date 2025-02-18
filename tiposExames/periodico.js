@@ -18,7 +18,7 @@ const Atendimento = require('../aws/schema')
 const timer = require('../util/timer')
 
 async function examePeriodico(agendamento) {
-    agendamento.situacao = 'EM PREPARAÇÃO'
+    
     console.log( '--------------------------------------------------------------------- >> Iniciando cadastro!', agendamento.id)
         
         // Dados iniciais
@@ -28,6 +28,7 @@ async function examePeriodico(agendamento) {
         await timer()
         agendamento = await cadastroFuncionarioPorEmpresa(agendamento)
         
+        /*
         // Riscos
         await timer()
         agendamento = await riscosFuncionario(agendamento)
@@ -46,7 +47,8 @@ async function examePeriodico(agendamento) {
         for( const resultado of agendamento.exames ){
             await resultadoExame(agendamento, resultado)
             await timer()
-        }
+        } 
+        */
         
         const checkAgenda = await listagemCompromissoFuncionario(agendamento)
 
@@ -54,8 +56,9 @@ async function examePeriodico(agendamento) {
             await agenda(agendamento)
         }
         
-        await Atendimento.delete(agendamento.id)
-        await new Atendimento(agendamento).save()
+        console.log(agendamento)
+        // await Atendimento.delete(agendamento.id)
+        // await new Atendimento(agendamento).save()
 
 }
 
